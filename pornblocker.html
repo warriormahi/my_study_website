@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🚫 Blocked - Protect Your Soul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <style>
+        /* ─── RESET ─── */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #03050c;
+            --card-bg: rgba(10, 15, 30, 0.7);
+            --border: rgba(255, 255, 255, 0.06);
+            --text: #f0f4ff;
+            --muted: #79839a;
+            --blue: #00d9ff;  /* Vibrant Neon Blue */
+            --green: #00ff87; /* Vibrant Neon Green */
+            --red: #ff0055;   /* Glowing Red */
+            --deep-red: #ff3366;
+            --red-glow: rgba(255, 0, 85, 0.35);
+            --orange: #f59e0b;
+            --radius: 24px;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            font-family: 'Hind Siliguri', 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow: hidden;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* ─── BG PARTICLES ─── */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ─── CARD ─── */
+        .block-card {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 860px; 
+            max-height: 94vh;
+            background: var(--card-bg);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 35px 45px 30px; 
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            animation: cardEnter 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            transform: translateY(35px) scale(0.96);
+            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        @keyframes cardEnter {
+            to {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* ─── CORNER NEON GLOWS (বাম পাশে নীল ও ডান পাশে সবুজ) ─── */
+        .card-corner-glow-left {
+            position: absolute;
+            bottom: -30px;
+            left: -30px;
+            width: 120px;
+            height: 120px;
+            background: var(--blue);
+            filter: blur(50px);
+            opacity: 0.35;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .card-corner-glow-right {
+            position: absolute;
+            bottom: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            background: var(--green);
+            filter: blur(50px);
+            opacity: 0.35;
+            pointer-events: none;
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        /* ─── TOP BAR ─── */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 8px 16px;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .top-bar .streak {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .top-bar .streak .fire {
+            font-size: 26px;
+            animation: flame 1.2s ease-in-out infinite alternate;
+        }
+        @keyframes flame {
+            0% { transform: scale(1) rotate(-3deg); }
+            100% { transform: scale(1.10) rotate(3deg); }
+        }
+        .top-bar .streak .num {
+            font-size: 32px;
+            font-weight: 900;
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--orange), #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+        }
+        .top-bar .streak .label {
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--muted);
+        }
+
+        .top-bar .datetime {
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+        .top-bar .datetime .time {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            color: var(--blue);
+            text-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+        }
+        .top-bar .datetime .date {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--muted);
+        }
+
+        /* ─── RED TITLE ─── */
+        .title-block {
+            text-align: center;
+            margin: 4px 0 10px;
+        }
+
+        .title-block .big-red {
+            display: inline-block;
+            font-size: 44px;
+            font-weight: 900;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--red);
+            text-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(255, 0, 85, 0.15);
+            animation: popIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, pulseGlow 2.5s ease-in-out infinite 0.7s;
+            transform: scale(0.6);
+            opacity: 0;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.6); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { text-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(255, 0, 85, 0.10); }
+            50% { text-shadow: 0 0 60px var(--red-glow), 0 0 120px rgba(255, 0, 85, 0.2); }
+        }
+
+        .title-block .sub-icon {
+            display: block;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--muted);
+            margin-top: 2px;
+            letter-spacing: 2px;
+        }
+
+        /* ─── MAIN STATEMENT (Centred) ─── */
+        .bengali-text {
+            margin: 14px 0 12px;
+            padding: 6px 0;
+            text-align: center;
+        }
+
+        .bengali-text .main-msg {
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.6;
+            color: #fff;
+        }
+
+        .bengali-text .main-msg .emoji {
+            display: inline-block;
+            animation: shake 1.8s ease-in-out infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: rotate(0deg); }
+            20% { transform: rotate(-12deg); }
+            40% { transform: rotate(12deg); }
+            60% { transform: rotate(-8deg); }
+            80% { transform: rotate(8deg); }
+        }
+
+        .bengali-text .main-msg .red-highlight {
+            color: var(--red);
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+        }
+
+        .bengali-text .sub-msg {
+            font-size: 19px;
+            font-weight: 600;
+            color: var(--green);
+            margin-top: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .bengali-text .sub-msg i {
+            font-size: 20px;
+        }
+
+        /* ─── BIG DEEP RED TEXT ─── */
+        .big-deep-red {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--deep-red);
+            text-shadow: 0 0 30px rgba(255, 51, 102, 0.35);
+            letter-spacing: 0.5px;
+            line-height: 1.3;
+        }
+
+        /* ─── CIRCLE BULLET POINTS (Centred) ─── */
+        .bullet-list {
+            margin: 10px 0 14px;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text);
+            padding: 4px 0;
+            width: 100%;
+        }
+
+        .bullet-list li .dot {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--blue);
+            box-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
+        }
+        .bullet-list li .dot.green {
+            background: var(--green);
+            box-shadow: 0 0 12px rgba(0, 255, 135, 0.4);
+        }
+        .bullet-list li .dot.red {
+            background: var(--red);
+            box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+        }
+
+        .bullet-list li .highlight-green {
+            color: var(--green);
+            font-weight: 700;
+        }
+        .bullet-list li .highlight-red {
+            color: var(--red);
+            font-weight: 700;
+        }
+
+        /* ─── MOTIVATIONAL LINE (30s) ─── */
+        .motivation-box {
+            margin: 6px 0 14px;
+            padding: 10px 18px;
+            background: rgba(0, 255, 135, 0.03);
+            border: 1px solid rgba(0, 255, 135, 0.05);
+            border-radius: 12px;
+            text-align: center;
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .motivation-box .motiv-text {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            line-height: 1.5;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .motivation-box .motiv-text i {
+            color: var(--green);
+            margin: 0 8px;
+            opacity: 0.5;
+        }
+
+        .motivation-box .motiv-text .motiv-author {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--muted);
+            opacity: 0.5;
+            margin-top: 2px;
+            font-style: normal;
+        }
+
+        /* ─── BUTTON ─── */
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            margin: 4px 0 0;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 40px;
+            border-radius: 14px;
+            font-family: 'Hind Siliguri', 'Inter', sans-serif;
+            font-size: 17px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            text-decoration: none;
+            width: 100%;
+            max-width: 380px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent);
+            opacity: 0;
+            transition: 0.3s;
+        }
+        .btn:hover::after {
+            opacity: 1;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue), #0d9488);
+            color: #03050c;
+            box-shadow: 0 6px 28px rgba(0, 217, 255, 0.2);
+        }
+        .btn-primary:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(0, 255, 135, 0.4);
+        }
+        .btn-primary i {
+            font-size: 18px;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-height: 820px) {
+            .block-card { padding: 22px 36px 20px; }
+            .title-block .big-red { font-size: 34px; }
+            .bengali-text .main-msg { font-size: 20px; }
+            .bengali-text .sub-msg { font-size: 16px; }
+            .big-deep-red { font-size: 24px; }
+            .bullet-list li { font-size: 14px; }
+            .motivation-box .motiv-text { font-size: 15px; }
+            .top-bar .datetime .time { font-size: 20px; }
+            .top-bar .streak .num { font-size: 26px; }
+            .btn { font-size: 15px; padding: 12px 30px; max-width: 320px; }
+        }
+
+        @media (max-height: 680px) {
+            .block-card { padding: 14px 24px 14px; }
+            .title-block .big-red { font-size: 26px; }
+            .bengali-text .main-msg { font-size: 16px; line-height: 1.4; }
+            .bengali-text .sub-msg { font-size: 14px; gap: 6px; }
+            .big-deep-red { font-size: 20px; }
+            .bengali-text { margin: 6px 0 6px; }
+            .bullet-list { margin: 4px 0 6px; gap: 4px; }
+            .bullet-list li { font-size: 13px; padding: 2px 0; gap: 10px; }
+            .bullet-list li .dot { width: 8px; height: 8px; }
+            .motivation-box { padding: 6px 14px; min-height: 34px; margin: 4px 0 8px; }
+            .motivation-box .motiv-text { font-size: 13px; }
+            .btn { font-size: 13px; padding: 10px 24px; max-width: 260px; }
+            .top-bar .datetime .time { font-size: 16px; }
+            .top-bar .datetime .date { font-size: 11px; }
+            .top-bar .streak .num { font-size: 20px; }
+            .top-bar .streak .label { font-size: 12px; }
+            .top-bar .streak .fire { font-size: 18px; }
+            .top-bar { margin-bottom: 8px; padding-bottom: 8px; }
+            .title-block { margin: 2px 0 4px; }
+            .title-block .sub-icon { font-size: 16px; }
+        }
+
+        @media (max-width: 600px) {
+            .block-card { padding: 18px 16px 14px; border-radius: 16px; max-width: 100%; }
+            .top-bar { flex-direction: column; align-items: stretch; gap: 6px; }
+            .top-bar .streak { justify-content: center; }
+            .top-bar .datetime { justify-content: center; }
+            .title-block .big-red { font-size: 28px; }
+            .bengali-text .main-msg { font-size: 18px; }
+            .bengali-text .sub-msg { font-size: 15px; }
+            .big-deep-red { font-size: 22px; }
+            .bullet-list li { font-size: 14px; }
+            .btn { max-width: 100%; font-size: 15px; padding: 12px 20px; }
+        }
+
+        /* ─── FADE UP ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(16px);
+            animation: fadeUp 0.6s ease forwards;
+        }
+        .fade-up--1 { animation-delay: 0.06s; }
+        .fade-up--2 { animation-delay: 0.14s; }
+        .fade-up--3 { animation-delay: 0.22s; }
+        .fade-up--4 { animation-delay: 0.30s; }
+        .fade-up--5 { animation-delay: 0.38s; }
+        .fade-up--6 { animation-delay: 0.46s; }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ─── BG PARTICLES ─── -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ─── CARD ─── -->
+    <main class="block-card" role="main">
+        <!-- নিয়ন গ্লো কণার সংযুক্তি (নীল ও সবুজ) -->
+        <div class="card-corner-glow-left"></div>
+        <div class="card-corner-glow-right"></div>
+
+        <!-- TOP BAR -->
+        <div class="top-bar fade-up fade-up--1">
+            <div class="streak">
+                <span class="fire">🔥</span>
+                <span class="num" id="streakCount">0</span>
+                <span class="label">Day Streak</span>
+            </div>
+            <div class="datetime">
+                <span class="time" id="clockDisplay">00:00:00</span>
+                <span class="date" id="dateDisplay">Sat, 1 Jan 2027</span>
+            </div>
+        </div>
+
+        <!-- RED TITLE with POP animation -->
+        <div class="title-block fade-up fade-up--2">
+            <span class="big-red" id="blockedTitle">⛔ This website is blocked</span>
+            <span class="sub-icon">🚫 Stay clean · Protect your soul</span>
+        </div>
+
+        <!-- MAIN REMINDER TEXT (Centred) -->
+        <div class="bengali-text fade-up fade-up--3">
+            <div class="main-msg">
+                <span class="emoji">👀</span> তুমি হয়তো ভাবছো কেউ দেখছে না… 
+                <span class="red-highlight">কিন্তু আল্লাহ সব দেখছেন।</span>
+            </div>
+            <div class="sub-msg">
+                <i class="fas fa-heart-crack" style="color:var(--deep-red);"></i>
+                <span class="big-deep-red">এই অল্প সময়ের জন্য তুমি কি তোমার ইমান নষ্ট করতে চাও?</span>
+            </div>
+        </div>
+
+        <!-- CIRCLE BULLET POINTS (Centred) -->
+        <ul class="bullet-list fade-up fade-up--4">
+            <li>
+                <span class="dot blue"></span>
+                <span>⏸️ একটু থামো… এটা কি সত্যিই তোমার জন্য ভালো?</span>
+            </li>
+            <li>
+                <span class="dot green"></span>
+                <span>🌟 তুমি এর চেয়ে অনেক ভালো—নিজেকে ছোট করো না</span>
+            </li>
+            <li>
+                <span class="dot red"></span>
+                <span>🔁 এক ক্লিক থামানো = এক ধাপ জান্নাতের দিকে</span>
+            </li>
+        </ul>
+
+        <!-- MOTIVATIONAL LINE (Rotates every 30s) -->
+        <div class="motivation-box fade-up fade-up--5">
+            <div class="motiv-text" id="motivationDisplay">
+                <i class="fas fa-quote-left"></i>
+                <span id="motivationText">🤲 ভুল হলে সমস্যা না, ফিরে আসাটাই আসল শক্তি</span>
+                <i class="fas fa-quote-right"></i>
+                <span class="motiv-author" id="motivationAuthor">— repentance</span>
+            </div>
+        </div>
+
+        <!-- SINGLE DASHBOARD BUTTON -->
+        <div class="btn-group fade-up fade-up--6">
+            <a href="file:///D:/MEDIA/PC%20SOFTWARE/MRM%20STUDY%20DASHBOARD/1%20FINAL%20PROJECT.html"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer">
+            <i class="fas fa-graduation-cap"></i>
+            Go to Study Dashboard →
+        </a>
+    </div>
+
+</main>
+
+<!-- ─── JAVASCRIPT ─── -->
+<script>
+    (function() {
+        'use strict';
+
+        // ─── PARTICLES ───
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        let particles = [];
+        const COUNT = 70;
+
+        function resize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+            reset() {
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.size = Math.random() * 2.5 + 0.5;
+                this.sx = (Math.random() - 0.5) * 0.5;
+                this.sy = (Math.random() - 0.5) * 0.5;
+                this.op = Math.random() * 0.4 + 0.15;
+                this.pulse = Math.random() * Math.PI * 2;
+                this.ps = 0.01 + Math.random() * 0.02;
+            }
+            update() {
+                this.x += this.sx;
+                this.y += this.sy;
+                this.pulse += this.ps;
+                if (this.x < 0 || this.x > w) this.sx *= -1;
+                if (this.y < 0 || this.y > h) this.sy *= -1;
+            }
+            draw() {
+                const a = this.op * (0.6 + 0.4 * Math.sin(this.pulse));
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(0, 217, 255, ${a})`;
+                ctx.fill();
+                if (this.size > 1.5) {
+                    ctx.shadowColor = 'rgba(0, 217, 255, 0.08)';
+                    ctx.shadowBlur = 10;
+                    ctx.fill();
+                    ctx.shadowBlur = 0;
+                }
+            }
+        }
+
+        for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+
+        function drawParticles() {
+            ctx.clearRect(0, 0, w, h);
+            for (const p of particles) { p.update();
+                p.draw(); }
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const d = Math.sqrt(dx * dx + dy * dy);
+                    if (d < 150) {
+                        const a = 0.035 * (1 - d / 150);
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 217, 255, ${a})`;
+                        ctx.lineWidth = 0.6;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawParticles);
+        }
+        drawParticles();
+
+        // ─── CLOCK ───
+        function updateClock() {
+            const now = new Date();
+            const hh = String(now.getHours()).padStart(2, '0');
+            const mm = String(now.getMinutes()).padStart(2, '0');
+            const ss = String(now.getSeconds()).padStart(2, '0');
+            document.getElementById('clockDisplay').textContent = `${hh}:${mm}:${ss}`;
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+            const d = days[now.getDay()];
+            const dn = now.getDate();
+            const m = months[now.getMonth()];
+            const y = now.getFullYear();
+            document.getElementById('dateDisplay').textContent = `${d}, ${dn} ${m} ${y}`;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // ─── ROTATING MOTIVATIONAL QUOTES (30 seconds interval) ───
+        const quotes = [
+            { text: '🤲 ভুল হলে সমস্যা না, ফিরে আসাটাই আসল শক্তি।', author: '— Stay Strong' },
+            { text: '❤️ এখনই ফিরে আসো—আল্লাহ ফিরে আসা মানুষকে ভালোবাসেন।', author: '— Al-Ghafoor' },
+            { text: '🕊️ তুমি একা নও—আল্লাহ দেখছেন।', author: '— Al-Baseer' },
+        ];
+
+        let qi = 0;
+
+        function showMotivation(i) {
+            const q = quotes[i % quotes.length];
+            document.getElementById('motivationText').textContent = q.text;
+            document.getElementById('motivationAuthor').textContent = q.author;
+        }
+
+        function rotateMotivation() {
+            qi = (qi + 1) % quotes.length;
+            const el = document.getElementById('motivationDisplay');
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(6px)';
+            setTimeout(() => {
+                showMotivation(qi);
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 400);
+        }
+
+        showMotivation(0);
+        setInterval(rotateMotivation, 30000);
+
+        // ─── STREAK ───
+        const SK = 'reelsBlockStreak';
+        const LV = 'reelsBlockLastVisit';
+        const streakEl = document.getElementById('streakCount');
+
+        function todayStr() { return new Date().toDateString(); }
+
+        function daysBetween(d1, d2) {
+            const a = new Date(d1),
+                b = new Date(d2);
+            a.setHours(0, 0, 0, 0);
+            b.setHours(0, 0, 0, 0);
+            return Math.floor(Math.abs(b - a) / (1000 * 60 * 60 * 24));
+        }
+
+        function updateStreak() {
+            const today = todayStr();
+            let last = localStorage.getItem(LV);
+            let s = parseInt(localStorage.getItem(SK) || '0', 10);
+            if (!last) {
+                localStorage.setItem(LV, today);
+                localStorage.setItem(SK, '0');
+                s = 0;
+            } else if (last !== today) {
+                const diff = daysBetween(last, today);
+                const ns = Math.max(0, diff - 1);
+                s = ns;
+                localStorage.setItem(LV, today);
+                localStorage.setItem(SK, String(s));
+            }
+            streakEl.textContent = s;
+        }
+
+        // ─── INIT ───
+        updateStreak();
+
+        // ─── ORIENTATION ───
+        window.addEventListener('orientationchange', () => setTimeout(resize, 400));
+
+        console.log('🚫 Blocker active! Protect your soul. 🕊️');
+    })();
+</script>
+
+</body>
+</html>
