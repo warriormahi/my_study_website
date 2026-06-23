@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>🚫 Blocked - Protect Your Soul</title>
+    <title>🕊️ Blocked - Protect Your Iman</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=Orbitron:wght@400;600;700;800;900&family=Amiri:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <style>
         /* ─── RESET ─── */
@@ -19,17 +19,24 @@
         }
 
         :root {
-            --bg: #03050c;
-            --card-bg: rgba(10, 15, 30, 0.7);
-            --border: rgba(255, 255, 255, 0.06);
-            --text: #f0f4ff;
-            --muted: #79839a;
-            --blue: #00d9ff;  /* Vibrant Neon Blue */
-            --green: #00ff87; /* Vibrant Neon Green */
-            --red: #ff0055;   /* Glowing Red */
-            --deep-red: #ff3366;
-            --red-glow: rgba(255, 0, 85, 0.35);
-            --orange: #f59e0b;
+            --bg: #05080f;
+            --card-bg: rgba(8, 12, 25, 0.75);
+            --border: rgba(255, 255, 255, 0.05);
+            --text: #e8f0ff;
+            --muted: #6b7a9a;
+            --neon-blue: #00d4ff;
+            --neon-green: #00ff87;
+            --neon-red: #ff0055;
+            --neon-purple: #b026ff;
+            --neon-orange: #ff6b35;
+            --neon-gold: #ffd700;
+            --neon-emerald: #00ff87;
+            --glow-blue: rgba(0, 212, 255, 0.3);
+            --glow-green: rgba(0, 255, 135, 0.3);
+            --glow-red: rgba(255, 0, 85, 0.3);
+            --glow-purple: rgba(176, 38, 255, 0.3);
+            --glow-gold: rgba(255, 215, 0, 0.3);
+            --glow-emerald: rgba(0, 255, 135, 0.3);
             --radius: 24px;
         }
 
@@ -37,7 +44,7 @@
         body {
             height: 100%;
             width: 100%;
-            font-family: 'Hind Siliguri', 'Inter', sans-serif;
+            font-family: 'Hind Siliguri', 'Amiri', 'Inter', sans-serif;
             background: var(--bg);
             color: var(--text);
             overflow: hidden;
@@ -47,7 +54,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 30px;
             position: relative;
         }
 
@@ -62,20 +69,68 @@
             pointer-events: none;
         }
 
+        /* ─── BG GLOW ORBS ─── */
+        .bg-orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(150px);
+            opacity: 0.1;
+            z-index: 0;
+            pointer-events: none;
+            animation: orbFloat 20s ease-in-out infinite alternate;
+        }
+        .bg-orb--1 {
+            width: 600px;
+            height: 600px;
+            top: -20%;
+            left: -15%;
+            background: var(--neon-red);
+            animation-delay: 0s;
+        }
+        .bg-orb--2 {
+            width: 500px;
+            height: 500px;
+            bottom: -20%;
+            right: -15%;
+            background: var(--neon-emerald);
+            animation-delay: 7s;
+        }
+        .bg-orb--3 {
+            width: 400px;
+            height: 400px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--neon-purple);
+            opacity: 0.06;
+            animation-delay: 14s;
+        }
+
+        @keyframes orbFloat {
+            0% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(50px, -40px) scale(1.15); }
+            66% { transform: translate(-40px, 50px) scale(0.85); }
+            100% { transform: translate(40px, -50px) scale(1.1); }
+        }
+
         /* ─── CARD ─── */
         .block-card {
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 860px; 
-            max-height: 94vh;
+            max-width: 960px;
+            height: auto;
+            max-height: 88vh;
             background: var(--card-bg);
-            backdrop-filter: blur(35px);
-            -webkit-backdrop-filter: blur(35px);
+            backdrop-filter: blur(50px) saturate(1.4);
+            -webkit-backdrop-filter: blur(50px) saturate(1.4);
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            padding: 35px 45px 30px; 
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.03);
+            padding: 40px 52px 32px;
+            box-shadow: 
+                0 40px 100px rgba(0, 0, 0, 0.8),
+                inset 0 1px 0 rgba(255, 255, 255, 0.03),
+                0 0 80px rgba(255, 0, 85, 0.04);
             animation: cardEnter 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             transform: translateY(35px) scale(0.96);
             opacity: 0;
@@ -91,33 +146,112 @@
             }
         }
 
-        /* ─── CORNER NEON GLOWS (বাম পাশে নীল ও ডান পাশে সবুজ) ─── */
-        .card-corner-glow-left {
+        /* ─── GLASS REFLECTION ─── */
+        .glass-reflection {
             position: absolute;
-            bottom: -30px;
-            left: -30px;
-            width: 120px;
-            height: 120px;
-            background: var(--blue);
-            filter: blur(50px);
-            opacity: 0.35;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(
+                ellipse at 25% 20%,
+                rgba(255, 0, 85, 0.04) 0%,
+                transparent 60%
+            );
             pointer-events: none;
-            border-radius: 50%;
-            z-index: -1;
+            z-index: 0;
+            animation: shimmer 12s ease-in-out infinite alternate;
         }
 
-        .card-corner-glow-right {
+        @keyframes shimmer {
+            0% { transform: translateX(-10%) translateY(-10%) rotate(0deg); opacity: 0.4; }
+            100% { transform: translateX(10%) translateY(10%) rotate(4deg); opacity: 0.9; }
+        }
+
+        /* ─── CORNER NEON GLOWS ─── */
+        .corner-glow {
             position: absolute;
-            bottom: -30px;
-            right: -30px;
-            width: 120px;
-            height: 120px;
-            background: var(--green);
-            filter: blur(50px);
-            opacity: 0.35;
-            pointer-events: none;
             border-radius: 50%;
-            z-index: -1;
+            filter: blur(80px);
+            opacity: 0.3;
+            pointer-events: none;
+            z-index: 0;
+            animation: cornerPulse 7s ease-in-out infinite alternate;
+        }
+        .corner-glow--tl {
+            width: 280px;
+            height: 280px;
+            top: -80px;
+            left: -80px;
+            background: var(--neon-red);
+            animation-delay: 0s;
+        }
+        .corner-glow--br {
+            width: 280px;
+            height: 280px;
+            bottom: -80px;
+            right: -80px;
+            background: var(--neon-emerald);
+            animation-delay: 3.5s;
+        }
+        .corner-glow--tr {
+            width: 200px;
+            height: 200px;
+            top: -50px;
+            right: -50px;
+            background: var(--neon-purple);
+            opacity: 0.2;
+            animation-delay: 2s;
+        }
+
+        @keyframes cornerPulse {
+            0% { transform: scale(1) rotate(0deg); opacity: 0.2; }
+            100% { transform: scale(1.4) rotate(12deg); opacity: 0.4; }
+        }
+
+        /* ─── FLOATING ORBS INSIDE ─── */
+        .float-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: 0;
+            animation: floatOrb 16s ease-in-out infinite alternate;
+        }
+        .float-orb--1 {
+            width: 200px;
+            height: 200px;
+            top: 15%;
+            right: -30px;
+            background: var(--neon-red);
+            animation-delay: 0s;
+        }
+        .float-orb--2 {
+            width: 180px;
+            height: 180px;
+            bottom: 20%;
+            left: -25px;
+            background: var(--neon-emerald);
+            animation-delay: 8s;
+        }
+        .float-orb--3 {
+            width: 150px;
+            height: 150px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--neon-purple);
+            opacity: 0.07;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatOrb {
+            0% { transform: translate(0, 0) scale(1); }
+            25% { transform: translate(30px, -20px) scale(1.15); }
+            50% { transform: translate(-20px, 30px) scale(0.85); }
+            75% { transform: translate(20px, -30px) scale(1.1); }
+            100% { transform: translate(-30px, 20px) scale(0.9); }
         }
 
         /* ─── TOP BAR ─── */
@@ -126,30 +260,40 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 8px 16px;
+            gap: 10px 20px;
             margin-bottom: 16px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 8px 6px 14px 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            position: relative;
+            z-index: 1;
+            background: linear-gradient(180deg, rgba(255, 0, 85, 0.02), transparent);
+            border-radius: 14px 14px 0 0;
+            flex-shrink: 0;
         }
 
         .top-bar .streak {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 5px 20px 5px 14px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 0, 85, 0.06);
+            backdrop-filter: blur(8px);
         }
         .top-bar .streak .fire {
-            font-size: 26px;
+            font-size: 28px;
             animation: flame 1.2s ease-in-out infinite alternate;
         }
         @keyframes flame {
             0% { transform: scale(1) rotate(-3deg); }
-            100% { transform: scale(1.10) rotate(3deg); }
+            100% { transform: scale(1.12) rotate(3deg); }
         }
         .top-bar .streak .num {
-            font-size: 32px;
+            font-size: 34px;
             font-weight: 900;
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--orange), #f97316);
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            background: linear-gradient(135deg, var(--neon-orange), #f97316);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -163,16 +307,21 @@
 
         .top-bar .datetime {
             display: flex;
-            align-items: baseline;
-            gap: 10px;
-            font-family: 'Inter', sans-serif;
+            align-items: center;
+            gap: 14px;
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 5px 20px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 0, 85, 0.06);
+            backdrop-filter: blur(8px);
         }
         .top-bar .datetime .time {
             font-size: 24px;
             font-weight: 700;
-            letter-spacing: 0.5px;
-            color: var(--blue);
-            text-shadow: 0 0 10px rgba(0, 217, 255, 0.2);
+            letter-spacing: 1px;
+            color: var(--neon-red);
+            text-shadow: 0 0 25px var(--glow-red);
         }
         .top-bar .datetime .date {
             font-size: 14px;
@@ -180,21 +329,32 @@
             color: var(--muted);
         }
 
-        /* ─── RED TITLE ─── */
-        .title-block {
+        /* ─── TITLE SECTION ─── */
+        .title-section {
             text-align: center;
-            margin: 4px 0 10px;
+            margin: 4px 0 12px;
+            position: relative;
+            z-index: 1;
+            padding: 12px 24px;
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(255, 0, 85, 0.015), transparent);
+            border: 1px solid rgba(255, 0, 85, 0.03);
+            backdrop-filter: blur(8px);
+            flex-shrink: 0;
         }
 
-        .title-block .big-red {
+        .title-section .big-red {
             display: inline-block;
-            font-size: 44px;
+            font-size: 48px;
             font-weight: 900;
-            font-family: 'Inter', sans-serif;
-            letter-spacing: 1px;
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            letter-spacing: 3px;
             text-transform: uppercase;
-            color: var(--red);
-            text-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(255, 0, 85, 0.15);
+            color: var(--neon-red);
+            text-shadow: 
+                0 0 50px var(--glow-red),
+                0 0 100px rgba(255, 0, 85, 0.15),
+                0 0 150px rgba(255, 0, 85, 0.05);
             animation: popIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards, pulseGlow 2.5s ease-in-out infinite 0.7s;
             transform: scale(0.6);
             opacity: 0;
@@ -206,98 +366,130 @@
         }
 
         @keyframes pulseGlow {
-            0%, 100% { text-shadow: 0 0 40px var(--red-glow), 0 0 80px rgba(255, 0, 85, 0.10); }
-            50% { text-shadow: 0 0 60px var(--red-glow), 0 0 120px rgba(255, 0, 85, 0.2); }
+            0%, 100% { text-shadow: 0 0 50px var(--glow-red), 0 0 100px rgba(255, 0, 85, 0.10); }
+            50% { text-shadow: 0 0 70px var(--glow-red), 0 0 140px rgba(255, 0, 85, 0.20); }
         }
 
-        .title-block .sub-icon {
+        .title-section .sub-icon {
             display: block;
             font-size: 20px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--muted);
-            margin-top: 2px;
-            letter-spacing: 2px;
+            margin-top: 4px;
+            letter-spacing: 3px;
         }
 
-        /* ─── MAIN STATEMENT (Centred) ─── */
-        .bengali-text {
-            margin: 14px 0 12px;
-            padding: 6px 0;
+        /* ─── MAIN TEXT ─── */
+        .main-text {
+            margin: 6px 0 10px;
             text-align: center;
+            padding: 14px 24px;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 0, 85, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 0, 85, 0.03);
+            backdrop-filter: blur(8px);
+            flex-shrink: 0;
         }
 
-        .bengali-text .main-msg {
-            font-size: 24px;
+        .main-text .heading {
+            font-size: 26px;
             font-weight: 800;
-            line-height: 1.6;
+            line-height: 1.8;
             color: #fff;
         }
 
-        .bengali-text .main-msg .emoji {
+        .main-text .heading .emoji {
             display: inline-block;
             animation: shake 1.8s ease-in-out infinite;
         }
 
         @keyframes shake {
             0%, 100% { transform: rotate(0deg); }
-            20% { transform: rotate(-12deg); }
-            40% { transform: rotate(12deg); }
-            60% { transform: rotate(-8deg); }
-            80% { transform: rotate(8deg); }
+            20% { transform: rotate(-14deg); }
+            40% { transform: rotate(14deg); }
+            60% { transform: rotate(-10deg); }
+            80% { transform: rotate(10deg); }
         }
 
-        .bengali-text .main-msg .red-highlight {
-            color: var(--red);
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.2);
+        .main-text .heading .highlight-red {
+            color: var(--neon-red);
+            font-weight: 900;
+            text-shadow: 0 0 25px var(--glow-red);
         }
 
-        .bengali-text .sub-msg {
-            font-size: 19px;
-            font-weight: 600;
-            color: var(--green);
+        .main-text .sub-heading {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--neon-emerald);
             margin-top: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 14px;
             flex-wrap: wrap;
+            background: rgba(0, 255, 135, 0.05);
+            padding: 8px 24px;
+            border-radius: 14px;
+            border: 1px solid rgba(0, 255, 135, 0.08);
         }
 
-        .bengali-text .sub-msg i {
-            font-size: 20px;
+        .main-text .sub-heading i {
+            font-size: 24px;
+            color: var(--neon-red);
         }
 
-        /* ─── BIG DEEP RED TEXT ─── */
-        .big-deep-red {
-            font-size: 28px;
-            font-weight: 900;
-            color: var(--deep-red);
-            text-shadow: 0 0 30px rgba(255, 51, 102, 0.35);
-            letter-spacing: 0.5px;
-            line-height: 1.3;
-        }
-
-        /* ─── CIRCLE BULLET POINTS (Centred) ─── */
+        /* ─── BULLET LIST ─── */
         .bullet-list {
-            margin: 10px 0 14px;
-            padding: 0;
+            margin: 4px 0 12px;
+            padding: 10px 20px;
             list-style: none;
             display: flex;
             flex-direction: column;
+            gap: 6px;
             align-items: center;
-            gap: 8px;
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 0, 85, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 0, 85, 0.03);
+            backdrop-filter: blur(8px);
+            flex: 1;
+            overflow-y: auto;
+            min-height: 0;
+        }
+
+        .bullet-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .bullet-list::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .bullet-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 0, 85, 0.3);
+            border-radius: 10px;
         }
 
         .bullet-list li {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 14px;
-            font-size: 17px;
-            font-weight: 600;
+            gap: 16px;
+            font-size: 18px;
+            font-weight: 500;
             color: var(--text);
-            padding: 4px 0;
+            padding: 6px 14px;
             width: 100%;
+            max-width: 650px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            line-height: 1.5;
+            flex-shrink: 0;
+        }
+
+        .bullet-list li:hover {
+            background: rgba(255, 0, 85, 0.04);
+            transform: translateX(4px);
         }
 
         .bullet-list li .dot {
@@ -305,61 +497,109 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
-            width: 10px;
-            height: 10px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            background: var(--blue);
-            box-shadow: 0 0 12px rgba(0, 217, 255, 0.4);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .bullet-list li .dot.green {
-            background: var(--green);
-            box-shadow: 0 0 12px rgba(0, 255, 135, 0.4);
+        .bullet-list li:hover .dot {
+            transform: scale(1.5);
         }
         .bullet-list li .dot.red {
-            background: var(--red);
-            box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);
+            background: var(--neon-red);
+            box-shadow: 0 0 20px var(--glow-red);
+            animation: pulseRed 2.5s ease-in-out infinite;
+        }
+        .bullet-list li .dot.green {
+            background: var(--neon-emerald);
+            box-shadow: 0 0 20px var(--glow-emerald);
+            animation: pulseGreen 2.5s ease-in-out infinite;
+        }
+        .bullet-list li .dot.gold {
+            background: var(--neon-gold);
+            box-shadow: 0 0 20px var(--glow-gold);
+            animation: pulseGold 2.5s ease-in-out infinite;
+        }
+        .bullet-list li .dot.purple {
+            background: var(--neon-purple);
+            box-shadow: 0 0 20px var(--glow-purple);
+            animation: pulsePurple 2.5s ease-in-out infinite;
         }
 
-        .bullet-list li .highlight-green {
-            color: var(--green);
-            font-weight: 700;
+        @keyframes pulseRed {
+            0%, 100% { box-shadow: 0 0 20px var(--glow-red); }
+            50% { box-shadow: 0 0 40px var(--glow-red); }
         }
+        @keyframes pulseGreen {
+            0%, 100% { box-shadow: 0 0 20px var(--glow-emerald); }
+            50% { box-shadow: 0 0 40px var(--glow-emerald); }
+        }
+        @keyframes pulseGold {
+            0%, 100% { box-shadow: 0 0 20px var(--glow-gold); }
+            50% { box-shadow: 0 0 40px var(--glow-gold); }
+        }
+        @keyframes pulsePurple {
+            0%, 100% { box-shadow: 0 0 20px var(--glow-purple); }
+            50% { box-shadow: 0 0 40px var(--glow-purple); }
+        }
+
         .bullet-list li .highlight-red {
-            color: var(--red);
+            color: var(--neon-red);
+            font-weight: 700;
+        }
+        .bullet-list li .highlight-green {
+            color: var(--neon-emerald);
+            font-weight: 700;
+        }
+        .bullet-list li .highlight-gold {
+            color: var(--neon-gold);
+            font-weight: 700;
+        }
+        .bullet-list li .highlight-purple {
+            color: var(--neon-purple);
             font-weight: 700;
         }
 
-        /* ─── MOTIVATIONAL LINE (30s) ─── */
+        /* ─── MOTIVATION BOX ─── */
         .motivation-box {
-            margin: 6px 0 14px;
-            padding: 10px 18px;
-            background: rgba(0, 255, 135, 0.03);
-            border: 1px solid rgba(0, 255, 135, 0.05);
-            border-radius: 12px;
+            margin: 2px 0 12px;
+            padding: 10px 24px;
+            background: rgba(255, 0, 85, 0.03);
+            border-radius: 16px;
             text-align: center;
-            min-height: 50px;
+            min-height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 0, 85, 0.06);
+            backdrop-filter: blur(8px);
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+        .motivation-box:hover {
+            border-color: rgba(255, 0, 85, 0.18);
+            background: rgba(255, 0, 85, 0.06);
         }
 
         .motivation-box .motiv-text {
             font-size: 18px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text);
-            line-height: 1.5;
+            line-height: 1.6;
             transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
         .motivation-box .motiv-text i {
-            color: var(--green);
+            color: var(--neon-red);
             margin: 0 8px;
             opacity: 0.5;
         }
 
         .motivation-box .motiv-text .motiv-author {
             display: block;
-            font-size: 13px;
+            font-size: 14px;
             font-weight: 600;
             color: var(--muted);
             opacity: 0.5;
@@ -371,103 +611,164 @@
         .btn-group {
             display: flex;
             justify-content: center;
-            margin: 4px 0 0;
+            margin: 2px 0 0;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            padding: 14px 40px;
-            border-radius: 14px;
-            font-family: 'Hind Siliguri', 'Inter', sans-serif;
+            gap: 14px;
+            padding: 14px 44px;
+            border-radius: 16px;
+            font-family: 'Inter', 'Hind Siliguri', sans-serif;
             font-size: 17px;
             font-weight: 700;
             border: none;
             cursor: pointer;
-            transition: 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
             text-decoration: none;
             width: 100%;
-            max-width: 380px;
+            max-width: 360px;
             position: relative;
             overflow: hidden;
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 85, 0.08);
         }
 
-        .btn::after {
+        .btn::before {
             content: '';
             position: absolute;
             inset: 0;
             border-radius: inherit;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.06), transparent);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent);
             opacity: 0;
             transition: 0.3s;
         }
-        .btn:hover::after {
+        .btn:hover::before {
             opacity: 1;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--blue), #0d9488);
-            color: #03050c;
-            box-shadow: 0 6px 28px rgba(0, 217, 255, 0.2);
+            background: linear-gradient(135deg, var(--neon-red), #cc0044);
+            color: #05080f;
+            box-shadow: 
+                0 8px 40px var(--glow-red),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            text-shadow: 0 1px 0 rgba(255, 255, 255, 0.15);
         }
         .btn-primary:hover {
             transform: translateY(-4px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(0, 255, 135, 0.4);
+            box-shadow: 
+                0 16px 60px var(--glow-red),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
         .btn-primary i {
             font-size: 18px;
         }
 
         /* ─── RESPONSIVE ─── */
-        @media (max-height: 820px) {
-            .block-card { padding: 22px 36px 20px; }
-            .title-block .big-red { font-size: 34px; }
-            .bengali-text .main-msg { font-size: 20px; }
-            .bengali-text .sub-msg { font-size: 16px; }
-            .big-deep-red { font-size: 24px; }
-            .bullet-list li { font-size: 14px; }
-            .motivation-box .motiv-text { font-size: 15px; }
+        @media (max-height: 850px) {
+            .block-card { padding: 28px 40px 24px; max-width: 880px; }
+            .title-section .big-red { font-size: 38px; }
+            .main-text .heading { font-size: 22px; }
+            .main-text .sub-heading { font-size: 18px; padding: 6px 16px; }
+            .bullet-list li { font-size: 16px; padding: 4px 10px; }
+            .bullet-list { padding: 8px 16px; gap: 4px; }
+            .motivation-box .motiv-text { font-size: 16px; padding: 4px 12px; }
+            .btn { font-size: 15px; padding: 11px 34px; max-width: 320px; }
             .top-bar .datetime .time { font-size: 20px; }
-            .top-bar .streak .num { font-size: 26px; }
-            .btn { font-size: 15px; padding: 12px 30px; max-width: 320px; }
+            .top-bar .streak .num { font-size: 28px; }
+            .top-bar .streak .fire { font-size: 24px; }
+            .corner-glow--tl,
+            .corner-glow--br { width: 200px; height: 200px; }
+            .float-orb--1,
+            .float-orb--2 { width: 140px; height: 140px; }
         }
 
-        @media (max-height: 680px) {
-            .block-card { padding: 14px 24px 14px; }
-            .title-block .big-red { font-size: 26px; }
-            .bengali-text .main-msg { font-size: 16px; line-height: 1.4; }
-            .bengali-text .sub-msg { font-size: 14px; gap: 6px; }
-            .big-deep-red { font-size: 20px; }
-            .bengali-text { margin: 6px 0 6px; }
-            .bullet-list { margin: 4px 0 6px; gap: 4px; }
-            .bullet-list li { font-size: 13px; padding: 2px 0; gap: 10px; }
-            .bullet-list li .dot { width: 8px; height: 8px; }
-            .motivation-box { padding: 6px 14px; min-height: 34px; margin: 4px 0 8px; }
-            .motivation-box .motiv-text { font-size: 13px; }
-            .btn { font-size: 13px; padding: 10px 24px; max-width: 260px; }
-            .top-bar .datetime .time { font-size: 16px; }
-            .top-bar .datetime .date { font-size: 11px; }
-            .top-bar .streak .num { font-size: 20px; }
-            .top-bar .streak .label { font-size: 12px; }
-            .top-bar .streak .fire { font-size: 18px; }
+        @media (max-height: 750px) {
+            .block-card { padding: 20px 32px 18px; max-width: 820px; }
+            .title-section .big-red { font-size: 32px; }
+            .title-section { padding: 6px 14px; margin: 2px 0 6px; }
+            .main-text .heading { font-size: 19px; line-height: 1.5; }
+            .main-text .sub-heading { font-size: 16px; gap: 8px; padding: 5px 12px; }
+            .main-text { padding: 8px 14px; margin: 4px 0 6px; }
+            .bullet-list { padding: 6px 12px; gap: 3px; margin: 2px 0 6px; }
+            .bullet-list li { font-size: 14px; padding: 3px 8px; gap: 10px; }
+            .bullet-list li .dot { width: 11px; height: 11px; }
+            .motivation-box { padding: 6px 16px; min-height: 34px; margin: 2px 0 6px; }
+            .motivation-box .motiv-text { font-size: 14px; }
+            .btn { font-size: 13px; padding: 9px 26px; max-width: 280px; }
+            .top-bar .datetime .time { font-size: 17px; }
+            .top-bar .datetime .date { font-size: 12px; }
+            .top-bar .streak .num { font-size: 24px; }
+            .top-bar .streak .label { font-size: 13px; }
+            .top-bar .streak .fire { font-size: 22px; }
             .top-bar { margin-bottom: 8px; padding-bottom: 8px; }
-            .title-block { margin: 2px 0 4px; }
-            .title-block .sub-icon { font-size: 16px; }
+            .title-section .sub-icon { font-size: 15px; }
+            .top-bar .streak { padding: 3px 14px 3px 10px; }
+            .top-bar .datetime { padding: 3px 14px; gap: 8px; }
+        }
+
+        @media (max-height: 650px) {
+            .block-card { padding: 14px 24px 14px; max-width: 760px; }
+            .title-section .big-red { font-size: 26px; letter-spacing: 1px; }
+            .main-text .heading { font-size: 16px; line-height: 1.4; }
+            .main-text .sub-heading { font-size: 14px; gap: 6px; padding: 4px 10px; }
+            .main-text { padding: 6px 10px; margin: 2px 0 4px; }
+            .bullet-list { padding: 4px 10px; gap: 2px; margin: 2px 0 4px; }
+            .bullet-list li { font-size: 13px; padding: 2px 6px; gap: 8px; }
+            .bullet-list li .dot { width: 9px; height: 9px; }
+            .motivation-box { padding: 4px 12px; min-height: 28px; margin: 2px 0 4px; }
+            .motivation-box .motiv-text { font-size: 13px; }
+            .btn { font-size: 12px; padding: 7px 20px; max-width: 240px; gap: 8px; }
+            .top-bar .datetime .time { font-size: 15px; }
+            .top-bar .datetime .date { font-size: 10px; }
+            .top-bar .streak .num { font-size: 20px; }
+            .top-bar .streak .label { font-size: 11px; }
+            .top-bar .streak .fire { font-size: 18px; }
+            .top-bar { margin-bottom: 6px; padding-bottom: 6px; gap: 6px; }
+            .title-section { padding: 4px 10px; margin: 0 0 4px; }
+            .title-section .sub-icon { font-size: 13px; }
+            .corner-glow--tl,
+            .corner-glow--br { width: 100px; height: 100px; top: -40px; left: -40px; }
+            .float-orb--1,
+            .float-orb--2 { width: 70px; height: 70px; }
+            .top-bar .streak { padding: 2px 10px 2px 8px; gap: 6px; }
+            .top-bar .datetime { padding: 2px 10px; gap: 6px; }
         }
 
         @media (max-width: 600px) {
-            .block-card { padding: 18px 16px 14px; border-radius: 16px; max-width: 100%; }
+            .block-card { padding: 14px 12px 10px; border-radius: 16px; max-width: 100%; }
             .top-bar { flex-direction: column; align-items: stretch; gap: 6px; }
             .top-bar .streak { justify-content: center; }
             .top-bar .datetime { justify-content: center; }
-            .title-block .big-red { font-size: 28px; }
-            .bengali-text .main-msg { font-size: 18px; }
-            .bengali-text .sub-msg { font-size: 15px; }
-            .big-deep-red { font-size: 22px; }
-            .bullet-list li { font-size: 14px; }
-            .btn { max-width: 100%; font-size: 15px; padding: 12px 20px; }
+            .title-section .big-red { font-size: 24px; }
+            .main-text .heading { font-size: 17px; }
+            .main-text .sub-heading { font-size: 14px; }
+            .bullet-list li { font-size: 13px; max-width: 100%; }
+            .btn { max-width: 100%; font-size: 13px; padding: 10px 16px; }
+        }
+
+        @media (max-width: 420px) {
+            .block-card { padding: 8px 6px 6px; }
+            .title-section .big-red { font-size: 18px; letter-spacing: 1px; }
+            .top-bar .datetime .time { font-size: 12px; }
+            .top-bar .datetime .date { font-size: 8px; }
+            .top-bar .streak .num { font-size: 15px; }
+            .main-text .heading { font-size: 14px; }
+            .main-text .sub-heading { font-size: 12px; }
+            .bullet-list li { font-size: 11px; gap: 6px; }
+            .bullet-list li .dot { width: 6px; height: 6px; }
+            .motivation-box .motiv-text { font-size: 10px; }
+            .btn { font-size: 11px; padding: 6px 12px; gap: 6px; }
+            .title-section .sub-icon { font-size: 11px; }
+            .top-bar .streak { padding: 2px 6px; gap: 3px; }
+            .top-bar .datetime { padding: 2px 6px; gap: 3px; }
         }
 
         /* ─── FADE UP ─── */
@@ -490,14 +791,27 @@
 </head>
 <body>
 
-    <!-- ─── BG PARTICLES ─── -->
+    <!-- ─── BG ─── -->
     <canvas id="particles-canvas"></canvas>
+    <div class="bg-orb bg-orb--1"></div>
+    <div class="bg-orb bg-orb--2"></div>
+    <div class="bg-orb bg-orb--3"></div>
 
     <!-- ─── CARD ─── -->
     <main class="block-card" role="main">
-        <!-- নিয়ন গ্লো কণার সংযুক্তি (নীল ও সবুজ) -->
-        <div class="card-corner-glow-left"></div>
-        <div class="card-corner-glow-right"></div>
+
+        <!-- Glass Reflection -->
+        <div class="glass-reflection"></div>
+
+        <!-- Corner Glows -->
+        <div class="corner-glow corner-glow--tl"></div>
+        <div class="corner-glow corner-glow--br"></div>
+        <div class="corner-glow corner-glow--tr"></div>
+
+        <!-- Floating Orbs -->
+        <div class="float-orb float-orb--1"></div>
+        <div class="float-orb float-orb--2"></div>
+        <div class="float-orb float-orb--3"></div>
 
         <!-- TOP BAR -->
         <div class="top-bar fade-up fade-up--1">
@@ -512,58 +826,70 @@
             </div>
         </div>
 
-        <!-- RED TITLE with POP animation -->
-        <div class="title-block fade-up fade-up--2">
-            <span class="big-red" id="blockedTitle">⛔ This website is blocked</span>
-            <span class="sub-icon">🚫 Stay clean · Protect your soul</span>
+        <!-- TITLE - RED -->
+        <div class="title-section fade-up fade-up--2">
+            <span class="big-red" id="blockedTitle">🕊️ This Site is Blocked</span>
+            <span class="sub-icon">🤲 Protect your Iman · Guard your soul</span>
         </div>
 
-        <!-- MAIN REMINDER TEXT (Centred) -->
-        <div class="bengali-text fade-up fade-up--3">
-            <div class="main-msg">
-                <span class="emoji">👀</span> তুমি হয়তো ভাবছো কেউ দেখছে না… 
-                <span class="red-highlight">কিন্তু আল্লাহ সব দেখছেন।</span>
+        <!-- MAIN TEXT -->
+        <div class="main-text fade-up fade-up--3">
+            <div class="heading">
+                <span class="emoji">👀</span> তুমি হয়তো ভাবছো কেউ দেখছে না… কিন্তু 
+                <span class="highlight-red">আল্লাহ সব দেখছেন</span>
             </div>
-            <div class="sub-msg">
-                <i class="fas fa-heart-crack" style="color:var(--deep-red);"></i>
-                <span class="big-deep-red">এই অল্প সময়ের জন্য তুমি কি তোমার ইমান নষ্ট করতে চাও?</span>
+            <div class="sub-heading">
+                <i class="fas fa-star"></i>
+                <span>💔 এই অল্প সময়ের জন্য তুমি কি তোমার ইমান নষ্ট করতে চাও?</span>
             </div>
         </div>
 
-        <!-- CIRCLE BULLET POINTS (Centred) -->
+        <!-- BULLET LIST -->
         <ul class="bullet-list fade-up fade-up--4">
             <li>
-                <span class="dot blue"></span>
-                <span>⏸️ একটু থামো… এটা কি সত্যিই তোমার জন্য ভালো?</span>
+                <span class="dot red"></span>
+                <span><span class="highlight-red">⏸️ একটু থামো…</span> এটা কি সত্যিই তোমার জন্য ভালো?</span>
             </li>
             <li>
                 <span class="dot green"></span>
-                <span>🌟 তুমি এর চেয়ে অনেক ভালো—নিজেকে ছোট করো না</span>
+                <span><span class="highlight-green">🌟 তুমি এর চেয়ে অনেক ভালো</span>—নিজেকে ছোট করো না</span>
+            </li>
+            <li>
+                <span class="dot purple"></span>
+                <span><span class="highlight-purple">🤲 ভুল হলে সমস্যা না,</span> ফিরে আসাটাই আসল শক্তি</span>
+            </li>
+            <li>
+                <span class="dot gold"></span>
+                <span><span class="highlight-gold">❤️ এখনই ফিরে আসো</span>—আল্লাহ ফিরে আসা মানুষকে ভালোবাসেন</span>
             </li>
             <li>
                 <span class="dot red"></span>
-                <span>🔁 এক ক্লিক থামানো = এক ধাপ জান্নাতের দিকে</span>
+                <span><span class="highlight-red">🕊️ তুমি একা নও</span>—আল্লাহ দেখছেন</span>
+            </li>
+            <li>
+                <span class="dot green"></span>
+                <span><span class="highlight-green">🔁 এক ক্লিক থামানো</span> = <span class="highlight-gold">এক ধাপ জান্নাতের দিকে</span></span>
             </li>
         </ul>
 
-        <!-- MOTIVATIONAL LINE (Rotates every 30s) -->
+        <!-- MOTIVATION -->
         <div class="motivation-box fade-up fade-up--5">
             <div class="motiv-text" id="motivationDisplay">
                 <i class="fas fa-quote-left"></i>
-                <span id="motivationText">🤲 ভুল হলে সমস্যা না, ফিরে আসাটাই আসল শক্তি</span>
+                <span id="motivationText">🕊️ "আল্লাহ বলেন: 'আমি আমার বান্দার ধারণা অনুযায়ী তার সাথে আচরণ করি।'"</span>
                 <i class="fas fa-quote-right"></i>
-                <span class="motiv-author" id="motivationAuthor">— repentance</span>
+                <span class="motiv-author" id="motivationAuthor">— কুরআন · হাদিস</span>
             </div>
         </div>
 
-        <!-- SINGLE DASHBOARD BUTTON -->
+        <!-- SINGLE BUTTON -->
         <div class="btn-group fade-up fade-up--6">
             <a href="https://warriormahi.github.io/my_study_website/"
             class="btn btn-primary"
             target="_blank"
             rel="noopener noreferrer">
-            <i class="fas fa-graduation-cap"></i>
-            Go to Study Dashboard →
+            <i class="fas fa-mosque"></i>
+            Return to Deen & Study →
         </a>
     </div>
 
@@ -579,7 +905,7 @@
         const ctx = canvas.getContext('2d');
         let w, h;
         let particles = [];
-        const COUNT = 70;
+        const COUNT = 80;
 
         function resize() {
             w = canvas.width = window.innerWidth;
@@ -595,12 +921,14 @@
             reset() {
                 this.x = Math.random() * w;
                 this.y = Math.random() * h;
-                this.size = Math.random() * 2.5 + 0.5;
+                this.size = Math.random() * 3 + 0.5;
                 this.sx = (Math.random() - 0.5) * 0.5;
                 this.sy = (Math.random() - 0.5) * 0.5;
-                this.op = Math.random() * 0.4 + 0.15;
+                this.op = Math.random() * 0.4 + 0.1;
                 this.pulse = Math.random() * Math.PI * 2;
                 this.ps = 0.01 + Math.random() * 0.02;
+                const colors = ['255, 0, 85', '0, 255, 135', '176, 38, 255', '255, 215, 0'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
             }
             update() {
                 this.x += this.sx;
@@ -613,11 +941,11 @@
                 const a = this.op * (0.6 + 0.4 * Math.sin(this.pulse));
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 217, 255, ${a})`;
+                ctx.fillStyle = `rgba(${this.color}, ${a})`;
                 ctx.fill();
-                if (this.size > 1.5) {
-                    ctx.shadowColor = 'rgba(0, 217, 255, 0.08)';
-                    ctx.shadowBlur = 10;
+                if (this.size > 2) {
+                    ctx.shadowColor = `rgba(${this.color}, 0.06)`;
+                    ctx.shadowBlur = 12;
                     ctx.fill();
                     ctx.shadowBlur = 0;
                 }
@@ -635,12 +963,12 @@
                     const dx = particles[i].x - particles[j].x;
                     const dy = particles[i].y - particles[j].y;
                     const d = Math.sqrt(dx * dx + dy * dy);
-                    if (d < 150) {
-                        const a = 0.035 * (1 - d / 150);
+                    if (d < 180) {
+                        const a = 0.03 * (1 - d / 180);
                         ctx.beginPath();
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 217, 255, ${a})`;
+                        ctx.strokeStyle = `rgba(255, 0, 85, ${a})`;
                         ctx.lineWidth = 0.6;
                         ctx.stroke();
                     }
@@ -668,11 +996,14 @@
         updateClock();
         setInterval(updateClock, 1000);
 
-        // ─── ROTATING MOTIVATIONAL QUOTES (30 seconds interval) ───
+        // ─── QUOTES ───
         const quotes = [
-            { text: '🤲 ভুল হলে সমস্যা না, ফিরে আসাটাই আসল শক্তি।', author: '— Stay Strong' },
-            { text: '❤️ এখনই ফিরে আসো—আল্লাহ ফিরে আসা মানুষকে ভালোবাসেন।', author: '— Al-Ghafoor' },
-            { text: '🕊️ তুমি একা নও—আল্লাহ দেখছেন।', author: '— Al-Baseer' },
+            { text: '🕊️ "আল্লাহ বলেন: \'আমি আমার বান্দার ধারণা অনুযায়ী তার সাথে আচরণ করি।\'"', author: '— কুরআন · হাদিস' },
+            { text: '🤲 "তওবা হলো আল্লাহর দরজা—যে কেউ যে কোনো সময় ফিরে আসতে পারে।"', author: '— Islamic Reminder' },
+            { text: '✨ "প্রতিটি পাপের পর একটি করে ফেরেশতা অপেক্ষা করে তোমার ফিরে আসার জন্য।"', author: '— Spiritual Guide' },
+            { text: '🌙 "যে ব্যক্তি পাপ থেকে ফিরে আসে, সে নিষ্পাপ শিশুর মতো হয়ে যায়।"', author: '— Prophet Muhammad (SAW)' },
+            { text: '💚 "আল্লাহর রহমত তার গজব থেকে অনেক বড় — ফিরে এসো, দেরি হয়নি।"', author: '— Quranic Reminder' },
+            { text: '⭐ "তোমার ইমানের চেয়ে মূল্যবান কিছু নেই — এটাকে রক্ষা করো।"', author: '— Islamic Motivation' },
         ];
 
         let qi = 0;
@@ -699,8 +1030,8 @@
         setInterval(rotateMotivation, 30000);
 
         // ─── STREAK ───
-        const SK = 'reelsBlockStreak';
-        const LV = 'reelsBlockLastVisit';
+        const SK = 'pornBlockStreak';
+        const LV = 'pornBlockLastVisit';
         const streakEl = document.getElementById('streakCount');
 
         function todayStr() { return new Date().toDateString(); }
@@ -733,11 +1064,9 @@
 
         // ─── INIT ───
         updateStreak();
-
-        // ─── ORIENTATION ───
         window.addEventListener('orientationchange', () => setTimeout(resize, 400));
 
-        console.log('🚫 Blocker active! Protect your soul. 🕊️');
+        console.log('🕊️ Porn Blocker active! Protect your Iman, Guard your soul. 🤲');
     })();
 </script>
 
