@@ -11,351 +11,1353 @@
     
     <style>
         /* =========================================================
-           ১. থিম কালার ভেরিয়েবল (Theme Colors)
+           ১. প্রিমিয়াম নিওন থিম কালার ভেরিয়েবল (Premium Neon Theme)
            ========================================================= */
         :root {
-            --bg-dark: #081528;         
-            --card-bg: #081520;         
-            --border-normal: #3dadf0;   
-            --cyan-glow: #22d3ee;       
-            --mint-green: #22c55e;      
-            --emerald-green: #10b981;   
-            --timer-orange: #f59e0b;    
-            --alert-red: #ef4444;       
-            --neon-purple: #a855f7;     
-            --deep-blue: #3b82f6;       
-            --text-main: #e5e7eb;       
-            --text-soft: #9ca3af;       
+            --bg-dark: #0a0e27;
+            --bg-darker: #050811;
+            --card-bg: #0f1428;
+            --neon-cyan: #00f3ff;
+            --neon-pink: #ff006e;
+            --neon-purple: #b537f2;
+            --neon-green: #39ff14;
+            --neon-blue: #0080ff;
+            --neon-orange: #ff6b00;
+            --text-main: #e5e7eb;
+            --text-soft: #9ca3af;
+            --glow-strength: 0.8;
         }
 
-        /* =========================================================
-           লাইট মোড ভেরিয়েবল এবং ওভাররাইড (Light Mode Adjustments)
-           ========================================================= */
         body.light-mode {
-            --bg-dark: #f0f4f8;         
-            --card-bg: #ffffff;         
-            --border-normal: #cbd5e1;   
-            --cyan-glow: #0284c7;       
-            --mint-green: #16a34a;      
-            --emerald-green: #059669;   
-            --timer-orange: #d97706;    
-            --alert-red: #dc2626;       
-            --neon-purple: #9333ea;     
-            --deep-blue: #2563eb;       
-            --text-main: #1e293b;       
-            --text-soft: #475569;       
+            --bg-dark: #f5f7fa;
+            --bg-darker: #eef2f5;
+            --card-bg: #ffffff;
+            --neon-cyan: #0284c7;
+            --neon-pink: #ec4899;
+            --neon-purple: #a855f7;
+            --neon-green: #16a34a;
+            --neon-blue: #2563eb;
+            --neon-orange: #d97706;
+            --text-main: #1e293b;
+            --text-soft: #475569;
         }
 
-        body.light-mode .card { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        body.light-mode select, body.light-mode input[type="text"], body.light-mode input[type="datetime-local"], body.light-mode input[type="date"], body.light-mode input[type="number"], body.light-mode input[type="range"] { background: #f8fafc; color: var(--text-main); border-color: var(--border-normal); }
-        body.light-mode button:not(.pop-btn):not(.btn-stop-alarm) { background: #e2e8f0; }
-        
-        body.light-mode .pop-btn, body.light-mode .three-dot-btn, body.light-mode .btn-del-link, body.light-mode .btn-edit-link, body.light-mode .close-popup { background: transparent !important; color: var(--cyan-glow) !important; }
-        body.light-mode .pop-btn:hover, body.light-mode .three-dot-btn:hover { background: rgba(2, 132, 199, 0.1) !important; }
-        body.light-mode .hidden-input-section { background: #f1f5f9; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05); }
-        body.light-mode .task-list label, body.light-mode .link-item, body.light-mode .subject-card { background: #ffffff; border-color: var(--border-normal); }
-        body.light-mode .task-list label:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        body.light-mode header h1, body.light-mode .focus-time { color: var(--text-main); text-shadow: none; }
-        body.light-mode .live-time { text-shadow: none; }
-        
-        body.light-mode *:not(button):not(.streak-badge):not(.toast-msg)[style*="color: #ffffff"], 
-        body.light-mode *:not(button):not(.streak-badge):not(.toast-msg)[style*="color: #fff"] { color: var(--text-main) !important; }
-        
-        body.light-mode .analytics-bar, body.light-mode table, body.light-mode th, body.light-mode td { background: #ffffff; color: var(--text-main); border-color: var(--border-normal); }
-        body.light-mode th { background: #f1f5f9; color: var(--cyan-glow); }
-        body.light-mode .total-row { background: #f8fafc; }
-        body.light-mode .progress-container { background: #e2e8f0; border-color: var(--border-normal); }
-        body.light-mode .xp-profile-card { background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-color: var(--border-normal); }
-        body.light-mode .nav-dropdown-content { background: #ffffff; box-shadow: 0px 8px 20px rgba(0,0,0,0.1); border-color: var(--border-normal); }
-        body.light-mode .nav-dropdown-content a { color: var(--text-main); border-bottom-color: #f1f5f9; }
-        body.light-mode .nav-dropdown-content a:hover { background-color: #f8fafc; color: var(--cyan-glow); }
-        body.light-mode .popup-window { background: #ffffff; border-color: var(--border-normal); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
-        body.light-mode .toast-msg { background: #ffffff; color: var(--text-main); border-left-color: var(--mint-green); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        body.light-mode input[type="datetime-local"]::-webkit-calendar-picker-indicator, body.light-mode input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.3); }
-        body.light-mode #history-summary-box, body.light-mode div[style*="background: rgba(0,0,0,0.5)"] { background: #f8fafc !important; border-color: var(--border-normal) !important; }
-        body.light-mode div[style*="background: #050505"], body.light-mode div[style*="background: #111"] { background: #ffffff !important; border-color: var(--border-normal) !important; color: var(--text-main) !important;}
-        body.light-mode select[style*="background: #111"] { background: #f8fafc !important; color: var(--text-main) !important;}
-        body.light-mode canvas { background: transparent !important; }
-        body.light-mode .chart-filters button { background: #f8fafc; border-color: var(--border-normal); color: var(--text-soft); }
-        body.light-mode .chart-filters button.active-filter { background: var(--cyan-glow); color: #fff; border-color: var(--cyan-glow); box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3); }
-        body.light-mode .streak-badge { background: #ffffff; border-color: var(--timer-orange); color: var(--timer-orange); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-        body.light-mode .streak-badge:hover { background: var(--timer-orange); color: #ffffff; }
-        body.light-mode .quote-box { background: rgba(2, 132, 199, 0.05); border-color: var(--cyan-glow); }
-        body.light-mode ::-webkit-scrollbar-track { background: #f0f4f8; }
-        body.light-mode ::-webkit-scrollbar-thumb { background: var(--border-normal); }
-        body.light-mode ::-webkit-scrollbar-thumb:hover { background: var(--cyan-glow); }
-        body.light-mode .task-list label.completed { background: rgba(22, 163, 74, 0.05); color: var(--mint-green); }
-        body.light-mode #habit-list label.completed { background: rgba(217, 119, 6, 0.05); color: var(--timer-orange); }
-        body.light-mode .sw-row { background: rgba(37, 99, 235, 0.05); border-color: rgba(37, 99, 235, 0.2); }
-        body.light-mode .sw-label { color: var(--text-main); }
-        body.light-mode #sound-speed { background: #f8fafc; color: var(--text-main); }
-
+        body.light-mode .card {
+            background: #ffffff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
 
         /* =========================================================
-           ২. গ্লোবাল স্টাইল (Global Styles)
+           ২. গ্লোবাল স্টাইল (Global Styles - Premium Dark)
            ========================================================= */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: var(--bg-dark); color: var(--text-main); font-family: 'Inter', 'Hind Siliguri', sans-serif; padding: 10px; line-height: 1.4; overflow-x: hidden; scroll-behavior: smooth; transition: background-color 0.4s ease; }
-        .container { max-width: 1400px; margin: 0 auto; animation: fadeInPage 0.8s ease-out; padding-top: 10px; }
-        @keyframes fadeInPage { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-dark); }
-        ::-webkit-scrollbar-thumb { background: var(--border-normal); border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow); }
+        body {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-darker) 100%);
+            color: var(--text-main);
+            font-family: 'Inter', 'Hind Siliguri', sans-serif;
+            padding: 15px;
+            line-height: 1.4;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            animation: fadeInPage 0.8s ease-out;
+            padding-top: 10px;
+        }
+
+        @keyframes fadeInPage {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-cyan);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--neon-cyan);
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--neon-pink);
+            box-shadow: 0 0 15px var(--neon-pink);
+        }
 
         /* =========================================================
-           ৩. নেভিগেশন বার (Top Navigation Menu)
+           ৩. নেভিগেশন বার (Premium Navbar)
            ========================================================= */
-        .shortcut-navbar { position: fixed; top: 15px; right: 20px; z-index: 1000; }
-        .three-dot-btn { background: var(--card-bg); color: var(--cyan-glow); border: 1px solid var(--border-normal); border-radius: 50%; width: 40px; height: 40px; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 10px rgba(34, 211, 238, 0.3); transition: all 0.3s; }
-        .three-dot-btn:hover { box-shadow: 0 0 20px var(--cyan-glow); background: rgba(34, 211, 238, 0.1); }
-        .nav-dropdown-content { display: none; position: absolute; right: 0; top: 50px; background-color: var(--bg-dark); min-width: 220px; border: 1px solid var(--border-normal); border-radius: 8px; box-shadow: 0px 8px 20px rgba(0,0,0,0.8); overflow: hidden; }
-        .nav-dropdown-content a { color: var(--text-main); padding: 10px 15px; text-decoration: none; display: block; font-size: 0.85rem; border-bottom: 1px solid rgba(61, 173, 240, 0.2); transition: background 0.2s; }
-        .nav-dropdown-content a:hover { background-color: rgba(61, 173, 240, 0.1); color: var(--cyan-glow); }
+        .shortcut-navbar {
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .three-dot-btn {
+            background: rgba(0, 243, 255, 0.05);
+            color: var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .three-dot-btn:hover {
+            box-shadow: 0 0 30px var(--neon-cyan), inset 0 0 10px rgba(0, 243, 255, 0.2);
+            background: rgba(0, 243, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .nav-dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 60px;
+            background-color: var(--bg-dark);
+            min-width: 250px;
+            border: 2px solid var(--neon-cyan);
+            border-radius: 12px;
+            box-shadow: 0 8px 40px rgba(0, 243, 255, 0.3);
+            padding: 8px;
+        }
+
+        .nav-dropdown-content a {
+            color: var(--text-main);
+            padding: 12px 18px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .nav-dropdown-content a:hover {
+            background-color: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            border-left-color: var(--neon-cyan);
+            box-shadow: inset 0 0 10px rgba(0, 243, 255, 0.1);
+        }
 
         /* =========================================================
-           ৪. হেডার (Header)
+           ৪. হেডার (Premium Header)
            ========================================================= */
-        header { text-align: center; padding: 20px; background: var(--card-bg); border: 1px solid var(--border-normal); border-radius: 12px; margin-bottom: 25px; position: relative; transition: all 0.4s ease; box-shadow: 0 0 10px rgba(34, 211, 238, 0.1); }
-        header:hover { border-color: var(--cyan-glow); box-shadow: 0 0 20px rgba(34, 211, 238, 0.3); }
-        .brand-logo { position: absolute; top: 20px; left: 20px; width: 45px; height: 45px; background: linear-gradient(135deg, #1d4ed8, #22d3ee); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'Orbitron', sans-serif; font-weight: 700; font-size: 0.9rem; color: #ffffff; box-shadow: 0 0 15px rgba(34, 211, 238, 0.6); border: 2px solid rgba(255, 255, 255, 0.3); transition: transform 0.3s ease; }
-        .brand-logo:hover { transform: scale(1.1) rotate(10deg); }
-        .header-badges { position: absolute; top: 15px; right: 65px; display: flex; flex-direction: column; gap: 8px; align-items: flex-end; }
-        
-        .streak-badge { display: inline-block; background: rgba(0, 0, 0, 0.4); border: 1.5px solid var(--timer-orange); color: var(--timer-orange); padding: 6px 14px; border-radius: 8px; font-size: 0.9rem; font-weight: bold; text-transform: uppercase; cursor: pointer; box-shadow: 0 0 5px rgba(245, 158, 11, 0.2); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
-        .streak-badge:hover { box-shadow: 0 0 20px rgba(245, 158, 11, 0.8); border-color: #ffffff; color: #ffffff; transform: scale(1.08); }
-        
-        .xp-profile-card { background: linear-gradient(135deg, rgba(8, 21, 40, 0.8), rgba(4, 13, 26, 0.9)); border: 1px solid var(--border-normal); padding: 8px 12px; border-radius: 8px; display: flex; flex-direction: column; gap: 5px; min-width: 160px; box-shadow: 0 0 10px rgba(34, 211, 238, 0.15); transition: all 0.3s ease; }
-        .xp-profile-card:hover { border-color: var(--cyan-glow); box-shadow: 0 0 15px rgba(34, 211, 238, 0.4); transform: translateY(-2px); }
-        .xp-badge { font-size: 0.85rem; font-weight: bold; text-align: center; }
-        .pop-anim { transform: scale(1.15); transition: transform 0.2s ease; }
-        .xp-progress-bg { width: 100%; background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); }
-        .xp-progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--border-normal), var(--cyan-glow)); box-shadow: 0 0 8px var(--cyan-glow); transition: width 0.5s ease-out; }
+        header {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(15, 20, 40, 0.8), rgba(5, 8, 17, 0.9));
+            border: 2px solid var(--neon-cyan);
+            border-radius: 16px;
+            margin-bottom: 30px;
+            position: relative;
+            transition: all 0.4s ease;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2);
+        }
 
-        header h1 { color: #ffffff; font-size: 1.9rem; letter-spacing: 1px; text-transform: uppercase; text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); margin-bottom: 5px; }
-        .subtitle { color: var(--text-soft); font-size: 1rem; margin-bottom: 8px; font-weight: 500; }
-        .live-time { color: var(--mint-green); font-size: 0.95rem; margin-bottom: 15px; font-weight: 600; text-shadow: 0 0 8px var(--mint-green); }
-        .quote-box { background: rgba(34, 211, 238, 0.03); border: 1px dashed var(--cyan-glow); padding: 10px 20px; border-radius: 8px; margin: 0 auto; max-width: 700px; }
-        .quote-text { color: var(--cyan-glow); font-size: 0.95rem; font-style: italic; text-align: center; }
+        header:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 50px rgba(255, 0, 110, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .brand-logo {
+            position: absolute;
+            top: 25px;
+            left: 25px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #fff;
+            font-size: 1.2rem;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.8);
+        }
+
+        .header-badges {
+            position: absolute;
+            top: 20px;
+            right: 70px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: flex-end;
+        }
+
+        .streak-badge {
+            display: inline-block;
+            background: rgba(255, 0, 110, 0.1);
+            border: 2px solid var(--neon-pink);
+            color: var(--neon-pink);
+            padding: 8px 16px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 0 15px rgba(255, 0, 110, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .streak-badge:hover {
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.8);
+            transform: scale(1.05);
+        }
+
+        .xp-profile-card {
+            background: rgba(0, 243, 255, 0.05);
+            border: 2px solid var(--neon-cyan);
+            padding: 10px 14px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .xp-profile-card:hover {
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 25px rgba(181, 55, 242, 0.5);
+        }
+
+        .xp-badge {
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .xp-progress-bg {
+            width: 100%;
+            background: rgba(0, 243, 255, 0.1);
+            height: 6px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .xp-progress-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            box-shadow: 0 0 10px var(--neon-cyan);
+            transition: width 0.5s ease-out;
+        }
+
+        header h1 {
+            color: #ffffff;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-soft);
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+
+        .live-time {
+            color: var(--neon-green);
+            font-size: 0.98rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+        }
+
+        .quote-box {
+            background: rgba(0, 243, 255, 0.08);
+            border: 2px dashed var(--neon-cyan);
+            padding: 12px 24px;
+            border-radius: 10px;
+            margin: 0 auto;
+            max-width: 700px;
+            box-shadow: inset 0 0 20px rgba(0, 243, 255, 0.1);
+        }
+
+        .quote-text {
+            color: var(--neon-cyan);
+            font-size: 0.98rem;
+            font-style: italic;
+            text-align: center;
+        }
 
         /* =========================================================
-           ৫. ড্যাশবোর্ড গ্রিড (Dashboard Grid - Gap 22px & Fixed Height)
+           ৫. ড্যাশবোর্ড গ্রিড (Dashboard Grid)
            ========================================================= */
-        .dashboard-layout { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-bottom: 30px; }
+        .dashboard-layout {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-bottom: 35px;
+        }
+
         @media (min-width: 1024px) {
-            .dashboard-layout { grid-template-rows: auto; column-gap: 22px; row-gap: 22px; }
-            .engine-content-target { display: flex; flex-direction: column; flex: 1 1 auto; height: 100%; justify-content: flex-start; overflow: hidden;}
-        }
-
-        /* কার্ডের হাইট ফিক্সড (Fixed Height: 430px) করে দেওয়া হয়েছে যেন বড় না হয় */
-        .card { background: var(--card-bg); border-radius: 10px; transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; position: relative; overflow: hidden; display: flex; flex-direction: column; height: 430px; margin-bottom: 1px; }
-        
-        .engine-white { border: 2px solid rgba(255,255,255,0.4); } .engine-white:hover { border-color: #ffffff; box-shadow: 0 0 25px rgba(255, 255, 255, 0.5); transform: translateY(-3px); }
-        .engine-green { border: 2px solid rgba(34, 197, 94, 0.4); } .engine-green:hover { border-color: var(--mint-green); box-shadow: 0 0 25px rgba(34, 197, 94, 0.5); transform: translateY(-3px); }
-        .engine-blue { border: 2px solid rgba(59, 130, 246, 0.4); } .engine-blue:hover { border-color: var(--deep-blue); box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); transform: translateY(-3px); }
-        .engine-red { border: 2px solid rgba(239, 68, 68, 0.4); } .engine-red:hover { border-color: var(--alert-red); box-shadow: 0 0 25px rgba(239, 68, 68, 0.5); transform: translateY(-3px); }
-        .engine-purple { border: 2px solid rgba(168, 85, 247, 0.4); } .engine-purple:hover { border-color: var(--neon-purple); box-shadow: 0 0 25px rgba(168, 85, 247, 0.5); transform: translateY(-3px); }
-        .engine-orange { border: 2px solid rgba(245, 158, 11, 0.4); } .engine-orange:hover { border-color: var(--timer-orange); box-shadow: 0 0 25px rgba(245, 158, 11, 0.5); transform: translateY(-3px); }
-
-        .sortable-ghost { opacity: 0.4; border: 2px dashed var(--timer-orange); }
-
-        .card-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; text-transform: uppercase; border-bottom: 1px solid var(--border-normal); padding-bottom: 8px; cursor: grab; flex: 0 0 auto; }
-        .card-title:active { cursor: grabbing; }
-
-        /* =========================================================
-           ৬. ইনপুট, বাটন এবং টাইমার (Inputs, Themed Buttons & Glowing Active States)
-           ========================================================= */
-        .hidden-input-section { display: none; flex-direction: column; gap: 8px; margin-bottom: 10px; padding: 12px; background: #030712; border: 1px solid var(--border-normal); border-radius: 6px; animation: slideDown 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
-
-        select, input[type="text"], input[type="datetime-local"], input[type="date"], input[type="number"], input[type="range"] { width: 100%; background: #000000; border: 1px solid var(--border-normal); color: #ffffff; padding: 8px 10px; border-radius: 6px; margin-bottom: 8px; font-family: inherit; outline: none; transition: all 0.3s ease; font-size: 0.9rem; }
-        select:focus, input:focus { border-color: var(--cyan-glow); box-shadow: 0 0 10px rgba(34, 211, 238, 0.4); }
-        input[type="datetime-local"]::-webkit-calendar-picker-indicator, input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
-
-        input[type="range"] { -webkit-appearance: none; padding: 0; height: 6px; background: rgba(255,255,255,0.1); border: none; cursor: pointer; }
-        input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 15px; height: 15px; border-radius: 50%; background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow); cursor: pointer; }
-
-        .btn-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 6px; }
-        button { background: #111111; border: 1px solid var(--border-normal); padding: 8px; border-radius: 6px; cursor: pointer; font-weight: 600; font-size: 0.85rem; text-transform: uppercase; transition: all 0.3s ease; }
-        
-        /* Regular Theme colors for buttons */
-        .engine-white button:not(.pop-btn):not(.btn-stop-alarm) { border-color: rgba(34, 211, 238, 0.4); color: var(--cyan-glow); }
-        .engine-white button:not(.pop-btn):not(.btn-stop-alarm):hover { background: var(--cyan-glow); color: #000; box-shadow: 0 0 10px var(--cyan-glow); border-color: var(--cyan-glow); }
-
-        .engine-green button:not(.pop-btn):not(.btn-stop-alarm) { border-color: rgba(34, 197, 94, 0.4); color: var(--mint-green); }
-        .engine-green button:not(.pop-btn):not(.btn-stop-alarm):hover { background: var(--mint-green); color: #000; box-shadow: 0 0 10px var(--mint-green); border-color: var(--mint-green); }
-
-        .engine-blue button:not(.pop-btn):not(.btn-stop-alarm) { border-color: rgba(59, 130, 246, 0.4); color: var(--deep-blue); }
-        .engine-blue button:not(.pop-btn):not(.btn-stop-alarm):hover { background: var(--deep-blue); color: #fff; box-shadow: 0 0 10px var(--deep-blue); border-color: var(--deep-blue); }
-
-        .engine-red button:not(.pop-btn):not(.btn-stop-alarm) { border-color: rgba(239, 68, 68, 0.4); color: var(--alert-red); }
-        .engine-red button:not(.pop-btn):not(.btn-stop-alarm):hover { background: var(--alert-red); color: #fff; box-shadow: 0 0 10px var(--alert-red); border-color: var(--alert-red); }
-
-        .engine-purple button:not(.pop-btn):not(.btn-stop-alarm) { border-color: rgba(168, 85, 247, 0.4); color: var(--neon-purple); }
-        .engine-purple button:not(.pop-btn):not(.btn-stop-alarm):hover { background: var(--neon-purple); color: #fff; box-shadow: 0 0 10px var(--neon-purple); border-color: var(--neon-purple); }
-
-        .engine-orange button:not(.pop-btn):not(.btn-stop-alarm) { border-color: rgba(245, 158, 11, 0.4); color: var(--timer-orange); }
-        .engine-orange button:not(.pop-btn):not(.btn-stop-alarm):hover { background: var(--timer-orange); color: #fff; box-shadow: 0 0 10px var(--timer-orange); border-color: var(--timer-orange); }
-
-        /* 🔥 GLOWING ACTIVE STATES FOR INNER "SAVE" BUTTONS */
-        #btn-add-task:active { background: var(--mint-green) !important; color: #000 !important; box-shadow: 0 0 25px var(--mint-green) !important; border-color: var(--mint-green) !important; }
-        #btn-add-weekly-goal:active, #btn-add-monthly-goal:active { background: var(--deep-blue) !important; color: #fff !important; box-shadow: 0 0 25px var(--deep-blue) !important; border-color: var(--deep-blue) !important; }
-        #btn-set-target:active { background: var(--alert-red) !important; color: #fff !important; box-shadow: 0 0 25px var(--alert-red) !important; border-color: var(--alert-red) !important; }
-        #btn-add-link:active { background: var(--neon-purple) !important; color: #fff !important; box-shadow: 0 0 25px var(--neon-purple) !important; border-color: var(--neon-purple) !important; }
-        #btn-add-habit:active { background: var(--timer-orange) !important; color: #fff !important; box-shadow: 0 0 25px var(--timer-orange) !important; border-color: var(--timer-orange) !important; }
-
-        .premium-add-btn { background: rgba(255,255,255,0.05) !important; width: 100%; padding: 8px; border-radius: 6px; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; border-style: dashed !important;}
-        
-        .pop-btn { background: transparent !important; color: var(--cyan-glow) !important; border: none !important; padding: 2px 5px; box-shadow: none !important; font-size: 1.1rem; width: auto !important; }
-        .pop-btn:hover { background: rgba(34, 211, 238, 0.2) !important; color: #fff !important; }
-        .btn-stop-alarm { background: var(--alert-red) !important; color: white !important; display: none; margin-bottom: 10px; width: 100%; padding: 10px; font-weight: bold; font-size: 1.05rem; border: 2px solid white !important; border-radius: 6px; cursor: pointer; animation: pulse 1s infinite; box-shadow: 0 0 15px var(--alert-red) !important; }
-        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.02); } 100% { transform: scale(1); } }
-
-        .display-time { font-family: 'Orbitron', monospace; font-size: 2rem; text-align: center; margin: 10px 0; font-weight: 700; letter-spacing: 1px; }
-        .focus-time { color: #ffffff; text-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
-        
-      /* 🔥 NEW 2-LINE COUNTDOWN STYLE WITH EXTREME RED GLOW & BLINKING */
-@keyframes blinkGlow {
-    0% { opacity: 1; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 35px #ff3333; transform: scale(1); }
-    50% { opacity: 0.8; text-shadow: 0 0 5px #ff0000, 0 0 10px #ff3333, 0 0 15px transparent; transform: scale(0.98); }
-    100% { opacity: 1; text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 35px #ff3333; transform: scale(1); }
-}
-
-.glowing-red-time { 
-    color: #ff3333 !important; 
-    font-size: 2.1rem !important; 
-    display: flex;
-    flex-direction: column; 
-    justify-content: center;
-    align-items: center;
-    animation: blinkGlow 1.5s infinite ease-in-out; 
-}
-
-.glowing-red-time div { 
-    margin: 3px 0; 
-    line-height: 1.1; 
-    letter-spacing: 2px; 
-}
-        /* =========================================================
-           ৭. টাস্ক এবং লিংক লিস্ট (Lists Automatically Fill space & DRAG/DROP visual classes)
-           ========================================================= */
-        .task-list { flex: 1 1 auto; overflow-y: auto; display: flex; flex-direction: column; padding-right: 5px; margin-top: 5px; gap: 6px; min-height: 0;}
-        .task-list label { display: flex; align-items: center; justify-content: space-between; gap: 8px; background: #050505; padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(34, 197, 94, 0.4); cursor: grab; font-size: 0.85rem; transition: all 0.2s; flex-shrink: 0;}
-        .task-list label:active { cursor: grabbing; }
-        .task-list label:hover { box-shadow: 0 0 8px rgba(255, 255, 255, 0.1); }
-        .task-list label.completed { text-decoration: line-through; opacity: 0.5; color: var(--mint-green); border-color: var(--mint-green); background: rgba(34, 197, 94, 0.05); }
-        .task-list input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: inherit; }
-        
-        #habit-list label { border: 1px solid rgba(245, 158, 11, 0.4); }
-        #habit-list label.completed { text-decoration: line-through; opacity: 0.7; color: var(--timer-orange); border-color: var(--timer-orange); background: rgba(245, 158, 11, 0.05); }
-
-        #card-links { grid-column: auto; grid-row: auto; display: flex; flex-direction: column; }
-        #links-container { flex: 1 1 auto; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; padding-right: 5px; margin-top: 5px; min-height: 0; }
-        
-        /* Shared inner list drag and drop states */
-        .link-item { border: 1px solid rgba(168, 85, 247, 0.4); background: #050505; padding: 8px 10px; border-radius: 6px; display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; transition: all 0.2s; cursor: grab; flex-shrink: 0;}
-        .link-item:active { cursor: grabbing; }
-        
-        .task-list label.dragging, .link-item.dragging { opacity: 0.4; border: 1px dashed var(--timer-orange) !important; transform: scale(0.98); }
-        .task-list label.drag-over, .link-item.drag-over { border-color: var(--mint-green) !important; box-shadow: 0 0 10px rgba(34, 197, 94, 0.4) !important; background: #0a0a0a !important; transform: scale(1.02); z-index: 10; }
-        
-        .link-item a { color: var(--cyan-glow); text-decoration: none; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: calc(100% - 50px); }
-        
-        .btn-edit-link, .btn-del-link { background: transparent !important; border: none !important; padding: 0 2px; font-size: 1rem; width: auto; cursor: pointer; transition: all 0.2s; box-shadow: none !important; }
-        .btn-edit-link { color: var(--timer-orange) !important; } .btn-edit-link:hover { color: #fff !important; text-shadow: 0 0 5px var(--timer-orange); transform: scale(1.1); background: transparent !important; }
-        .btn-del-link { color: var(--alert-red) !important; } .btn-del-link:hover { color: #fff !important; text-shadow: 0 0 5px var(--alert-red); transform: scale(1.1); background: transparent !important;}
-
-        /* =========================================================
-           ৮. সাউন্ড এবং স্টপওয়াচ এক্সট্রা স্টাইল (Sounds & Stopwatch UI 2 Line Update)
-           ========================================================= */
-        .sw-row { 
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            background: rgba(59, 130, 246, 0.05); border: 1px solid rgba(59, 130, 246, 0.2); 
-            padding: 12px 15px; border-radius: 8px; margin-bottom: 12px; gap: 10px; flex-shrink: 0;
-        }
-        .sw-label { font-weight: bold; font-size: 1rem; display: flex; align-items: center; justify-content: center; color: var(--text-main); width: 100%; border-bottom: 1px dashed rgba(59, 130, 246, 0.3); padding-bottom: 5px; }
-        .sw-bottom-row { display: flex; width: 100%; justify-content: space-between; align-items: center; }
-        .sw-time { font-family: 'Orbitron', monospace; font-size: 1.25rem; color: var(--deep-blue); text-shadow: 0 0 5px rgba(59, 130, 246, 0.5); font-weight: bold; text-align: center; letter-spacing: 1px; }
-        .sw-controls { display: flex; gap: 8px; justify-content: flex-end; }
-        .sw-controls button { padding: 6px 12px; font-size: 0.95rem; width: 45px; height: 35px; display: flex; align-items: center; justify-content: center; }
-
-        .music-waves { display: flex; gap: 4px; justify-content: center; height: 35px; align-items: flex-end; margin-bottom: 15px; }
-        .wave { width: 6px; background: var(--neon-purple); border-radius: 3px; height: 6px; transition: height 0.1s ease; opacity: 0.5; }
-        .music-waves.playing .wave { opacity: 1; box-shadow: 0 0 10px var(--neon-purple); animation: waveBounce 1s infinite ease-in-out alternate; }
-        .music-waves.playing .wave:nth-child(1) { animation-delay: 0.0s; }
-        .music-waves.playing .wave:nth-child(2) { animation-delay: 0.2s; }
-        .music-waves.playing .wave:nth-child(3) { animation-delay: 0.4s; }
-        .music-waves.playing .wave:nth-child(4) { animation-delay: 0.1s; }
-        .music-waves.playing .wave:nth-child(5) { animation-delay: 0.3s; }
-        @keyframes waveBounce { 0% { height: 6px; } 100% { height: 35px; } }
-
-        .sound-controls { display: flex; justify-content: center; gap: 15px; margin-bottom: 15px; align-items: center;}
-        .sound-controls button { border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: 0.3s;}
-        .sound-controls #btn-sound-playpause { width: 55px; height: 55px; font-size: 1.5rem; border-width: 2px;}
-
-        /* Responsive Breakpoints */
-        @media (max-width: 1200px) { .dashboard-layout { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; } }
-        @media (max-width: 900px) { .dashboard-layout { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 600px) { 
-            .dashboard-layout { grid-template-columns: 1fr; gap: 15px; } 
-            .card { padding: 15px; }
-            .btn-group { grid-template-columns: 1fr 1fr; }
-            .btn-group button { font-size: 0.8rem; padding: 10px; }
-            .display-time { font-size: 1.6rem; }
-            .countdown-time { font-size: 1.3rem !important; }
-            .engine-content-target > div { flex-direction: column; gap: 8px;}
-            .engine-content-target input, .engine-content-target button, .engine-content-target select { width: 100% !important; margin-bottom: 5px; }
-            .header-badges { position: static; display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 15px; }
-            header h1 { font-size: 1.4rem; }
+            .dashboard-layout {
+                grid-template-rows: auto;
+                column-gap: 25px;
+                row-gap: 25px;
+            }
+            .engine-content-target {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                height: 100%;
+                justify-content: flex-start;
+                overflow: hidden;
+            }
         }
 
         /* =========================================================
-           ৯. পপআপ এবং টোস্ট (Popups & Toasts)
+           ৬. প্রিমিয়াম কার্ড সিস্টেম (Premium Card System)
            ========================================================= */
-        .popup-window { display: none; position: fixed; z-index: 2000; background: var(--bg-dark); border: 2px solid var(--cyan-glow); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 340px; padding: 20px; cursor: move; resize: both; overflow: auto; min-width: 300px; min-height: 220px; }
-        .popup-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-normal); padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; color: var(--cyan-glow); font-size: 1.05rem; cursor: grab;}
-        .popup-header:active { cursor: grabbing; }
-        .close-popup { background: transparent !important; border: none !important; box-shadow: none !important; color: var(--alert-red) !important; font-size: 1.3rem; cursor: pointer; padding: 0; width: auto !important;}
-        #toast-container { position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 15px; pointer-events: none; }
-        .toast-msg { background: rgba(8, 21, 32, 0.95); border-left: 5px solid var(--mint-green); color: #fff; padding: 15px 20px; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 15px rgba(34, 211, 238, 0.2); animation: slideInRight 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); transition: opacity 0.5s, transform 0.5s; max-width: 320px; pointer-events: auto; }
-        .toast-msg.level-up { border-left-color: var(--timer-orange); border: 2px solid var(--timer-orange); box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); background: linear-gradient(135deg, rgba(245, 158, 11, 0.1), rgba(0,0,0,0.9)); }
-        .toast-msg strong { color: var(--cyan-glow); display: flex; align-items: center; gap: 8px; margin-bottom: 6px; font-size: 1.1rem; }
-        .toast-msg.level-up strong { color: var(--timer-orange); font-size: 1.25rem; }
-        .toast-msg p { margin: 0; font-size: 0.9rem; color: var(--text-main); font-weight: 500; line-height: 1.4; }
-        @keyframes slideInRight { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(15, 20, 40, 0.5) 100%);
+            border-radius: 14px;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 480px;
+            border: 2px solid transparent;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        /* Neon Border Colors */
+        .engine-cyan {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        .engine-cyan:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.6), 0 20px 60px rgba(0, 243, 255, 0.2);
+        }
+
+        .engine-pink {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        .engine-pink:hover {
+            border-color: var(--neon-pink);
+            box-shadow: 0 0 40px rgba(255, 0, 110, 0.6), 0 20px 60px rgba(255, 0, 110, 0.2);
+        }
+
+        .engine-purple {
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 20px rgba(181, 55, 242, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        .engine-purple:hover {
+            border-color: var(--neon-purple);
+            box-shadow: 0 0 40px rgba(181, 55, 242, 0.6), 0 20px 60px rgba(181, 55, 242, 0.2);
+        }
+
+        .engine-green {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        .engine-green:hover {
+            border-color: var(--neon-green);
+            box-shadow: 0 0 40px rgba(57, 255, 20, 0.6), 0 20px 60px rgba(57, 255, 20, 0.2);
+        }
+
+        .engine-blue {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 20px rgba(0, 128, 255, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        .engine-blue:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 40px rgba(0, 128, 255, 0.6), 0 20px 60px rgba(0, 128, 255, 0.2);
+        }
+
+        .engine-orange {
+            border-color: var(--neon-orange);
+            box-shadow: 0 0 20px rgba(255, 107, 0, 0.3), 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+        .engine-orange:hover {
+            border-color: var(--neon-orange);
+            box-shadow: 0 0 40px rgba(255, 107, 0, 0.6), 0 20px 60px rgba(255, 107, 0, 0.2);
+        }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .card-title:active {
+            cursor: grabbing;
+        }
 
         /* =========================================================
-           ১০. সিলেবাস ও অ্যানালিটিক্স (Syllabus & Reports)
+           ৭. ইনপুট এবং বাটন (Premium Inputs & Buttons)
            ========================================================= */
-        .analytics-bar { background: #000; border: 1px solid var(--border-normal); padding: 20px; border-radius: 10px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
-        .progress-container { width: 70%; background: #111; border-radius: 8px; height: 14px; overflow: hidden; border: 1px solid var(--border-normal); }
-        .progress-bar { width: 0%; height: 100%; background: linear-gradient(90deg, var(--emerald-green), var(--cyan-glow)); box-shadow: 0 0 10px var(--cyan-glow); transition: width 0.5s ease-out; }
-        .subject-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
-        .subject-card { background: #050505; border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 8px; padding: 18px; height: 400px; display: flex; flex-direction: column; transition: all 0.3s ease; }
-        .subject-card:hover { border-color: var(--cyan-glow); box-shadow: 0 0 15px rgba(34, 211, 238, 0.2); }
-        .subject-header { display: flex; justify-content: space-between; font-size: 1.05rem; font-weight: bold; color: #ffffff; border-bottom: 1px solid var(--border-normal); padding-bottom: 10px; margin-bottom: 12px; }
-        .chapters-scroll-container { overflow-y: auto; flex: 1; padding-right: 5px; }
-        .chapter-item { margin-bottom: 15px; padding-bottom: 12px; border-bottom: 1px dashed rgba(255,255,255,0.05); }
-        .chapter-title { font-size: 0.95rem; color: #f3f4f6; margin-bottom: 10px; font-weight: 500; }
-        .task-checkboxes { display: flex; flex-wrap: wrap; gap: 8px; }
-        .task-checkboxes label { background: #0a0a0a; border: 1px solid var(--border-normal); padding: 5px 10px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; user-select: none; transition: all 0.2s; color: var(--text-soft); font-weight: 600; }
-        .task-checkboxes label.checked { color: #000; border-color: var(--mint-green); background: var(--mint-green); box-shadow: 0 0 8px rgba(34, 197, 94, 0.4); }
-        .task-checkboxes input[type="checkbox"] { display: none; }
+        .hidden-input-section {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 14px;
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            border-radius: 8px;
+            animation: slideDown 0.3s ease;
+        }
 
-        .report-section { margin-top: 30px; border: 1px solid var(--border-normal); padding: 25px; border-width: 2px; }
-        .chart-filters { display: flex; gap: 10px; margin-top: 15px; margin-bottom: 20px; flex-wrap: wrap; }
-        .chart-filters button { color: var(--text-soft); border: 1px solid var(--border-normal); padding: 6px 15px; border-radius: 20px; cursor: pointer; transition: all 0.3s; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; width: auto; }
-        .chart-filters button:hover { background: rgba(34, 211, 238, 0.1); color: var(--cyan-glow); border-color: var(--cyan-glow); box-shadow: none; }
-        .chart-filters button.active-filter { background: var(--cyan-glow); color: #000; border-color: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow); }
-        table { width: 100%; border-collapse: collapse; background: #000; border-radius: 8px; overflow: hidden; margin-top: 20px; }
-        th, td { padding: 12px; text-align: center; border-bottom: 1px solid var(--border-normal); font-size: 0.9rem; }
-        th { background: #050505; color: var(--cyan-glow); font-weight: bold; text-transform: uppercase;}
-        td { color: var(--text-main); }
-        .total-row { font-weight: bold; background: #030712; }
-        .total-row td { color: var(--timer-orange) !important; border-top: 2px solid var(--border-normal);}
-        #scrollTopBtn { display: none; position: fixed; bottom: 30px; right: 30px; z-index: 1000; font-size: 12px; border: none; outline: none; background-color: rgba(34, 211, 238, 0.2); color: var(--cyan-glow); cursor: pointer; padding: 6px 8px; border-radius: 50%; border: 2px solid var(--cyan-glow); box-shadow: 0 0 15px rgba(34, 211, 238, 0.4); transition: all 0.3s ease; }
-        #scrollTopBtn:hover { background-color: var(--cyan-glow); color: #000; box-shadow: 0 0 25px var(--cyan-glow); transform: translateY(-5px); }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        select,
+        input[type="text"],
+        input[type="datetime-local"],
+        input[type="date"],
+        input[type="number"],
+        input[type="range"] {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(0, 243, 255, 0.2);
+            color: var(--text-main);
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.5), inset 0 0 5px rgba(0, 243, 255, 0.1);
+            outline: none;
+        }
+
+        input[type="datetime-local"]::-webkit-calendar-picker-indicator,
+        input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(1) brightness(0.9);
+            cursor: pointer;
+        }
+
+        input[type="range"] {
+            -webkit-appearance: none;
+            padding: 0;
+            height: 6px;
+            background: rgba(0, 243, 255, 0.1);
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--neon-cyan);
+            box-shadow: 0 0 12px var(--neon-cyan);
+            cursor: pointer;
+        }
+
+        .btn-group {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        button {
+            background: rgba(0, 0, 0, 0.2);
+            border: 2px solid var(--neon-cyan);
+            color: var(--neon-cyan);
+            padding: 10px 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+        }
+
+        button:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.8);
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .premium-add-btn {
+            background: rgba(0, 243, 255, 0.05) !important;
+            width: 100%;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 0.92rem;
+            border-style: dashed !important;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2) !important;
+        }
+
+        .premium-add-btn:hover {
+            background: rgba(0, 243, 255, 0.15) !important;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.5) !important;
+        }
+
+        .pop-btn {
+            background: transparent !important;
+            color: var(--neon-cyan) !important;
+            border: none !important;
+            padding: 4px 8px;
+            box-shadow: none !important;
+            font-size: 1.2rem;
+            width: auto !important;
+        }
+
+        .pop-btn:hover {
+            background: rgba(0, 243, 255, 0.2) !important;
+            color: var(--neon-pink) !important;
+        }
+
+        .btn-stop-alarm {
+            background: rgba(255, 0, 110, 0.9) !important;
+            color: white !important;
+            display: none;
+            margin-bottom: 12px;
+            width: 100%;
+            padding: 12px;
+            font-weight: bold;
+            font-size: 1.08rem;
+            border-color: var(--neon-pink) !important;
+            box-shadow: 0 0 20px rgba(255, 0, 110, 0.6) !important;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        .display-time {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.2rem;
+            text-align: center;
+            margin: 12px 0;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: var(--neon-cyan);
+            text-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        .focus-time {
+            color: #ffffff;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        @keyframes blinkGlow {
+            0% {
+                opacity: 1;
+                text-shadow: 0 0 10px #ff0066, 0 0 20px #ff0066, 0 0 35px #ff3366;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.8;
+                text-shadow: 0 0 5px #ff0066, 0 0 10px #ff3366;
+                transform: scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                text-shadow: 0 0 10px #ff0066, 0 0 20px #ff0066, 0 0 35px #ff3366;
+                transform: scale(1);
+            }
+        }
+
+        .glowing-red-time {
+            color: #ff3366 !important;
+            font-size: 2.2rem !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: blinkGlow 1.5s infinite ease-in-out;
+        }
+
+        .glowing-red-time div {
+            margin: 4px 0;
+            line-height: 1.1;
+            letter-spacing: 2px;
+        }
+
+        /* =========================================================
+           ৮. টাস্ক এবং লিংক লিস্ট (Lists)
+           ========================================================= */
+        .task-list {
+            flex: 1 1 auto;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            padding-right: 6px;
+            margin-top: 6px;
+            gap: 8px;
+            min-height: 0;
+        }
+
+        .task-list label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: rgba(0, 243, 255, 0.05);
+            padding: 10px 12px;
+            border-radius: 8px;
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .task-list label:hover {
+            background: rgba(57, 255, 20, 0.1);
+            border-color: var(--neon-green);
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+        }
+
+        .task-list label:active {
+            cursor: grabbing;
+        }
+
+        .task-list label.completed {
+            text-decoration: line-through;
+            opacity: 0.5;
+            color: var(--neon-green);
+            border-color: var(--neon-green);
+            background: rgba(57, 255, 20, 0.08);
+        }
+
+        .task-list input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+            accent-color: var(--neon-green);
+        }
+
+        #habit-list label {
+            border-color: rgba(255, 107, 0, 0.3);
+        }
+        #habit-list label:hover {
+            border-color: var(--neon-orange);
+            background: rgba(255, 107, 0, 0.1);
+        }
+        #habit-list label.completed {
+            color: var(--neon-orange);
+            border-color: var(--neon-orange);
+            background: rgba(255, 107, 0, 0.08);
+        }
+
+        #card-links {
+            grid-column: auto;
+            grid-row: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #links-container {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            overflow-y: auto;
+            padding-right: 6px;
+            margin-top: 6px;
+            min-height: 0;
+        }
+
+        .link-item {
+            border: 1px solid rgba(181, 55, 242, 0.3);
+            background: rgba(181, 55, 242, 0.05);
+            padding: 10px 12px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .link-item:hover {
+            border-color: var(--neon-purple);
+            background: rgba(181, 55, 242, 0.1);
+            box-shadow: 0 0 10px rgba(181, 55, 242, 0.3);
+        }
+
+        .link-item:active {
+            cursor: grabbing;
+        }
+
+        .task-list label.dragging,
+        .link-item.dragging {
+            opacity: 0.4;
+            border: 2px dashed var(--neon-orange) !important;
+            transform: scale(0.98);
+        }
+
+        .task-list label.drag-over,
+        .link-item.drag-over {
+            border-color: var(--neon-green) !important;
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.5) !important;
+            background: rgba(57, 255, 20, 0.1) !important;
+        }
+
+        .link-item a {
+            color: var(--neon-cyan);
+            text-decoration: none;
+            font-weight: 500;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: calc(100% - 50px);
+            transition: all 0.2s ease;
+        }
+
+        .link-item a:hover {
+            color: var(--neon-pink);
+            text-shadow: 0 0 10px rgba(255, 0, 110, 0.5);
+        }
+
+        .btn-edit-link,
+        .btn-del-link {
+            background: transparent !important;
+            border: none !important;
+            padding: 2px 6px;
+            font-size: 1.1rem;
+            width: auto;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: none !important;
+        }
+
+        .btn-edit-link {
+            color: var(--neon-orange) !important;
+        }
+
+        .btn-edit-link:hover {
+            color: #fff !important;
+            text-shadow: 0 0 8px var(--neon-orange);
+            transform: scale(1.15);
+        }
+
+        .btn-del-link {
+            color: var(--neon-pink) !important;
+        }
+
+        .btn-del-link:hover {
+            color: #fff !important;
+            text-shadow: 0 0 8px var(--neon-pink);
+            transform: scale(1.15);
+        }
+
+        /* =========================================================
+           ९. স্টপওয়াচ এবং সাউন্ড (Stopwatch & Sounds UI)
+           ========================================================= */
+        .sw-row {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 128, 255, 0.08);
+            border: 1px solid rgba(0, 128, 255, 0.3);
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 14px;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .sw-label {
+            font-weight: bold;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-main);
+            width: 100%;
+            border-bottom: 1px dashed rgba(0, 128, 255, 0.3);
+            padding-bottom: 10px;
+        }
+
+        .sw-bottom-row {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .sw-time {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4rem;
+            color: var(--neon-blue);
+            text-shadow: 0 0 10px rgba(0, 128, 255, 0.5);
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        .sw-controls {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+
+        .sw-controls button {
+            padding: 6px 12px;
+            font-size: 0.9rem;
+            width: 45px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-color: var(--neon-blue) !important;
+        }
+
+        .music-waves {
+            display: flex;
+            gap: 5px;
+            justify-content: center;
+            height: 35px;
+            align-items: flex-end;
+            margin-bottom: 15px;
+        }
+
+        .wave {
+            width: 6px;
+            background: var(--neon-purple);
+            border-radius: 3px;
+            height: 6px;
+            transition: height 0.1s ease;
+            opacity: 0.5;
+            box-shadow: 0 0 8px rgba(181, 55, 242, 0.3);
+        }
+
+        .music-waves.playing .wave {
+            opacity: 1;
+            box-shadow: 0 0 12px var(--neon-purple);
+            animation: waveBounce 1s infinite ease-in-out alternate;
+        }
+
+        .music-waves.playing .wave:nth-child(1) {
+            animation-delay: 0.0s;
+        }
+        .music-waves.playing .wave:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .music-waves.playing .wave:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        .music-waves.playing .wave:nth-child(4) {
+            animation-delay: 0.1s;
+        }
+        .music-waves.playing .wave:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes waveBounce {
+            0% {
+                height: 6px;
+            }
+            100% {
+                height: 35px;
+            }
+        }
+
+        .sound-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .sound-controls button {
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+            border-color: var(--neon-purple) !important;
+        }
+
+        .sound-controls #btn-sound-playpause {
+            width: 58px;
+            height: 58px;
+            font-size: 1.6rem;
+            border-width: 2px;
+        }
+
+        /* =========================================================
+           १०. পপআপ এবং টোস্ট (Popups & Toasts)
+           ========================================================= */
+        .popup-window {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            background: linear-gradient(135deg, var(--bg-dark), var(--bg-darker));
+            border: 2px solid var(--neon-cyan);
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 243, 255, 0.3);
+            width: 90%;
+            max-width: 500px;
+            padding: 25px;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.3);
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .popup-header:active {
+            cursor: grabbing;
+        }
+
+        .close-popup {
+            background: transparent !important;
+            border: none !important;
+            box-shadow: none !important;
+            color: var(--neon-pink) !important;
+            font-size: 1.4rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+        }
+
+        #toast-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            pointer-events: none;
+        }
+
+        .toast-msg {
+            background: rgba(0, 243, 255, 0.05);
+            border-left: 4px solid var(--neon-cyan);
+            border-radius: 10px;
+            padding: 16px 22px;
+            color: #fff;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 243, 255, 0.3);
+            animation: slideInRight 0.4s ease-out;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .toast-msg.level-up {
+            border: 2px solid var(--neon-pink);
+            border-left-color: var(--neon-pink);
+            box-shadow: 0 0 30px rgba(255, 0, 110, 0.5);
+            background: rgba(255, 0, 110, 0.08);
+        }
+
+        .toast-msg strong {
+            color: var(--neon-cyan);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+            font-size: 1.1rem;
+        }
+
+        .toast-msg.level-up strong {
+            color: var(--neon-pink);
+            font-size: 1.25rem;
+        }
+
+        .toast-msg p {
+            margin: 0;
+            font-size: 0.92rem;
+            color: var(--text-main);
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(120%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* =========================================================
+           ११. সিলেবাস এবং অ্যানালিটিক্স (Syllabus & Reports)
+           ========================================================= */
+        .analytics-bar {
+            background: rgba(0, 243, 255, 0.05);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .progress-container {
+            width: 70%;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            height: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+            box-shadow: 0 0 15px var(--neon-cyan);
+            transition: width 0.5s ease-out;
+        }
+
+        .subject-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 22px;
+        }
+
+        .subject-card {
+            background: linear-gradient(135deg, rgba(0, 243, 255, 0.05), rgba(181, 55, 242, 0.05));
+            border: 2px solid rgba(0, 243, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .subject-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 12px 50px rgba(0, 243, 255, 0.2), 0 0 30px rgba(0, 243, 255, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .subject-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.08rem;
+            font-weight: bold;
+            color: #ffffff;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.2);
+            padding-bottom: 12px;
+            margin-bottom: 14px;
+        }
+
+        .chapters-scroll-container {
+            overflow-y: auto;
+            flex: 1;
+            padding-right: 8px;
+        }
+
+        .chapter-item {
+            margin-bottom: 16px;
+            padding-bottom: 14px;
+            border-bottom: 1px dashed rgba(0, 243, 255, 0.15);
+        }
+
+        .chapter-title {
+            font-size: 0.98rem;
+            color: #f3f4f6;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .task-checkboxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .task-checkboxes label {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(0, 243, 255, 0.2);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            user-select: none;
+            transition: all 0.2s ease;
+        }
+
+        .task-checkboxes label:hover {
+            border-color: var(--neon-cyan);
+            background: rgba(0, 243, 255, 0.1);
+        }
+
+        .task-checkboxes label.checked {
+            color: #000;
+            border-color: var(--neon-cyan);
+            background: var(--neon-cyan);
+            box-shadow: 0 0 12px rgba(0, 243, 255, 0.5);
+        }
+
+        .task-checkboxes input[type="checkbox"] {
+            display: none;
+        }
+
+        .report-section {
+            margin-top: 35px;
+            border: 2px solid rgba(255, 107, 0, 0.3);
+            padding: 28px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.05), rgba(255, 0, 110, 0.03));
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .chart-filters {
+            display: flex;
+            gap: 12px;
+            margin-top: 18px;
+            margin-bottom: 22px;
+            flex-wrap: wrap;
+        }
+
+        .chart-filters button {
+            color: var(--text-soft);
+            border: 2px solid rgba(0, 243, 255, 0.2);
+            padding: 8px 18px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.88rem;
+            font-weight: 600;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-filters button:hover {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        .chart-filters button.active-filter {
+            background: var(--neon-cyan);
+            color: #000;
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.6);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 22px;
+            border: 1px solid rgba(0, 243, 255, 0.2);
+        }
+
+        th,
+        td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid rgba(0, 243, 255, 0.15);
+            font-size: 0.92rem;
+        }
+
+        th {
+            background: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 2px solid rgba(0, 243, 255, 0.3);
+        }
+
+        td {
+            color: var(--text-main);
+        }
+
+        .total-row {
+            font-weight: bold;
+            background: rgba(255, 107, 0, 0.05);
+        }
+
+        .total-row td {
+            color: var(--neon-orange) !important;
+            border-top: 2px solid rgba(255, 107, 0, 0.3);
+        }
+
+        #scrollTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            font-size: 14px;
+            border: 2px solid var(--neon-cyan);
+            outline: none;
+            background-color: rgba(0, 243, 255, 0.1);
+            color: var(--neon-cyan);
+            padding: 10px 14px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.3);
+        }
+
+        #scrollTopBtn:hover {
+            background-color: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 30px rgba(0, 243, 255, 0.8);
+            transform: translateY(-5px);
+        }
+
+        /* =========================================================
+           १२. রেসপন্সিভ ব্রেকপয়েন্ট (Responsive Breakpoints)
+           ========================================================= */
+        @media (max-width: 1200px) {
+            .dashboard-layout {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .dashboard-layout {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .dashboard-layout {
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+            .card {
+                padding: 18px;
+                height: auto;
+            }
+            header h1 {
+                font-size: 1.6rem;
+            }
+            .btn-group {
+                grid-template-columns: 1fr 1fr;
+            }
+            .btn-group button {
+                font-size: 0.78rem;
+                padding: 8px;
+            }
+            .display-time {
+                font-size: 1.8rem;
+            }
+            .countdown-time {
+                font-size: 1.4rem !important;
+            }
+            .header-badges {
+                position: static;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                margin-top: 15px;
+                gap: 12px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -402,8 +1404,8 @@
 
     <div class="dashboard-layout" id="draggable-dashboard">
         
-        <div class="card engine-white" id="card-focus" style="padding: 25px;">            
-            <div class="card-title" title="Drag to move"><span style="color: #ffffff;" id="focus-title-text">⏱️ Focus Engine</span><button class="pop-btn" onclick="openPopup('card-focus', 'pop-focus')">↗</button></div>
+        <div class="card engine-cyan" id="card-focus" style="padding: 25px;">            
+            <div class="card-title" title="Drag to move"><span style="color: var(--neon-cyan);" id="focus-title-text">⏱️ Focus Engine</span><button class="pop-btn" onclick="openPopup('card-focus', 'pop-focus')">↗</button></div>
             <div class="engine-content-target">
                 <div><select id="focus-subject"><option value="none">Select Subject to Track Time</option></select></div>
                 <div class="display-time focus-time" id="focus-display">01:00:00</div>
@@ -424,7 +1426,7 @@
         </div>
 
         <div class="card engine-green" id="card-tasks" style="padding: 25px;">            
-            <div class="card-title" title="Drag to move"><span style="color: var(--mint-green);">📌 Daily Tasks</span><button class="pop-btn" onclick="openPopup('card-tasks', 'pop-tasks')">↗</button></div>
+            <div class="card-title" title="Drag to move"><span style="color: var(--neon-green);">📌 Daily Tasks</span><button class="pop-btn" onclick="openPopup('card-tasks', 'pop-tasks')">↗</button></div>
             <div class="engine-content-target">
                 <button class="premium-add-btn" onclick="toggleInput('task-input-section')">➕ Add New Task</button>
                 <div id="task-input-section" class="hidden-input-section">
@@ -439,7 +1441,7 @@
 
         <div class="card engine-blue" id="card-weekly-goals" style="padding: 25px;">
             <div class="card-title" title="Drag to move">
-                <span style="color: var(--deep-blue);">🎯 Weekly Goals</span>
+                <span style="color: var(--neon-blue);">🎯 Weekly Goals</span>
                 <button class="pop-btn" onclick="openPopup('card-weekly-goals', 'pop-weekly-goals')">↗</button>
             </div>
             <div class="engine-content-target">
@@ -452,9 +1454,9 @@
             </div>
         </div>
 
-        <div class="card engine-blue" id="card-monthly-goals" style="padding: 25px;">
+        <div class="card engine-purple" id="card-monthly-goals" style="padding: 25px;">
             <div class="card-title" title="Drag to move">
-                <span style="color: var(--deep-blue);">📅 Monthly Goals</span>
+                <span style="color: var(--neon-purple);">📅 Monthly Goals</span>
                 <button class="pop-btn" onclick="openPopup('card-monthly-goals', 'pop-monthly-goals')">↗</button>
             </div>
             <div class="engine-content-target">
@@ -467,8 +1469,8 @@
             </div>
         </div>
 
-        <div class="card engine-red" id="card-countdown" style="padding: 25px;">            
-            <div class="card-title" title="Drag to move"><span style="color: var(--alert-red);">📅 Target Countdown</span><button class="pop-btn" onclick="openPopup('card-countdown', 'pop-countdown')">↗</button></div>
+        <div class="card engine-pink" id="card-countdown" style="padding: 25px;">            
+            <div class="card-title" title="Drag to move"><span style="color: var(--neon-pink);">📅 Target Countdown</span><button class="pop-btn" onclick="openPopup('card-countdown', 'pop-countdown')">↗</button></div>
             <div class="engine-content-target countdown-content" style="justify-content: space-between; height: 100%;">
                 <div style="text-align: center; color: #fff; font-weight: bold; font-size: 1.1rem; letter-spacing: 1px;" id="countdown-label">YEAR FINAL</div>
                 
@@ -510,41 +1512,41 @@
                     <div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="wave"></div><div class="wave"></div>
                 </div>
 
-                <select id="sound-selector" style="margin-bottom: 15px; border-color: var(--neon-purple); background: #111; padding: 12px; font-size: 1rem; border-radius: 8px;">
-      <option value="40Hz Binaural Beats.mp3">🎯 40Hz Binaural Beats</option>
-<option value="ALPHA & THETA.mp3">🧘 Alpha & Theta</option>
-<option value="ALPHA THETA.mp3">🧘 Alpha Theta</option>
-<option value="ALPHA.mp3">🧘 Alpha Waves</option>
-<option value="ARNOR.mp3">🎵 Arnor</option>
-<option value="BEAUTY.mp3">✨ Beauty</option>
-<option value="Binaural Beats.mp3">🎧 Binaural Beats</option>
-<option value="BRAIN .mp3">🧠 Brain Power</option>
-<option value="BRAINWAVE.mp3">🚀 Brainwave Music</option>
-<option value="DELTA.mp3">🌊 Delta Waves</option>
-<option value="EVENING.mp3">🌌 Evening Improvisation</option>
-<option value="FIREPLACE 2.mp3">🔥 Fireplace 2</option>
-<option value="FIREPLACE.mp3">🔥 Fireplace</option>
-<option value="FLY AWAY.mp3">🌫️ Fly Away</option>
-<option value="FOREST.mp3">🌲 Forest Ambience</option>
-<option value="INSTRU.mp3">🎹 Instru</option>
-<option value="MEDITAT.mp3">🧘 Meditat</option>
-<option value="MEDITATION.mp3">🧘 Meditation</option>
-<option value="INSTRUMENTAL.mp3">🎹 Instrumental Piano</option>
-<option value="PIANO.mp3">🎹 Piano</option>
-<option value="PIANO 2.mp3">🎹 Piano 2</option>
-<option value="PIANO 3.mp3">🎹 Piano 3</option>
-<option value="MEDITA.mp3">🧘 Medita</option>
-<option value="RAIN.mp3">🌧️ Rain Sound</option>
-<option value="RAIN .mp3">🌧️ Rain (Space)</option>
-<option value="RAIN 2.mp3">🌧️ Rain 2</option>
-<option value="RAIN & THANDER.mp3">⛈️ Rain & Thander</option>
-<option value="RELAX.mp3">🛋️ Relaxing Music</option>
-<option value="RIVER.mp3">🏞️ River Flow</option>
-<option value="SNOWFALL.mp3">❄️ Snowfall</option>
-<option value="SNOWSTROM.mp3">🌬️ Snowstorm</option>
-<option value="SUNSET.mp3">🌅 Sunset Landscape</option>
-<option value="WATER.mp3">💧 Water Flow</option>
-          </select>
+                <select id="sound-selector" style="margin-bottom: 15px; border-color: var(--neon-purple); background: rgba(0,0,0,0.3); padding: 12px; font-size: 1rem; border-radius: 8px;">
+                    <option value="40Hz Binaural Beats.mp3">🎯 40Hz Binaural Beats</option>
+                    <option value="ALPHA & THETA.mp3">🧘 Alpha & Theta</option>
+                    <option value="ALPHA THETA.mp3">🧘 Alpha Theta</option>
+                    <option value="ALPHA.mp3">🧘 Alpha Waves</option>
+                    <option value="ARNOR.mp3">🎵 Arnor</option>
+                    <option value="BEAUTY.mp3">✨ Beauty</option>
+                    <option value="Binaural Beats.mp3">🎧 Binaural Beats</option>
+                    <option value="BRAIN .mp3">🧠 Brain Power</option>
+                    <option value="BRAINWAVE.mp3">🚀 Brainwave Music</option>
+                    <option value="DELTA.mp3">🌊 Delta Waves</option>
+                    <option value="EVENING.mp3">🌌 Evening Improvisation</option>
+                    <option value="FIREPLACE 2.mp3">🔥 Fireplace 2</option>
+                    <option value="FIREPLACE.mp3">🔥 Fireplace</option>
+                    <option value="FLY AWAY.mp3">🌫️ Fly Away</option>
+                    <option value="FOREST.mp3">🌲 Forest Ambience</option>
+                    <option value="INSTRU.mp3">🎹 Instru</option>
+                    <option value="MEDITAT.mp3">🧘 Meditat</option>
+                    <option value="MEDITATION.mp3">🧘 Meditation</option>
+                    <option value="INSTRUMENTAL.mp3">🎹 Instrumental Piano</option>
+                    <option value="PIANO.mp3">🎹 Piano</option>
+                    <option value="PIANO 2.mp3">🎹 Piano 2</option>
+                    <option value="PIANO 3.mp3">🎹 Piano 3</option>
+                    <option value="MEDITA.mp3">🧘 Medita</option>
+                    <option value="RAIN.mp3">🌧️ Rain Sound</option>
+                    <option value="RAIN .mp3">🌧️ Rain (Space)</option>
+                    <option value="RAIN 2.mp3">🌧️ Rain 2</option>
+                    <option value="RAIN & THANDER.mp3">⛈️ Rain & Thander</option>
+                    <option value="RELAX.mp3">🛋️ Relaxing Music</option>
+                    <option value="RIVER.mp3">🏞️ River Flow</option>
+                    <option value="SNOWFALL.mp3">❄️ Snowfall</option>
+                    <option value="SNOWSTROM.mp3">🌬️ Snowstorm</option>
+                    <option value="SUNSET.mp3">🌅 Sunset Landscape</option>
+                    <option value="WATER.mp3">💧 Water Flow</option>
+                </select>
 
                 <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
                     <span style="color: var(--text-soft); font-size: 0.8rem;" id="sound-current-time">0:00</span>
@@ -565,7 +1567,7 @@
 
                 <div style="display: flex; align-items: center; gap: 10px; justify-content: center; margin-top: 15px;">
                     <span style="font-size: 0.95rem; font-weight:bold; color: var(--text-soft);">⚡ Speed:</span>
-                    <select id="sound-speed" style="width: 50%; padding: 6px; background: #111; color: #fff; border-radius: 5px; border-color: var(--neon-purple); margin-bottom: 0;">
+                    <select id="sound-speed" style="width: 50%; padding: 6px; background: rgba(0,0,0,0.3); color: #fff; border-radius: 5px; border: 2px solid var(--neon-purple); margin-bottom: 0;">
                         <option value="0.5">0.5x</option>
                         <option value="0.75">0.75x</option>
                         <option value="1" selected>1.0x (Normal)</option>
@@ -579,11 +1581,11 @@
             </div>
         </div>
 
-        <div class="card engine-white" id="card-pomo" style="padding: 25px;">
-            <div class="card-title" title="Drag to move"><span style="color: var(--cyan-glow);">🍅 Pomodoro</span><button class="pop-btn" onclick="openPopup('card-pomo', 'pop-pomo')">↗</button></div>
+        <div class="card engine-cyan" id="card-pomo" style="padding: 25px;">
+            <div class="card-title" title="Drag to move"><span style="color: var(--neon-cyan);">🍅 Pomodoro</span><button class="pop-btn" onclick="openPopup('card-pomo', 'pop-pomo')">↗</button></div>
             <div class="engine-content-target">
                 <select id="pomo-subject" style="margin-bottom: 15px;"><option value="none">Select Subject</option></select>
-                <div class="display-time focus-time" id="pomo-display" style="color: var(--cyan-glow); margin: 10px 0;">01:45:00</div>
+                <div class="display-time focus-time" id="pomo-display" style="color: var(--neon-cyan); margin: 10px 0;">01:45:00</div>
                 <div style="text-align: center; color: var(--text-soft); font-weight: bold; margin-bottom: 15px; font-size: 0.85rem;" id="pomo-status">STATUS: READY</div>
                 <div style="display: flex; gap: 8px; margin-bottom: 10px;">
                     <input type="number" id="pomo-custom-focus" placeholder="Focus (105)" value="105" style="margin-bottom: 0; width: 50%;">
@@ -595,7 +1597,7 @@
         </div>
 
         <div class="card engine-blue" id="card-stopwatch" style="padding: 25px;">
-            <div class="card-title" title="Drag to move"><span style="color: #3b82f6;">⏱️ Solving Stopwatches</span><button class="pop-btn" onclick="openPopup('card-stopwatch', 'pop-stopwatch')">↗</button></div>
+            <div class="card-title" title="Drag to move"><span style="color: var(--neon-blue);">⏱️ Solving Stopwatches</span><button class="pop-btn" onclick="openPopup('card-stopwatch', 'pop-stopwatch')">↗</button></div>
             <div class="engine-content-target" style="justify-content: center; gap: 15px;">
                 
                 <div class="sw-row">
@@ -636,7 +1638,7 @@
 
         <div class="card engine-orange" id="card-habits" style="padding: 25px;">
             <div class="card-title" title="Drag to move">
-                <span style="color: var(--timer-orange);">🔁 Daily Habits</span>
+                <span style="color: var(--neon-orange);">🔁 Daily Habits</span>
                 <button class="pop-btn" onclick="openPopup('card-habits', 'pop-habits')">↗</button>
             </div>
             <div class="engine-content-target">
@@ -663,36 +1665,36 @@
     <div id="pop-sounds" class="popup-window"><div class="popup-header"><span>🎧 Sounds</span><button class="close-popup" onclick="restoreCard('card-sounds', 'pop-sounds')">✖</button></div><div class="popup-body"></div></div>
     <div id="pop-habits" class="popup-window"><div class="popup-header"><span>🔁 Habits</span><button class="close-popup" onclick="restoreCard('card-habits', 'pop-habits')">✖</button></div><div class="popup-body"></div></div>
 
-    <div class="card" id="syllabus-section" style="margin-bottom: 25px; padding: 25px; border: 2px solid rgba(34, 211, 238, 0.3); height: auto;">
-        <div class="card-title" style="border-bottom:none; border-color: var(--cyan-glow); color: var(--cyan-glow);">📊 Engineering Matrix Progress</div>
+    <div class="card" id="syllabus-section" style="margin-bottom: 30px; padding: 28px; border: 2px solid rgba(0, 243, 255, 0.3); height: auto; background: linear-gradient(135deg, rgba(0, 243, 255, 0.05), rgba(181, 55, 242, 0.05)); box-shadow: 0 0 30px rgba(0, 243, 255, 0.15);">
+        <div class="card-title" style="border-bottom:none; border-color: var(--neon-cyan); color: var(--neon-cyan);">📊 Engineering Matrix Progress</div>
         <div class="analytics-bar">
-            <div><strong style="color: #fff; font-size: 1.1rem;">🚀 Overall Mastered Core</strong><div id="global-counter" style="font-size: 0.9rem; color: var(--text-soft); margin-top: 5px;">0 / 0 Completed</div></div>
-            <div style="text-align: right; width: 60%; display: flex; align-items: center; justify-content: flex-end; gap: 15px;"><span id="global-percentage" style="color: var(--cyan-glow); font-weight: bold; font-size: 1.2rem; text-shadow: 0 0 10px var(--cyan-glow);">0%</span><div class="progress-container"><div class="progress-bar" id="global-progress-bar"></div></div></div>
+            <div><strong style="color: #fff; font-size: 1.1rem;">🚀 Overall Mastered Core</strong><div id="global-counter" style="font-size: 0.9rem; color: var(--text-soft); margin-top: 5px;">0 / 0 Chapters</div></div>
+            <div style="text-align: right; width: 60%; display: flex; align-items: center; justify-content: flex-end; gap: 15px;"><span id="global-percentage" style="color: var(--neon-cyan); font-weight: bold; font-size: 1.2rem;">0%</span><div class="progress-container"><div class="progress-bar" id="global-progress-bar"></div></div></div>
         </div>
-        <div class="card-title" style="border:none; margin-top:10px; margin-bottom: 20px; color: #fff; font-size: 1rem; justify-content: center;">📚 MATRIX VERIFIED SYLLABUS CORE (13 SUBJECTS - 1085 TARGETS)</div>
+        <div class="card-title" style="border:none; margin-top:10px; margin-bottom: 20px; color: #fff; font-size: 1rem; justify-content: center;">📚 MATRIX VERIFIED SYLLABUS CORE (13 SUBJECTS - 1085 CHAPTERS)</div>
         <div class="subject-grid" id="syllabus-container"></div>
     </div>
 
-    <div class="card engine-purple" id="card-daily-stats" style="margin-bottom: 25px; padding: 25px; border: 2px solid rgba(168, 85, 247, 0.4); height: auto;">
+    <div class="card engine-purple" id="card-daily-stats" style="margin-bottom: 30px; padding: 28px; border: 2px solid rgba(181, 55, 242, 0.4); height: auto;">
         <div class="card-title" style="border-bottom:none; border-color: var(--neon-purple); color: var(--neon-purple);">🗓️ Daily Study Calendar & Task History</div>
         <div style="display: flex; flex-wrap: wrap; gap: 20px;">
             <div style="flex: 1; min-width: 250px;">
                 <label style="color: var(--text-soft); font-size: 0.95rem; font-weight: bold;">Select Date to view detailed stats:</label>
-                <input type="date" id="history-date-picker" onchange="loadHistoryData()" style="margin-top: 8px; cursor: pointer; background: #111; color: var(--cyan-glow); border-color: var(--neon-purple);">
-                <div id="history-summary-box" style="margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.5); border: 1px dashed var(--border-normal); border-radius: 8px;">
-                    <div style="color: var(--cyan-glow); font-size: 1.1rem; font-weight: bold; margin-bottom: 10px;" id="hist-date-display">Date: Select a date</div>
-                    <div style="color: var(--mint-green); font-size: 1.05rem; margin-bottom: 5px; font-weight: bold;" id="hist-total-time">Total Study Time: 0m</div>
+                <input type="date" id="history-date-picker" onchange="loadHistoryData()" style="margin-top: 8px; cursor: pointer; background: rgba(0,0,0,0.3); color: var(--neon-cyan); border-color: var(--neon-purple);">
+                <div id="history-summary-box" style="margin-top: 15px; padding: 15px; background: rgba(0, 243, 255, 0.05); border: 1px dashed rgba(0, 243, 255, 0.3); border-radius: 8px;">
+                    <div style="color: var(--neon-cyan); font-size: 1.1rem; font-weight: bold; margin-bottom: 10px;" id="hist-date-display">Date: Select a date</div>
+                    <div style="color: var(--neon-green); font-size: 1.05rem; margin-bottom: 5px; font-weight: bold;" id="hist-total-time">Total Study Time: 0m</div>
                 </div>
             </div>
             <div style="flex: 2; min-width: 300px; display: flex; flex-direction: column; gap: 15px;">
-                <div style="background: #050505; border: 1px solid rgba(34, 211, 238, 0.2); border-radius: 8px; padding: 15px; flex: 1;">
-                    <h4 style="color: var(--cyan-glow); margin-bottom: 10px; border-bottom: 1px solid var(--border-normal); padding-bottom: 5px;">📚 Subjects Studied</h4>
+                <div style="background: rgba(0, 243, 255, 0.05); border: 1px solid rgba(0, 243, 255, 0.2); border-radius: 8px; padding: 15px; flex: 1;">
+                    <h4 style="color: var(--neon-cyan); margin-bottom: 10px; border-bottom: 1px solid rgba(0, 243, 255, 0.2); padding-bottom: 5px;">📚 Subjects Studied</h4>
                     <ul id="hist-subject-list" style="list-style: none; color: var(--text-main); font-size: 0.95rem; margin-left: 0; padding-left: 0;">
                         <li>No data found for this date. Start your Focus/Pomodoro timer to track!</li>
                     </ul>
                 </div>
-                <div style="background: #050505; border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 8px; padding: 15px; flex: 1;">
-                    <h4 style="color: var(--mint-green); margin-bottom: 10px; border-bottom: 1px solid rgba(34, 197, 94, 0.4); padding-bottom: 5px;">📌 Daily Tasks Status</h4>
+                <div style="background: rgba(57, 255, 20, 0.05); border: 1px solid rgba(57, 255, 20, 0.2); border-radius: 8px; padding: 15px; flex: 1;">
+                    <h4 style="color: var(--neon-green); margin-bottom: 10px; border-bottom: 1px solid rgba(57, 255, 20, 0.2); padding-bottom: 5px;">📌 Daily Tasks Status</h4>
                     <ul id="hist-task-list" style="list-style: none; color: var(--text-main); font-size: 0.95rem; margin-left: 0; padding-left: 0;">
                         <li>No tasks recorded for this date.</li>
                     </ul>
@@ -701,25 +1703,25 @@
         </div>
     </div>
 
-    <div class="card engine-blue" id="card-exam-tracker" style="margin-bottom: 25px; padding: 25px; border: 2px solid rgba(59, 130, 246, 0.4); height: auto;">
-        <div class="card-title" style="border-bottom:none; border-color: #3b82f6; color: #3b82f6;">📊 Exam Performance Tracker</div>
-        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; background: rgba(0,0,0,0.5); padding: 15px; border: 1px dashed #3b82f6; border-radius: 8px;">
+    <div class="card engine-blue" id="card-exam-tracker" style="margin-bottom: 30px; padding: 28px; border: 2px solid rgba(0, 128, 255, 0.4); height: auto;">
+        <div class="card-title" style="border-bottom:none; border-color: var(--neon-blue); color: var(--neon-blue);">📊 Exam Performance Tracker</div>
+        <div style="display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; background: rgba(0, 128, 255, 0.08); padding: 15px; border: 1px dashed rgba(0, 128, 255, 0.3); border-radius: 8px;">
             <select id="exam-subject" style="width: 30%; margin-bottom: 0;"><option value="">Select Subject</option></select>
             <input type="number" id="exam-total" placeholder="Total Marks (e.g. 100)" style="width: 20%; margin-bottom: 0;">
             <input type="number" id="exam-obtained" placeholder="Obtained Marks (e.g. 85)" style="width: 22%; margin-bottom: 0;">
-            <button onclick="addExamScore()" style="width: 20%; background: #050505;">Save Score</button>
+            <button onclick="addExamScore()" style="width: 20%; background: rgba(0, 0, 0, 0.2);">Save Score</button>
         </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid var(--border-normal); padding-bottom: 8px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(0, 128, 255, 0.2); padding-bottom: 8px;">
             <span style="color: #fff; font-size: 0.95rem; font-weight: bold;">Select subject to view graphical history:</span>
-            <select id="graph-subject-select" onchange="updateExamChart()" style="width: 40%; margin-bottom: 0; background: #111; color: var(--cyan-glow);"><option value="">Select Subject for Graph</option></select>
+            <select id="graph-subject-select" onchange="updateExamChart()" style="width: 40%; margin-bottom: 0; background: rgba(0,0,0,0.3); color: var(--neon-cyan);"><option value="">Select Subject for Graph</option></select>
         </div>
-        <div style="width: 100%; height: 260px; background: #050505; border-radius: 8px; padding: 10px; border: 1px solid rgba(59, 130, 246, 0.2);">
+        <div style="width: 100%; height: 260px; background: rgba(0, 0, 0, 0.2); border-radius: 8px; padding: 10px; border: 1px solid rgba(0, 128, 255, 0.2);">
             <canvas id="examChart"></canvas>
         </div>
     </div>
 
     <div class="card report-section" id="analytics-section" style="height: auto;">
-        <div class="card-title" style="border-bottom:none; border-color: var(--timer-orange); color: var(--timer-orange);">📈 Study Time Analytics Dashboard</div>
+        <div class="card-title" style="border-bottom:none; border-color: var(--neon-orange); color: var(--neon-orange);">📈 Study Time Analytics Dashboard</div>
         <div class="chart-filters">
             <button id="btn-filter-today" onclick="updateChart('today')">Today</button>
             <button id="btn-filter-yesterday" onclick="updateChart('yesterday')">Yesterday</button>
@@ -729,16 +1731,16 @@
         </div>
         <div style="width: 100%; height: 320px; margin-bottom: 25px;"><canvas id="studyChart"></canvas></div>
 
-        <div style="margin-bottom: 20px; padding: 15px; border: 1px dashed var(--border-normal); border-radius: 8px; background: rgba(0,0,0,0.5);">
-            <div style="color: var(--cyan-glow); font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">✍️ ম্যানুয়াল স্টাডি টাইম এন্ট্রি (মিস হওয়া ডাটা যুক্ত করুন)</div>
+        <div style="margin-bottom: 20px; padding: 15px; border: 1px dashed rgba(0, 243, 255, 0.3); border-radius: 8px; background: rgba(0, 243, 255, 0.05);">
+            <div style="color: var(--neon-cyan); font-size: 0.95rem; font-weight: bold; margin-bottom: 10px;">✍️ ম্যানুয়াল স্টাডি টাইম এন্ট্রি</div>
             <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: center;">
                 <select id="manual-day" style="width: 25%; margin-bottom: 0;">
                     <option value="today">আজ (Today)</option>
                     <option value="yesterday">গতকাল (Yesterday)</option>
                 </select>
                 <select id="manual-subject" style="width: 35%; margin-bottom: 0;"></select>
-                <input type="number" id="manual-mins" placeholder="সময় (মিনিট)" style="width: 20%; margin-bottom: 0;">
-                <button onclick="addManualStudyTime()" style="width: 15%; height: 38px; border-color: var(--mint-green); color: var(--mint-green);">সেভ করুন</button>
+                <input type="number" id="manual-mins" placeholder="সময় (মিনিট)" style="width: 20%; margin-bottom: 0;">
+                <button onclick="addManualStudyTime()" style="width: 15%; height: 38px; border-color: var(--neon-green); color: var(--neon-green);">সেভ করুন</button>
             </div>
         </div>
 
@@ -750,17 +1752,17 @@
         </div>
     </div>
 
-    <div class="card engine-white stats-card" id="card-weekly-stats" style="margin-top: 25px; padding: 25px; border: 2px solid rgba(34, 211, 238, 0.4); height: auto;">
-        <div class="card-title" style="border-bottom:none; border-color: var(--cyan-glow); color: var(--cyan-glow);">📊 1-Week Study Progress Stats</div>
-        <p style="font-size: 0.85rem; color: var(--text-soft); margin-bottom: 15px;">গত ৭ দিনে আপনার পড়াশোনার উন্নতির গ্রাফিক্যাল চিত্র। (ঘণ্টায় হিসাব করা হয়েছে)</p>
-        <div style="position: relative; width: 100%; height: 280px; background: #050505; border-radius: 8px; padding: 10px; border: 1px solid rgba(255,255,255,0.1);">
+    <div class="card engine-cyan stats-card" id="card-weekly-stats" style="margin-top: 30px; padding: 28px; border: 2px solid rgba(0, 243, 255, 0.4); height: auto;">
+        <div class="card-title" style="border-bottom:none; border-color: var(--neon-cyan); color: var(--neon-cyan);">📊 1-Week Study Progress Stats</div>
+        <p style="font-size: 0.85rem; color: var(--text-soft); margin-bottom: 15px;">গত ৭ দিনে আপনার পড়াশোনার উন্নতির গ্রাফিক্যাল রিপোর্ট</p>
+        <div style="position: relative; width: 100%; height: 280px; background: rgba(0, 0, 0, 0.2); border-radius: 8px; padding: 10px; border: 1px solid rgba(0, 243, 255, 0.2);">
             <canvas id="weeklyStudyChart"></canvas>
         </div>
     </div>
 
-    <div class="card engine-orange" style="margin-top: 25px; padding: 25px; border: 2px solid rgba(245, 158, 11, 0.4); height: auto;">
+    <div class="card engine-orange" style="margin-top: 30px; padding: 28px; border: 2px solid rgba(255, 107, 0, 0.4); height: auto;">
         <div class="card-title" style="border-bottom:none; border-color: #fff; color: #fff;">💾 Data Cloud Backup & Restore</div>
-        <p style="font-size: 0.9rem; color: var(--text-soft); margin-bottom: 15px;">আপনার ড্যাশবোর্ডের সব ডাটা (Syllabus, Tasks, Exams, Goals, Habits, Time) এখান থেকে ব্যাকআপ নিয়ে রাখতে পারেন।</p>
+        <p style="font-size: 0.9rem; color: var(--text-soft); margin-bottom: 15px;">আপনার ড্যাশবোর্ডের সব ডাটা (Syllabus, Tasks, Exams, Goals, Habits, Timers) সেভ করুন ও পুনরুদ্ধার করুন</p>
         <div class="btn-group" style="max-width: 450px; grid-template-columns: 1fr 1fr; gap: 15px;">
             <button class="btn-backup" onclick="backupData()">⬇️ Download Backup</button>
             <button class="btn-restore" onclick="document.getElementById('file-input').click()">⬆️ Upload Backup</button>
@@ -771,1047 +1773,6 @@
 
 <button id="scrollTopBtn" onclick="scrollToTop()" title="Go to top">⬆️</button>
 
-<script>
-    // =========================================================
-    // থিম এবং পপআপ ইনিশিয়ালাইজেশন (Light Mode & Browser Init)
-    // =========================================================
-    if(localStorage.getItem('mahi_light_mode') === 'true') {
-        document.body.classList.add('light-mode');
-    }
-    
-    function toggleLightMode() {
-        document.body.classList.toggle('light-mode');
-        localStorage.setItem('mahi_light_mode', document.body.classList.contains('light-mode'));
-    }
-
-    // =========================================================
-    // জাভাস্ক্রিপ্ট ওয়েব ওয়ার্কার (Web Workers for Timers)
-    // =========================================================
-    const workerCode = `
-        let timerId = null;
-        self.onmessage = function(e) {
-            if (e.data.action === 'start') { if (timerId) clearInterval(timerId); timerId = setInterval(() => { self.postMessage({ type: 'tick' }); }, 1000); } 
-            else if (e.data.action === 'stop') { clearInterval(timerId); timerId = null; }
-        };
-    `;
-    const blob = new Blob([workerCode], { type: 'application/javascript' });
-    const workerURL = URL.createObjectURL(blob);
-    const focusWorker = new Worker(workerURL); 
-
-    // =========================================================
-    // অ্যালার্ম সাউন্ড ফাংশন (Alarm Sound Controls & Notifications)
-    // =========================================================
-    const beepSound = document.getElementById('beep-sound');
-    const stopAlarmBtn = document.getElementById('btn-stop-alarm');
-    function startAlarm() { beepSound.currentTime = 0; beepSound.play().catch(e => console.log("Audio blocked.")); stopAlarmBtn.style.display = 'block'; }
-    function stopAlarm() { beepSound.pause(); beepSound.currentTime = 0; stopAlarmBtn.style.display = 'none'; }
-    function showNotification(title, body) { if ("Notification" in window && Notification.permission === "granted") { new Notification(title, { body: body }); } }
-
-    // =========================================================
-    // নেভিগেশন ও পপআপ মেনু লজিক (Navbar & Popup Logic)
-    // =========================================================
-    function toggleNavMenu() { const menu = document.getElementById('nav-dropdown'); menu.style.display = (menu.style.display === 'block') ? 'none' : 'block'; }
-    window.onclick = function(event) { if (!event.target.matches('.three-dot-btn')) { const dropdown = document.getElementById("nav-dropdown"); if (dropdown && dropdown.style.display === 'block') { dropdown.style.display = 'none'; } } }
-    function toggleInput(id) { const sec = document.getElementById(id); sec.style.display = (sec.style.display === 'flex') ? 'none' : 'flex'; }
-
-    let activePipWindow = null;
-    async function openPopup(cardId, popId) {
-        const card = document.getElementById(cardId); const target = card.querySelector('.engine-content-target');
-        if ('documentPictureInPicture' in window) {
-            try {
-                if (activePipWindow) { activePipWindow.close(); }
-                activePipWindow = await documentPictureInPicture.requestWindow({ width: 360, height: 450 });
-                [...document.styleSheets].forEach((styleSheet) => {
-                    try { const cssRules = [...styleSheet.cssRules].map((rule) => rule.cssText).join(''); const style = document.createElement('style'); style.textContent = cssRules; activePipWindow.document.head.appendChild(style); } 
-                    catch (e) { const link = document.createElement('link'); link.rel = 'stylesheet'; link.href = styleSheet.href; activePipWindow.document.head.appendChild(link); }
-                });
-                const pipBody = activePipWindow.document.body; pipBody.classList.add('pip-mode'); pipBody.appendChild(target); card.style.display = 'none';
-                activePipWindow.addEventListener("pagehide", (event) => { card.appendChild(target); card.style.display = 'block'; activePipWindow = null; }); return; 
-            } catch (error) { console.log("PIP blocked, using popup."); }
-        }
-        const popup = document.getElementById(popId); popup.querySelector('.popup-body').appendChild(target); card.style.display = 'none'; popup.style.display = 'block'; popup.style.top = '100px'; popup.style.left = '50px'; dragElement(popup);
-    }
-    function restoreCard(cardId, popId) { const card = document.getElementById(cardId); const popup = document.getElementById(popId); const target = popup.querySelector('.popup-body').children[0]; card.appendChild(target); popup.style.display = 'none'; card.style.display = 'block'; }
-    function dragElement(elmnt) {
-        let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0; const header = elmnt.querySelector('.popup-header');
-        if (header) { header.onmousedown = dragMouseDown; } else { elmnt.onmousedown = dragMouseDown; }
-        function dragMouseDown(e) { e = e || window.event; if(e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'BUTTON' || e.target.classList.contains('close-popup')) return; if (e.clientX > elmnt.getBoundingClientRect().right - 20 && e.clientY > elmnt.getBoundingClientRect().bottom - 20) return; e.preventDefault(); pos3 = e.clientX; pos4 = e.clientY; document.onmouseup = closeDragElement; document.onmousemove = elementDrag; }
-        function elementDrag(e) { e = e || window.event; e.preventDefault(); pos1 = pos3 - e.clientX; pos2 = pos4 - e.clientY; pos3 = e.clientX; pos4 = e.clientY; elmnt.style.top = (elmnt.offsetTop - pos2) + "px"; elmnt.style.left = (elmnt.offsetLeft - pos1) + "px"; }
-        function closeDragElement() { document.onmouseup = null; document.onmousemove = null; }
-    }
-
-    // =========================================================
-    // গ্যামিফিকেশন: এক্সপি, লেভেল এবং প্রোগ্রেস বার (XP Logic)
-    // =========================================================
-    let userXP = parseInt(localStorage.getItem('mahi_xp')) || 0;
-    const motivationalQuotes = ["BUET তোমার অপেক্ষায়, মাহি! 🚀", "Consistency is your superpower! 🎯", "Great focus! এভাবেই এগিয়ে যাও। 🔥", "দারুণ! আরেক ধাপ স্বপ্ন পূরণের দিকে। ✨", "Hard work never betrays! 💪"];
-    function getRandomQuote() { return motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)]; }
-
-    function getRankDetails(xp) {
-        if (xp < 500) return { name: "🥉 Bronze", color: "#cd7f32" };
-        if (xp < 1500) return { name: "🥈 Silver", color: "#c0c0c0" };
-        if (xp < 3000) return { name: "🥇 Gold", color: "#ffd700" };
-        if (xp < 6000) return { name: "💎 Platinum", color: "#e5e4e2" };
-        if (xp < 10000) return { name: "🔥 Diamond", color: "#b9f2ff" };
-        return { name: "👑 Master BUETian", color: "#ff69b4" };
-    }
-
-    function renderXP() {
-        const rank = getRankDetails(userXP);
-        const xpBadge = document.getElementById('xp-counter');
-        xpBadge.innerHTML = `${rank.name} | ${userXP} XP`;
-        xpBadge.style.color = rank.color;
-        let nextXp = 10000; let base = 0;
-        if (userXP < 500) { nextXp = 500; base = 0; } else if (userXP < 1500) { nextXp = 1500; base = 500; } else if (userXP < 3000) { nextXp = 3000; base = 1500; } else if (userXP < 6000) { nextXp = 6000; base = 3000; } else if (userXP < 10000) { nextXp = 10000; base = 6000; } else { nextXp = userXP + 5000; base = 10000; }
-        let progressPct = ((userXP - base) / (nextXp - base)) * 100; if(progressPct > 100) progressPct = 100;
-        const fillBar = document.getElementById('xp-progress-bar-fill');
-        if(fillBar) { fillBar.style.width = progressPct + '%'; fillBar.style.background = `linear-gradient(90deg, var(--border-normal), ${rank.color})`; fillBar.style.boxShadow = `0 0 10px ${rank.color}`; }
-    }
-
-    function showMotivation(title, msg, isLevelUp = false) {
-        const container = document.getElementById('toast-container'); const toast = document.createElement('div');
-        toast.className = `toast-msg ${isLevelUp ? 'level-up' : ''}`; toast.innerHTML = `<strong>${title}</strong><p>${msg}</p>`; container.appendChild(toast);
-        setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(120%)'; setTimeout(() => toast.remove(), 500); }, 5000);
-    }
-
-    function updateXP(amount, customMessage) {
-        let oldRank = getRankDetails(userXP).name; userXP += amount; if (userXP < 0) userXP = 0;
-        localStorage.setItem('mahi_xp', userXP); renderXP();
-        let newRank = getRankDetails(userXP).name;
-        const badge = document.getElementById('xp-counter'); badge.classList.remove('pop-anim'); void badge.offsetWidth; badge.classList.add('pop-anim');
-        if (amount > 0) {
-            if (newRank !== oldRank) showMotivation("🎉 LEVEL UP! " + newRank, "অসাধারণ মাহি! তোমার লেভেল আপগ্রেড হয়েছে। ড্রিম বুয়েট এখন আরও কাছে!", true);
-            else if (customMessage) showMotivation(`⚡ +${amount} XP`, customMessage);
-        }
-    }
-
-    // =========================================================
-    // তারিখ এবং স্ট্রিক লজিক (Date Strings & Streak Count)
-    // =========================================================
-    const todayStr = new Date().toLocaleDateString('en-CA'); 
-    let storedDate = localStorage.getItem('mahi_last_login_date');
-    let dailyTasks = JSON.parse(localStorage.getItem('mahi_daily_tasks')) || [];
-    let dailyHabits = JSON.parse(localStorage.getItem('mahi_habits')) || [];
-    let taskHistory = JSON.parse(localStorage.getItem('mahi_task_history')) || {};
-
-    if (storedDate && storedDate !== todayStr) {
-        localStorage.removeItem('mahi_daily_tasks'); dailyTasks = [];
-        dailyHabits.forEach(h => h.done = false); localStorage.setItem('mahi_habits', JSON.stringify(dailyHabits));
-    }
-    localStorage.setItem('mahi_last_login_date', todayStr);
-
-    let currentStreak = parseInt(localStorage.getItem('mahi_streak_count')) || 0;
-    let lastStreakDate = localStorage.getItem('mahi_last_streak_date');
-    const yesterdayObj = new Date(); yesterdayObj.setDate(yesterdayObj.getDate() - 1); 
-    const yesterdayStr = yesterdayObj.toLocaleDateString('en-CA');
-
-    if (!lastStreakDate) { currentStreak = 1; } else if (lastStreakDate === yesterdayStr) { currentStreak += 1; } else if (lastStreakDate !== todayStr) { currentStreak = 1; }
-    localStorage.setItem('mahi_last_streak_date', todayStr); localStorage.setItem('mahi_streak_count', currentStreak);
-    document.getElementById('streak-counter').innerText = `🔥 Streak: ${currentStreak} Day${currentStreak > 1 ? 's' : ''}`;
-
-    function updateClock() { const now = new Date(); const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }; document.getElementById('real-time-clock').innerHTML = `📅 ${now.toLocaleDateString('en-US', options)} | ⏰ ${now.toLocaleTimeString('en-US')}`; }
-    setInterval(updateClock, 1000); updateClock();
-
-    function formatTimeReadable(totalSeconds) { if (!totalSeconds || totalSeconds === 0) return "0m"; const h = Math.floor(totalSeconds / 3600); const m = Math.floor((totalSeconds % 3600) / 60); if (h > 0) return `${h}h ${m}m`; return `${m}m`; }
-
-    // =========================================================
-    // ডেইলি টাস্ক মডিউল (Daily Tasks Module - With Drag/Drop)
-    // =========================================================
-    const taskInput = document.getElementById('daily-task-input'); const taskList = document.getElementById('daily-task-list');
-    let dragStartIndex = null; // Shared variable for all custom drag & drops
-    
-    function renderTasks() {
-        taskList.innerHTML = '';
-        dailyTasks.forEach((task, index) => {
-            const lbl = document.createElement('label'); if (task.done) lbl.classList.add('completed');
-            lbl.setAttribute('draggable', 'true'); lbl.setAttribute('data-index', index);
-            lbl.innerHTML = `
-                <div style="display:flex; align-items:center; gap: 10px; width:100%; pointer-events: none;">
-                    <input type="checkbox" style="pointer-events: auto;" ${task.done ? 'checked' : ''} onchange="toggleTask(${index})"> 
-                    <span style="flex:1;">${task.text}</span>
-                    <button class="btn-del-link" style="pointer-events: auto;" onclick="deleteTask(${index})" title="Cancel Task">✖</button>
-                </div>
-            `;
-            // Drag and drop event listeners
-            lbl.addEventListener('dragstart', function() { dragStartIndex = +this.getAttribute('data-index'); this.classList.add('dragging'); });
-            lbl.addEventListener('dragenter', function(e) { e.preventDefault(); this.classList.add('drag-over'); });
-            lbl.addEventListener('dragover', function(e) { e.preventDefault(); });
-            lbl.addEventListener('dragleave', function() { this.classList.remove('drag-over'); });
-            lbl.addEventListener('drop', function() { const dragEndIndex = +this.getAttribute('data-index'); const itemOne = dailyTasks[dragStartIndex]; dailyTasks.splice(dragStartIndex, 1); dailyTasks.splice(dragEndIndex, 0, itemOne); renderTasks(); this.classList.remove('drag-over'); });
-            lbl.addEventListener('dragend', function() { this.classList.remove('dragging'); document.querySelectorAll('.task-list label').forEach(item => item.classList.remove('drag-over')); });
-            
-            taskList.appendChild(lbl);
-        });
-        localStorage.setItem('mahi_daily_tasks', JSON.stringify(dailyTasks));
-        taskHistory[todayStr] = JSON.parse(JSON.stringify(dailyTasks)); 
-        localStorage.setItem('mahi_task_history', JSON.stringify(taskHistory));
-        if(document.getElementById('history-date-picker').value === todayStr) { loadHistoryData(); }
-    }
-    document.getElementById('btn-add-task').addEventListener('click', () => {
-        if(taskInput.value.trim() !== '') { dailyTasks.push({ text: taskInput.value.trim(), done: false }); taskInput.value = ''; renderTasks(); document.getElementById('task-input-section').style.display = 'none'; }
-    });
-    window.toggleTask = function(index) { 
-        dailyTasks[index].done = !dailyTasks[index].done; 
-        if (dailyTasks[index].done) updateXP(15, "Task Done! " + getRandomQuote()); else updateXP(-15);
-        renderTasks(); 
-    }
-    window.deleteTask = function(index) {
-        dailyTasks.splice(index, 1);
-        renderTasks();
-    }
-    renderTasks();
-
-    // =========================================================
-    // উইকলি / মান্থলি গোলস (Weekly & Monthly Goals - With Drag/Drop)
-    // =========================================================
-    let oldGoals = JSON.parse(localStorage.getItem('mahi_study_goals'));
-    let weeklyGoals = JSON.parse(localStorage.getItem('mahi_weekly_goals')) || [];
-    let monthlyGoals = JSON.parse(localStorage.getItem('mahi_monthly_goals')) || [];
-
-    if (oldGoals && oldGoals.length > 0) {
-        oldGoals.forEach(g => {
-            if (g.type === 'Weekly') weeklyGoals.push(g);
-            else monthlyGoals.push(g);
-        });
-        localStorage.removeItem('mahi_study_goals'); 
-        localStorage.setItem('mahi_weekly_goals', JSON.stringify(weeklyGoals));
-        localStorage.setItem('mahi_monthly_goals', JSON.stringify(monthlyGoals));
-    }
-
-    const weeklyGoalList = document.getElementById('weekly-goal-list');
-    const monthlyGoalList = document.getElementById('monthly-goal-list');
-
-    function renderWeeklyGoals() {
-        weeklyGoalList.innerHTML = '';
-        weeklyGoals.forEach((goal, index) => {
-            const lbl = document.createElement('label');
-            if (goal.done) lbl.classList.add('completed');
-            lbl.style.borderColor = "rgba(59, 130, 246, 0.4)";
-            lbl.setAttribute('draggable', 'true'); lbl.setAttribute('data-index', index);
-            lbl.innerHTML = `<div style="display:flex; align-items:center; gap: 10px; width:100%; pointer-events: none;">
-                <input type="checkbox" style="pointer-events: auto;" ${goal.done ? 'checked' : ''} onchange="toggleWeeklyGoal(${index})"> 
-                <span style="flex:1; font-size:0.85rem;">${goal.text}</span>
-                <button class="btn-del-link" style="pointer-events: auto;" onclick="deleteWeeklyGoal(${index})">✖</button>
-            </div>`;
-            lbl.addEventListener('dragstart', function() { dragStartIndex = +this.getAttribute('data-index'); this.classList.add('dragging'); });
-            lbl.addEventListener('dragenter', function(e) { e.preventDefault(); this.classList.add('drag-over'); });
-            lbl.addEventListener('dragover', function(e) { e.preventDefault(); });
-            lbl.addEventListener('dragleave', function() { this.classList.remove('drag-over'); });
-            lbl.addEventListener('drop', function() { const dragEndIndex = +this.getAttribute('data-index'); const itemOne = weeklyGoals[dragStartIndex]; weeklyGoals.splice(dragStartIndex, 1); weeklyGoals.splice(dragEndIndex, 0, itemOne); renderWeeklyGoals(); this.classList.remove('drag-over'); });
-            lbl.addEventListener('dragend', function() { this.classList.remove('dragging'); document.querySelectorAll('.task-list label').forEach(item => item.classList.remove('drag-over')); });
-            weeklyGoalList.appendChild(lbl);
-        });
-        localStorage.setItem('mahi_weekly_goals', JSON.stringify(weeklyGoals));
-    }
-
-    function renderMonthlyGoals() {
-        monthlyGoalList.innerHTML = '';
-        monthlyGoals.forEach((goal, index) => {
-            const lbl = document.createElement('label');
-            if (goal.done) lbl.classList.add('completed');
-            lbl.style.borderColor = "rgba(59, 130, 246, 0.4)";
-            lbl.setAttribute('draggable', 'true'); lbl.setAttribute('data-index', index);
-            lbl.innerHTML = `<div style="display:flex; align-items:center; gap: 10px; width:100%; pointer-events: none;">
-                <input type="checkbox" style="pointer-events: auto;" ${goal.done ? 'checked' : ''} onchange="toggleMonthlyGoal(${index})"> 
-                <span style="flex:1; font-size:0.85rem;">${goal.text}</span>
-                <button class="btn-del-link" style="pointer-events: auto;" onclick="deleteMonthlyGoal(${index})">✖</button>
-            </div>`;
-            lbl.addEventListener('dragstart', function() { dragStartIndex = +this.getAttribute('data-index'); this.classList.add('dragging'); });
-            lbl.addEventListener('dragenter', function(e) { e.preventDefault(); this.classList.add('drag-over'); });
-            lbl.addEventListener('dragover', function(e) { e.preventDefault(); });
-            lbl.addEventListener('dragleave', function() { this.classList.remove('drag-over'); });
-            lbl.addEventListener('drop', function() { const dragEndIndex = +this.getAttribute('data-index'); const itemOne = monthlyGoals[dragStartIndex]; monthlyGoals.splice(dragStartIndex, 1); monthlyGoals.splice(dragEndIndex, 0, itemOne); renderMonthlyGoals(); this.classList.remove('drag-over'); });
-            lbl.addEventListener('dragend', function() { this.classList.remove('dragging'); document.querySelectorAll('.task-list label').forEach(item => item.classList.remove('drag-over')); });
-            monthlyGoalList.appendChild(lbl);
-        });
-        localStorage.setItem('mahi_monthly_goals', JSON.stringify(monthlyGoals));
-    }
-
-    document.getElementById('btn-add-weekly-goal').addEventListener('click', () => {
-        const input = document.getElementById('weekly-goal-input');
-        if(input.value.trim() !== '') { weeklyGoals.push({ text: input.value.trim(), type: 'Weekly', done: false }); input.value = ''; renderWeeklyGoals(); document.getElementById('weekly-goal-input-section').style.display = 'none'; }
-    });
-
-    document.getElementById('btn-add-monthly-goal').addEventListener('click', () => {
-        const input = document.getElementById('monthly-goal-input');
-        if(input.value.trim() !== '') { monthlyGoals.push({ text: input.value.trim(), type: 'Monthly', done: false }); input.value = ''; renderMonthlyGoals(); document.getElementById('monthly-goal-input-section').style.display = 'none'; }
-    });
-
-    window.toggleWeeklyGoal = function(index) { weeklyGoals[index].done = !weeklyGoals[index].done; if (weeklyGoals[index].done) updateXP(50, "Weekly Goal Achieved! 🎯 " + getRandomQuote()); else updateXP(-50); renderWeeklyGoals(); }
-    window.deleteWeeklyGoal = function(index) { weeklyGoals.splice(index, 1); renderWeeklyGoals(); }
-    
-    window.toggleMonthlyGoal = function(index) { monthlyGoals[index].done = !monthlyGoals[index].done; if (monthlyGoals[index].done) updateXP(100, "Monthly Goal Achieved! 🏆 " + getRandomQuote()); else updateXP(-100); renderMonthlyGoals(); }
-    window.deleteMonthlyGoal = function(index) { monthlyGoals.splice(index, 1); renderMonthlyGoals(); }
-
-    renderWeeklyGoals();
-    renderMonthlyGoals();
-
-    // =========================================================
-    // ফোকাস সাউন্ডস (Advanced Audio Player with Animation, UI & Speed Option)
-    // =========================================================
-    const soundSelector = document.getElementById('sound-selector');
-    const ambientPlayer = document.getElementById('ambient-player');
-    const playPauseBtn = document.getElementById('btn-sound-playpause');
-    const soundProgressBar = document.getElementById('sound-progress');
-    const soundVolumeBar = document.getElementById('sound-volume');
-    const soundSpeedSelector = document.getElementById('sound-speed');
-    const musicWaves = document.getElementById('music-waves');
-    const soundCurrentTime = document.getElementById('sound-current-time');
-    const soundDuration = document.getElementById('sound-duration');
-    let currentTrackIndex = 0;
-
-    function formatTimeMMSS(seconds) {
-        if(isNaN(seconds)) return "0:00";
-        let m = Math.floor(seconds / 60);
-        let s = Math.floor(seconds % 60);
-        return `${m}:${s < 10 ? '0' : ''}${s}`;
-    }
-
-    function loadTrack(index) {
-        if (index < 0 || index >= soundSelector.options.length - 1) return;
-        currentTrackIndex = index;
-        soundSelector.selectedIndex = index + 1; // +1 because 0 is the placeholder
-        ambientPlayer.src = soundSelector.options[index + 1].value;
-        ambientPlayer.playbackRate = parseFloat(soundSpeedSelector.value); // Apply speed
-        playTrack();
-    }
-
-    function playTrack() {
-        if(ambientPlayer.src && !ambientPlayer.src.endsWith(window.location.pathname)) {
-            ambientPlayer.play();
-            playPauseBtn.innerText = '⏸';
-            musicWaves.classList.add('playing');
-        }
-    }
-
-    function pauseTrack() {
-        ambientPlayer.pause();
-        playPauseBtn.innerText = '▶';
-        musicWaves.classList.remove('playing');
-    }
-
-    window.togglePlayPause = function() {
-        if(soundSelector.value === "") { alert("Please select a sound first."); return; }
-        if(ambientPlayer.paused) playTrack(); else pauseTrack();
-    }
-
-    window.playNextTrack = function() {
-        let totalTracks = soundSelector.options.length - 1;
-        if(totalTracks <= 0) return;
-        let nextIdx = (currentTrackIndex + 1) % totalTracks;
-        loadTrack(nextIdx);
-    }
-
-    window.playPrevTrack = function() {
-        let totalTracks = soundSelector.options.length - 1;
-        if(totalTracks <= 0) return;
-        let prevIdx = (currentTrackIndex - 1 + totalTracks) % totalTracks;
-        loadTrack(prevIdx);
-    }
-
-    soundSelector.addEventListener('change', (e) => {
-        if(e.target.value) {
-            currentTrackIndex = e.target.selectedIndex - 1;
-            ambientPlayer.src = e.target.value;
-            ambientPlayer.playbackRate = parseFloat(soundSpeedSelector.value);
-            playTrack();
-        } else {
-            pauseTrack();
-            ambientPlayer.src = "";
-        }
-    });
-
-    // Handle Sound Speed Change
-    soundSpeedSelector.addEventListener('change', (e) => {
-        ambientPlayer.playbackRate = parseFloat(e.target.value);
-    });
-
-    ambientPlayer.addEventListener('timeupdate', () => {
-        if(!isNaN(ambientPlayer.duration)) {
-            soundProgressBar.value = (ambientPlayer.currentTime / ambientPlayer.duration) * 100;
-            soundCurrentTime.innerText = formatTimeMMSS(ambientPlayer.currentTime);
-            soundDuration.innerText = formatTimeMMSS(ambientPlayer.duration);
-        }
-    });
-
-    soundProgressBar.addEventListener('input', () => {
-        if(!isNaN(ambientPlayer.duration)) {
-            ambientPlayer.currentTime = (soundProgressBar.value / 100) * ambientPlayer.duration;
-        }
-    });
-
-    soundVolumeBar.addEventListener('input', () => {
-        ambientPlayer.volume = soundVolumeBar.value;
-    });
-
-    ambientPlayer.addEventListener('ended', playNextTrack);
-
-
-    // =========================================================
-    // ডেইলি হ্যাবিট মডিউল (Daily Habits Module - With Drag/Drop)
-    // =========================================================
-    const habitInput = document.getElementById('habit-input'); const habitList = document.getElementById('habit-list');
-    function renderHabits() {
-        habitList.innerHTML = '';
-        dailyHabits.forEach((habit, index) => {
-            const lbl = document.createElement('label'); 
-            if (habit.done) lbl.classList.add('completed');
-            lbl.style.borderColor = habit.done ? "var(--timer-orange)" : "rgba(245, 158, 11, 0.4)";
-            lbl.setAttribute('draggable', 'true'); lbl.setAttribute('data-index', index);
-            lbl.innerHTML = `<div style="display:flex; align-items:center; gap: 10px; width:100%; pointer-events: none;"><input type="checkbox" style="accent-color: var(--timer-orange); pointer-events: auto;" ${habit.done ? 'checked' : ''} onchange="toggleHabit(${index})"> <span style="flex:1;">${habit.text}</span><button class="btn-del-link" style="pointer-events: auto;" onclick="deleteHabit(${index})" title="Delete">✖</button></div>`;
-            lbl.addEventListener('dragstart', function() { dragStartIndex = +this.getAttribute('data-index'); this.classList.add('dragging'); });
-            lbl.addEventListener('dragenter', function(e) { e.preventDefault(); this.classList.add('drag-over'); });
-            lbl.addEventListener('dragover', function(e) { e.preventDefault(); });
-            lbl.addEventListener('dragleave', function() { this.classList.remove('drag-over'); });
-            lbl.addEventListener('drop', function() { const dragEndIndex = +this.getAttribute('data-index'); const itemOne = dailyHabits[dragStartIndex]; dailyHabits.splice(dragStartIndex, 1); dailyHabits.splice(dragEndIndex, 0, itemOne); renderHabits(); this.classList.remove('drag-over'); });
-            lbl.addEventListener('dragend', function() { this.classList.remove('dragging'); document.querySelectorAll('#habit-list label').forEach(item => item.classList.remove('drag-over')); });
-            habitList.appendChild(lbl);
-        });
-        localStorage.setItem('mahi_habits', JSON.stringify(dailyHabits));
-    }
-    document.getElementById('btn-add-habit').addEventListener('click', () => {
-        if(habitInput.value.trim() !== '') { dailyHabits.push({ text: habitInput.value.trim(), done: false }); habitInput.value = ''; renderHabits(); document.getElementById('habit-input-section').style.display = 'none'; }
-    });
-    window.toggleHabit = function(index) { 
-        dailyHabits[index].done = !dailyHabits[index].done; 
-        if (dailyHabits[index].done) updateXP(10, "Habit Completed! 🔁 " + getRandomQuote()); else updateXP(-10);
-        renderHabits(); 
-    }
-    window.deleteHabit = function(index) { dailyHabits.splice(index, 1); renderHabits(); }
-    renderHabits();
-
-    // =========================================================
-    // স্টাডি লিংক হাব মডিউল (Study Links Hub Module - With Drag/Drop)
-    // =========================================================
-    const linkTitleInput = document.getElementById('link-title-input');
-    const linkUrlInput = document.getElementById('link-url-input');
-    const linksContainer = document.getElementById('links-container');
-    let studyLinks = JSON.parse(localStorage.getItem('mahi_links')) || [];
-
-    function renderLinks() {
-        linksContainer.innerHTML = '';
-        studyLinks.forEach((link, index) => {
-            const div = document.createElement('div');
-            div.className = 'link-item';
-            div.setAttribute('draggable', 'true');
-            div.setAttribute('data-index', index);
-            div.innerHTML = `
-                <a href="${link.url}" target="_blank" title="${link.title}">🔗 ${link.title}</a>
-                <div style="display:flex; gap:5px; pointer-events: auto;">
-                    <button class="btn-del-link" onclick="deleteLink(${index})" title="Delete Link">✖</button>
-                </div>
-            `;
-            
-            // Drag and drop events for Links
-            div.addEventListener('dragstart', function() { dragStartIndex = +this.getAttribute('data-index'); this.classList.add('dragging'); });
-            div.addEventListener('dragenter', function(e) { e.preventDefault(); this.classList.add('drag-over'); });
-            div.addEventListener('dragover', function(e) { e.preventDefault(); });
-            div.addEventListener('dragleave', function() { this.classList.remove('drag-over'); });
-            div.addEventListener('drop', function() { 
-                const dragEndIndex = +this.getAttribute('data-index'); 
-                const itemOne = studyLinks[dragStartIndex]; 
-                studyLinks.splice(dragStartIndex, 1); 
-                studyLinks.splice(dragEndIndex, 0, itemOne); 
-                renderLinks(); 
-                this.classList.remove('drag-over'); 
-            });
-            div.addEventListener('dragend', function() { 
-                this.classList.remove('dragging'); 
-                document.querySelectorAll('.link-item').forEach(item => item.classList.remove('drag-over')); 
-            });
-
-            linksContainer.appendChild(div);
-        });
-        localStorage.setItem('mahi_links', JSON.stringify(studyLinks));
-    }
-
-    document.getElementById('btn-add-link').addEventListener('click', () => {
-        const title = linkTitleInput.value.trim();
-        let url = linkUrlInput.value.trim();
-        
-        if(title !== '' && url !== '') {
-            // URL validate & format
-            if (!/^https?:\/\//i.test(url)) {
-                url = 'https://' + url;
-            }
-            studyLinks.push({ title: title, url: url });
-            linkTitleInput.value = '';
-            linkUrlInput.value = '';
-            renderLinks();
-            document.getElementById('link-input-section').style.display = 'none';
-            updateXP(5, "New Link Added! 🔗"); 
-        } else {
-            alert("অনুগ্রহ করে লিংকের নাম এবং URL উভয়ই দিন!");
-        }
-    });
-
-    window.deleteLink = function(index) {
-        if(confirm("আপনি কি এই লিংকটি ডিলিট করতে চান?")) {
-            studyLinks.splice(index, 1);
-            renderLinks();
-        }
-    }
-
-    renderLinks();
-
-    // =========================================================
-    // টার্গেট কাউন্টডাউন (Target Countdown Logic with exact Time - 2 Lines)
-    // =========================================================
-    const cdLabel = document.getElementById('countdown-label'); 
-    const cdDaysHours = document.getElementById('cd-days-hours');
-    const cdMinsSecs = document.getElementById('cd-mins-secs');
-    const targetNameInp = document.getElementById('target-name-input'); 
-    const targetDateInp = document.getElementById('target-date-input');
-    
-    // Load saved or default target
-    let savedTarget = JSON.parse(localStorage.getItem('mahi_target_event')) || { name: "BUET ADMISSION EXAM", date: "2027-06-15T10:00" };
-    targetNameInp.value = savedTarget.name; 
-    let dtValue = savedTarget.date;
-    if(dtValue && dtValue.length === 10) dtValue += "T00:00";
-    targetDateInp.value = dtValue;
-    
-    let countdownInterval;
-    
-    function updateCountdown() {
-        clearInterval(countdownInterval);
-        const targetDateStr = targetDateInp.value; 
-        const targetName = targetNameInp.value.trim() || "TARGET";
-        
-        cdLabel.innerText = targetName.toUpperCase(); 
-        localStorage.setItem('mahi_target_event', JSON.stringify({ name: targetName, date: targetDateStr }));
-        
-        const tDate = new Date(targetDateStr).getTime();
-        
-        countdownInterval = setInterval(() => {
-            const distance = tDate - new Date().getTime();
-            if (distance <= 0 || isNaN(tDate)) { 
-                cdDaysHours.innerText = "000d : 00h";
-                cdMinsSecs.innerText = "00m : 00s"; 
-                return; 
-            }
-            const d = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(3, '0');
-            const h = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            const m = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            const s = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-            
-            cdDaysHours.innerText = `${d}d : ${h}h`;
-            cdMinsSecs.innerText = `${m}m : ${s}s`;
-        }, 1000);
-    }
-    document.getElementById('btn-set-target').addEventListener('click', updateCountdown); 
-    updateCountdown();
-
-    // =========================================================
-    // 3x স্টপওয়াচ লজিক (3x Solving Stopwatches: MCQ, CQ, EXAM)
-    // =========================================================
-    function fmtSW(s) { return new Date(s * 1000).toISOString().substr(11, 8); }
-    
-    let swData = {
-        mcq: { sec: 0, int: null, el: document.getElementById('sw-mcq-display') },
-        cq: { sec: 0, int: null, el: document.getElementById('sw-cq-display') },
-        exam: { sec: 0, int: null, el: document.getElementById('sw-exam-display') }
-    };
-
-    window.toggleSW = function(type) {
-        let sw = swData[type];
-        let btn = document.getElementById(`btn-sw-${type}-toggle`);
-        if(sw.int) {
-            clearInterval(sw.int); sw.int = null;
-            btn.innerText = '▶'; btn.style.color = '#fff'; btn.style.borderColor = 'rgba(59, 130, 246, 0.5)';
-        } else {
-            sw.int = setInterval(() => {
-                sw.sec++;
-                sw.el.innerText = fmtSW(sw.sec);
-            }, 1000);
-            btn.innerText = '⏸'; btn.style.color = 'var(--timer-orange)'; btn.style.borderColor = 'var(--timer-orange)';
-        }
-    };
-
-    window.resetSW = function(type) {
-        let sw = swData[type];
-        clearInterval(sw.int); sw.int = null; sw.sec = 0;
-        sw.el.innerText = '00:00:00';
-        let btn = document.getElementById(`btn-sw-${type}-toggle`);
-        btn.innerText = '▶'; btn.style.color = '#fff'; btn.style.borderColor = 'rgba(59, 130, 246, 0.5)';
-    };
-
-    // =========================================================
-    // সম্পূর্ণ আপডেট করা সিলেবাস ডাটা (13 SUBJECTS - 1085 TARGETS)
-    // =========================================================
-    const syllabusData = [
-        { subject: "1. Physics 1st Paper", type: "science", chapters: ["1. ভৌতজগত ও পরিমাপ", "2. ভেক্টর", "3. গতিবিদ্যা", "4. নিউটনীয় বলবিদ্যা", "5. কাজ, ক্ষমতা ও শক্তি", "6. মহাকর্ষ ও অভিকর্ষ", "7. পদার্থের গাঠনিক ধর্ম", "8. পর্যাবৃত্ত গতি", "9. তরঙ্গ", "10. আদর্শ গ্যাস ও গ্যাসের গতিতত্ত্ব"] },
-        { subject: "2. Physics 2nd Paper", type: "science", chapters: ["1. তাপগতিবিদ্যা", "2. স্থির তড়িৎ", "3. চল তড়িৎ", "4. তড়িৎ প্রবাহের চৌম্বক ক্রিয়া", "5. তাড়িত-চৌম্বক আবেশ", "6. জ্যামিতিক আলোকবিজ্ঞান", "7. ভৌত আলোকবিজ্ঞান", "8. আধুনিক পদার্থবিজ্ঞান", "9. পরমাণুর মডেল", "10. অর্ধ-পরিবাহী ও ইলেকট্রনিক্স", "11. জ্যোতির্বিজ্ঞান"] },
-        { subject: "3. Chemistry 1st Paper", type: "science", chapters: ["1. ল্যাব নিরাপদ ব্যবহার", "2. গুণগত রসায়ন", "3. মৌলের পর্যাবৃত্ত ধর্ম", "4. রাসায়নিক পরিবর্তন", "5. কর্মমুখী রসায়ন"] },
-        { subject: "4. Chemistry 2nd Paper", type: "science", chapters: ["1. পরিবেশ রসায়ন", "2. জৈব রসায়ন", "3. পরিমাণগত রসায়ন", "4. তড়িৎ রসায়ন", "5. অর্থনৈতিক রসায়ন"] },
-        { subject: "5. Higher Math 1st Paper", type: "science", chapters: ["1. ম্যাট্রিক্স ও নির্ণায়ক", "2. ভেক্টর", "3. সরলরেখা", "4. বৃত্ত", "5. বিন্যাস ও সমাবেশ", "6. ত্রিকোণমিতিক অনুপাত", "7. সংযুক্ত কোণ", "8. ফাংশন ও লেখচিত্র", "9. অন্তরীকরণ", "10. যোগজীকরণ"] },
-        { subject: "6. Higher Math 2nd Paper", type: "science", chapters: ["1. বাস্তব সংখ্যা", "2. যোগাশ্রয়ী প্রোগ্রাম", "3. জটিল সংখ্যা", "4. বহুপদী", "5. দ্বিপদী বিস্তৃতি", "6. কনিক", "7. বিপরীত ত্রিকোণমিতি", "8. স্থিতিবিদ্যা", "9. সমতলে বস্তুকণার গতি", "10. বিস্তার পরিমাপ ও সম্ভাবনা"] },
-        { subject: "7. Biology 1st Paper", type: "science", chapters: ["1. কোষ ও এর গঠন", "2. কোষ বিভাজন", "3. কোষ রসায়ন", "4. অণুজীব", "5. শৈবাল ও ছত্রাক", "6. ব্রায়োফাইটা", "7. নগ্নবীজী ও আবৃতবীজী", "8. টিস্যু", "9. উদ্ভিদ শারীরতত্ত্ব", "10. উদ্ভিদ প্রজনন", "11. জীবপ্রযুক্তি", "12. জীব ও পরিবেশ"] },
-        { subject: "8. Biology 2nd Paper", type: "science", chapters: ["1. প্রাণীর বিভিন্নতা", "2. প্রাণীর পরিচিতি", "3. পরিপাক ও শোষণ", "4. রক্ত ও সংবহন", "5. শ্বসন", "6. বর্জ্য ও নিষ্কাশন", "7. চলন", "8. সমন্বয় ও নিয়ন্ত্রণ", "9. মানব জীবনের ধারাবাহিকতা", "10. মানবদেহের প্রতিরক্ষা", "11. জিনতত্ত্ব ও বিবর্তন", "12. প্রাণীর আচরণ"] },
-        { subject: "9. ICT", type: "language", chapters: ["1. বিশ্ব ও বাংলাদেশ প্রেক্ষিত", "2. কমিউনিকেশন সিস্টেমস", "3. সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস", "4. ওয়েব ডিজাইন ও HTML", "5. প্রোগ্রামিং ভাষা", "6. ডেটাবেজ ম্যানেজমেন্ট"] },
-        { subject: "10. Bangla 1st Paper", type: "language", chapters: ["1. গল্প: বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন", "2. গল্প: অপরিচিতা", "3. গল্প: সাহিত্যে খেলা", "4. গল্প: বিলাসী", "5. গল্প: অর্ধাঙ্গী", "6. গল্প: যৌবনের গান", "7. গল্প: জীবন ও বৃক্ষ", "8. গল্প: গন্তব্য কাবুল", "9. গল্প: মাসি-পিসি", "10. গল্প: কপিলদাস মুর্মুর শেষ কাজ", "11. গল্প: রেইনকোট", "12. গল্প: নেকলেস", "13. কবিতা: ঋতু-বর্ণন", "14. কবিতা: বিভীষণের প্রতি মেঘনাদ", "15. কবিতা: সোনার তরী", "16. কবিতা: বিদ্রোহী", "17. কবিতা: সুচেতনা", "18. কবিতা: প্রতিদান", "19. কবিতা: তাহারেই পড়ে মনে", "20. কবিতা: পদ্মা", "21. কবিতা: ফেব্রুয়ারি ১৯৬৯", "22. কবিতা: আঠার বছর বয়স", "23. কবিতা: আমি কিংবদন্তির কথা বলছি", "24. কবিতা: প্রত্যাবর্তনের লজ্জা", "25. নাটক: নবাব সিরাজ-উদ্-দৌলা", "26. উপন্যাস: লালসালু (সৈয়দ ওয়ালীউল্লাহ)"] },
-        { subject: "11. Bangla 2nd Paper", type: "language", chapters: ["1. ব্যাকরণ: বাংলা উচ্চারণের নিয়ম", "2. ব্যাকরণ: বাংলা বানানের নিয়ম", "3. ব্যাকরণ: বাংলা ভাষার ব্যাকরণিক শব্দশ্রেণি", "4. ব্যাকরণ: বাংলা শব্দগঠন প্রক্রিয়া", "5. ব্যাকরণ: বাক্যতত্ত্ব", "6. ব্যাকরণ: বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধপ্রয়োগ", "7. নির্মিতি: পারিভাষিক শব্দ ও অনুবাদ", "8. নির্মিতি: দিনলিপি, অভিজ্ঞতা বর্ণন, ভাষণ ও প্রতিবেদন", "9. নির্মিতি: বৈদ্যুতিন চিঠি, ক্ষুদেবার্তা, পত্রলিখন ও আবেদনপত্র", "10. নির্মিতি: সারাংশ, সারমর্ম, সারসংক্ষেপ ও ভাবসম্প্রসারণ", "11. নির্মিতি: সংলাপ ও ক্ষুদ্রগল্প", "12. নির্মিতি: প্রবন্ধ-নিবন্ধ রচনা"] },
-        { subject: "12. English 1st Paper", type: "language", chapters: ["1. Unit 1: People/Institutions", "2. Unit 2: Art & Craft", "3. Unit 3: Myths & Literature", "4. Unit 4: History", "5. Unit 5: Human Rights", "6. Unit 6: Dreams", "7. Unit 7: Youthful Achievers", "8. Unit 8: Relationships", "9. Unit 9: Adolescence", "10. Unit 10: Lifestyle", "11. Unit 11: Peace & Conflict", "12. Unit 12: Environment & Nature", "13. Exam: MCQ & Short Answer Questions", "14. Exam: Flow Chart / Information Transfer", "15. Exam: Summarizing", "16. Exam: Cloze Tests (with/without clues)", "17. Exam: Rearranging", "18. Exam: Paragraph Writing", "19. Exam: Completing Story", "20. Exam: Informal Letters / Emails", "21. Exam: Maps / Graphs / Charts", "22. Exam: Appreciating Short Stories / Poems"] },
-        { subject: "13. English 2nd Paper", type: "language", chapters: ["1. Grammar: Articles", "2. Grammar: Prepositions", "3. Grammar: Special phrases/words", "4. Grammar: Completing sentences", "5. Grammar: Right form of verbs & SVA", "6. Grammar: Changing sentences (Voice, degree, etc)", "7. Grammar: Narrative style", "8. Grammar: Pronoun reference", "9. Grammar: Modifiers", "10. Grammar: Sentence connectors", "11. Grammar: Synonym & Antonym", "12. Grammar: Punctuation & Capitalization", "13. Writing: Formal letter & Email", "14. Writing: Report writing", "15. Writing: Paragraph writing", "16. Writing: Free writing / Composition"] }
-    ];
-
-    const focusSelect = document.getElementById('focus-subject'); 
-    const pomoSelect = document.getElementById('pomo-subject');
-    const manualSubSelect = document.getElementById('manual-subject');
-    const examSelect = document.getElementById('exam-subject');
-    const graphExamSelect = document.getElementById('graph-subject-select');
-    
-    syllabusData.forEach(sub => { 
-        let opt1 = document.createElement('option'); opt1.value = sub.subject; opt1.innerText = sub.subject; focusSelect.appendChild(opt1); 
-        let opt2 = document.createElement('option'); opt2.value = sub.subject; opt2.innerText = sub.subject; pomoSelect.appendChild(opt2); 
-        let opt3 = document.createElement('option'); opt3.value = sub.subject; opt3.innerText = sub.subject; manualSubSelect.appendChild(opt3);
-        let opt4 = document.createElement('option'); opt4.value = sub.subject; opt4.innerText = sub.subject; examSelect.appendChild(opt4);
-        let opt5 = document.createElement('option'); opt5.value = sub.subject; opt5.innerText = sub.subject; graphExamSelect.appendChild(opt5);
-    });
-
-    // =========================================================
-    // স্টাডি ডাটা সেভ করার ফাংশন (Save Study Time Data)
-    // =========================================================
-    let studyStats = JSON.parse(localStorage.getItem('mahi_study_stats')) || {};
-    
-    function saveStudyTime(subject, dateToSave = todayStr, extraMins = null) {
-        if(!subject || subject === 'none') return;
-        if(!studyStats[subject]) studyStats[subject] = {};
-        if(!studyStats[subject][dateToSave]) studyStats[subject][dateToSave] = 0;
-        
-        if(extraMins !== null) {
-            studyStats[subject][dateToSave] += (extraMins * 60); 
-            localStorage.setItem('mahi_study_stats', JSON.stringify(studyStats));
-            renderReports(); 
-            if(studyChartInstance) updateChart(currentChartPeriod);
-            if(weeklyStudyChartInstance) updateWeeklyChart(); 
-            if(document.getElementById('history-date-picker').value === dateToSave) loadHistoryData();
-        } else {
-            studyStats[subject][dateToSave] += 1; 
-            localStorage.setItem('mahi_study_stats', JSON.stringify(studyStats));
-            if(studyStats[subject][dateToSave] % 5 === 0) { 
-                renderReports(); 
-                if(studyChartInstance) updateChart(currentChartPeriod); 
-                if(weeklyStudyChartInstance) updateWeeklyChart(); 
-                if(document.getElementById('history-date-picker').value === dateToSave) loadHistoryData();
-            }
-        }
-    }
-
-    // =========================================================
-    // ম্যানুয়াল ডাটা এন্ট্রি (Manual Entry)
-    // =========================================================
-    window.addManualStudyTime = function() {
-        let dayValue = document.getElementById('manual-day').value;
-        let subValue = document.getElementById('manual-subject').value;
-        let minsValue = parseInt(document.getElementById('manual-mins').value);
-        
-        if(isNaN(minsValue) || minsValue <= 0) { alert("দয়া করে সঠিক মিনিট ইনপুট দিন!"); return; }
-        let targetDate = (dayValue === 'yesterday') ? yesterdayStr : todayStr;
-        
-        saveStudyTime(subValue, targetDate, minsValue);
-        document.getElementById('manual-mins').value = '';
-        showMotivation("✅ ডাটা যুক্ত হয়েছে!", `${subValue} এর জন্য ${minsValue} মিনিট সেভ করা হয়েছে।`);
-    }
-
-    // =========================================================
-    // ফোকাস ইঞ্জিন (Focus Engine Tracker)
-    // =========================================================
-    let focusLeft = 3600; let initialFocusMins = 60; let isBreakMode = false; function fmt(s) { return new Date(s * 1000).toISOString().substr(11, 8); } const focusDisplay = document.getElementById('focus-display'); const focusTitleText = document.getElementById('focus-title-text');
-    document.getElementById('btn-25m').addEventListener('click', () => { initialFocusMins = 25; focusLeft = 25*60; focusDisplay.innerText = fmt(focusLeft); isBreakMode = false; focusTitleText.innerText = "⏱️ Focus Engine"; });
-    document.getElementById('btn-1h').addEventListener('click', () => { initialFocusMins = 60; focusLeft = 3600; focusDisplay.innerText = fmt(focusLeft); isBreakMode = false; focusTitleText.innerText = "⏱️ Focus Engine"; });
-    document.getElementById('btn-2h').addEventListener('click', () => { initialFocusMins = 120; focusLeft = 7200; focusDisplay.innerText = fmt(focusLeft); isBreakMode = false; focusTitleText.innerText = "⏱️ Focus Engine"; });
-    document.getElementById('btn-set-custom').addEventListener('click', () => { let mins = parseInt(document.getElementById('custom-mins-input').value); if(!isNaN(mins) && mins > 0) { initialFocusMins = mins; focusLeft = mins * 60; focusDisplay.innerText = fmt(focusLeft); document.getElementById('custom-mins-input').value = ''; isBreakMode = false; focusTitleText.innerText = "⏱️ Focus Engine"; } });
-    document.getElementById('btn-break-start').addEventListener('click', () => { stopAlarm(); let bMins = parseInt(document.getElementById('break-mins-input').value); if(!isNaN(bMins) && bMins > 0) { isBreakMode = true; focusTitleText.innerText = "☕ Break Timer"; focusLeft = bMins * 60; focusDisplay.innerText = fmt(focusLeft); document.getElementById('break-mins-input').value = ''; focusWorker.postMessage({ action: 'start' }); } });
-    document.getElementById('btn-focus-start').addEventListener('click', () => { stopAlarm(); isBreakMode = false; focusTitleText.innerText = "⏱️ Focus Engine"; focusWorker.postMessage({ action: 'start' }); });
-    
-    focusWorker.onmessage = function(e) {
-        if(e.data.type === 'tick') {
-            if(focusLeft > 0) { focusLeft--; focusDisplay.innerText = fmt(focusLeft); if(!isBreakMode) saveStudyTime(focusSelect.value); } 
-            else { focusWorker.postMessage({ action: 'stop' }); startAlarm(); if(!isBreakMode) { showNotification("Study Session Complete! 🎉", "Great job! Take a break."); updateXP(Math.floor(initialFocusMins * 2), "ফোকাস সেশন কমপ্লিট! 🔥 " + getRandomQuote()); } else { showNotification("Break Finished ⏰", "Come back to study!"); isBreakMode = false; focusTitleText.innerText = "⏱️ Focus Engine"; } renderReports(); if(studyChartInstance) updateChart(currentChartPeriod); if(weeklyStudyChartInstance) updateWeeklyChart(); }
-        }
-    };
-    document.getElementById('btn-focus-hold').addEventListener('click', () => { focusWorker.postMessage({ action: 'stop' }); stopAlarm(); renderReports(); if(studyChartInstance) updateChart(currentChartPeriod); if(weeklyStudyChartInstance) updateWeeklyChart(); });
-    document.getElementById('btn-focus-reset').addEventListener('click', () => { focusWorker.postMessage({ action: 'stop' }); stopAlarm(); focusLeft = initialFocusMins * 60; focusDisplay.innerText = fmt(focusLeft); isBreakMode = false; focusTitleText.innerText = "⏱️ Focus Engine"; });
-
-    // =========================================================
-    // পোমোডোরো ইঞ্জিন (Pomodoro Engine Logic)
-    // =========================================================
-    let pomoSeconds = 105 * 60; let pomoInterval = null; let isPomoBreakMode = false; const pomoDisplay = document.getElementById('pomo-display'); const pomoStatus = document.getElementById('pomo-status'); const pomoFocusInput = document.getElementById('pomo-custom-focus'); const pomoBreakInput = document.getElementById('pomo-custom-break');
-    function updatePomoDisplay() { let h = String(Math.floor(pomoSeconds / 3600)).padStart(2, '0'); let m = String(Math.floor((pomoSeconds % 3600) / 60)).padStart(2, '0'); let s = String(pomoSeconds % 60).padStart(2, '0'); if (parseInt(h) > 0) { pomoDisplay.innerText = `${h}:${m}:${s}`; } else { pomoDisplay.innerText = `${m}:${s}`; } }
-    function getPomoFocusMins() { let mins = parseInt(pomoFocusInput.value); return (!isNaN(mins) && mins > 0) ? mins : 105; }
-    function getPomoBreakMins() { let mins = parseInt(pomoBreakInput.value); return (!isNaN(mins) && mins > 0) ? mins : 15; }
-    pomoFocusInput.addEventListener('input', () => { if (!pomoInterval && !isPomoBreakMode) { pomoSeconds = getPomoFocusMins() * 60; updatePomoDisplay(); } });
-    pomoBreakInput.addEventListener('input', () => { if (!pomoInterval && isPomoBreakMode) { pomoSeconds = getPomoBreakMins() * 60; updatePomoDisplay(); } });
-    document.getElementById('btn-pomo-start').addEventListener('click', () => { if (pomoInterval) return; stopAlarm(); isPomoBreakMode = false; pomoStatus.innerText = "STATUS: FOCUSING 🍅"; pomoStatus.style.color = "var(--cyan-glow)"; pomoInterval = setInterval(() => { if (pomoSeconds > 0) { pomoSeconds--; updatePomoDisplay(); saveStudyTime(pomoSelect.value); } else { clearInterval(pomoInterval); pomoInterval = null; pomoStatus.innerText = "STATUS: FOCUS DONE! START BREAK ☕"; pomoStatus.style.color = "var(--mint-green)"; startAlarm(); showNotification("Pomodoro Complete! 🍅", "Time to rest your brain."); updateXP(Math.floor(getPomoFocusMins() * 2), "পোমোডোরো সেশন কমপ্লিট! 🍅 " + getRandomQuote()); pomoSeconds = getPomoBreakMins() * 60; updatePomoDisplay(); renderReports(); if(studyChartInstance) updateChart(currentChartPeriod); if(weeklyStudyChartInstance) updateWeeklyChart(); } }, 1000); });
-    document.getElementById('btn-pomo-break').addEventListener('click', () => { if (pomoInterval) return; stopAlarm(); isPomoBreakMode = true; pomoSeconds = getPomoBreakMins() * 60; updatePomoDisplay(); pomoStatus.innerText = "STATUS: BREAK TIME ☕"; pomoStatus.style.color = "var(--mint-green)"; pomoInterval = setInterval(() => { if (pomoSeconds > 0) { pomoSeconds--; updatePomoDisplay(); } else { clearInterval(pomoInterval); pomoInterval = null; pomoStatus.innerText = "STATUS: BREAK DONE! START FOCUS 🍅"; pomoStatus.style.color = "var(--cyan-glow)"; startAlarm(); showNotification("Break Finished! ⏰", "Back to work!"); pomoSeconds = getPomoFocusMins() * 60; updatePomoDisplay(); } }, 1000); });
-    document.getElementById('btn-pomo-pause').addEventListener('click', () => { clearInterval(pomoInterval); pomoInterval = null; pomoStatus.innerText = "STATUS: PAUSED"; pomoStatus.style.color = "var(--timer-orange)"; renderReports(); if(studyChartInstance) updateChart(currentChartPeriod); if(weeklyStudyChartInstance) updateWeeklyChart(); });
-    document.getElementById('btn-pomo-reset').addEventListener('click', () => { clearInterval(pomoInterval); pomoInterval = null; isPomoBreakMode = false; pomoSeconds = getPomoFocusMins() * 60; updatePomoDisplay(); pomoStatus.innerText = "STATUS: READY"; pomoStatus.style.color = "var(--text-soft)"; stopAlarm(); renderReports(); });
-
-    // =========================================================
-    // Daily Study Calendar Data Load Function
-    // =========================================================
-    document.getElementById('history-date-picker').value = todayStr;
-    
-    window.loadHistoryData = function() {
-        let dateSelected = document.getElementById('history-date-picker').value;
-        if(!dateSelected) return;
-
-        document.getElementById('hist-date-display').innerText = `Date: ${dateSelected}`;
-
-        let totalSecs = 0;
-        let subjectHTML = '';
-        syllabusData.forEach(subObj => {
-            let sub = subObj.subject;
-            if(studyStats[sub] && studyStats[sub][dateSelected]) {
-                let secs = studyStats[sub][dateSelected];
-                totalSecs += secs;
-                subjectHTML += `<li style="margin-bottom: 8px; border-bottom: 1px dashed rgba(255,255,255,0.1); padding-bottom: 5px; display: flex; justify-content: space-between;">
-                    <span style="color: var(--cyan-glow);">${sub}</span> 
-                    <span style="font-weight: bold;">${formatTimeReadable(secs)}</span>
-                </li>`;
-            }
-        });
-
-        document.getElementById('hist-total-time').innerText = `Total Study Time: ${formatTimeReadable(totalSecs)}`;
-        document.getElementById('hist-subject-list').innerHTML = subjectHTML || '<li>No study data found for this date. Start your Focus/Pomodoro timer to track!</li>';
-
-        let tasksHTML = '';
-        if(taskHistory[dateSelected] && taskHistory[dateSelected].length > 0) {
-            taskHistory[dateSelected].forEach(t => {
-                let icon = t.done ? '✅' : '❌';
-                let color = t.done ? 'var(--mint-green)' : 'var(--alert-red)';
-                let strike = t.done ? 'text-decoration: line-through; opacity: 0.7;' : '';
-                tasksHTML += `<li style="margin-bottom: 8px; color: ${color}; ${strike}; display:flex; gap:8px;">
-                    <span>${icon}</span> <span>${t.text}</span>
-                </li>`;
-            });
-        } else {
-            tasksHTML = '<li>No tasks recorded for this date.</li>';
-        }
-        document.getElementById('hist-task-list').innerHTML = tasksHTML;
-    }
-
-
-    // =========================================================
-    // Exam Performance Tracker Chart Logic
-    // =========================================================
-    let examScores = JSON.parse(localStorage.getItem('mahi_exam_scores')) || {};
-    let examChartInstance = null;
-
-    function initExamChart() {
-        const ctx = document.getElementById('examChart').getContext('2d');
-        examChartInstance = new Chart(ctx, {
-            type: 'line',
-            data: { labels: [], datasets: [{ label: 'Performance (%)', data: [], borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.2)', fill: true, tension: 0.3, pointBackgroundColor: '#fff' }] },
-            options: { 
-                responsive: true, maintainAspectRatio: false, 
-                scales: { 
-                    y: { beginAtZero: true, max: 100, grid: { color: 'rgba(255,255,255,0.05)' }, ticks: { color: '#9ca3af' } }, 
-                    x: { grid: { display: false }, ticks: { color: '#9ca3af' } } 
-                }, 
-                plugins: { legend: { display: true, labels: { color: '#fff', font: { size: 12 } } } } 
-            }
-        });
-    }
-
-    window.addExamScore = function() {
-        let sub = document.getElementById('exam-subject').value;
-        let total = parseFloat(document.getElementById('exam-total').value);
-        let obtained = parseFloat(document.getElementById('exam-obtained').value);
-
-        if(!sub || isNaN(total) || isNaN(obtained) || total <= 0) { alert("Please enter valid marks."); return; }
-        let percentage = ((obtained / total) * 100).toFixed(2);
-
-        if(!examScores[sub]) examScores[sub] = [];
-        examScores[sub].push({ date: todayStr, obtained: obtained, total: total, percentage: percentage });
-
-        localStorage.setItem('mahi_exam_scores', JSON.stringify(examScores));
-        document.getElementById('exam-obtained').value = '';
-        
-        showMotivation("📝 Exam Score Saved!", `${sub} - You scored ${obtained}/${total} (${percentage}%)`);
-
-        if(document.getElementById('graph-subject-select').value === sub) {
-            updateExamChart();
-        }
-    }
-
-    window.updateExamChart = function() {
-        let sub = document.getElementById('graph-subject-select').value;
-        if(!sub || !examScores[sub] || examScores[sub].length === 0) {
-            examChartInstance.data.labels = [];
-            examChartInstance.data.datasets[0].data = [];
-            examChartInstance.update();
-            return;
-        }
-
-        let labels = [];
-        let data = [];
-        examScores[sub].forEach((entry, idx) => {
-            labels.push(entry.date + ` (Ex-${idx+1})`); 
-            data.push(entry.percentage); 
-        });
-
-        examChartInstance.data.labels = labels;
-        examChartInstance.data.datasets[0].data = data;
-        examChartInstance.data.datasets[0].label = `${sub} - Performance (%)`;
-        examChartInstance.update();
-    }
-
-
-    // =========================================================
-    // Study Analytics Chart Integration
-    // =========================================================
-    let studyChartInstance = null; let currentChartPeriod = 'today';
-    function initChart() {
-        const ctx = document.getElementById('studyChart').getContext('2d');
-        Chart.defaults.color = '#9ca3af';
-        studyChartInstance = new Chart(ctx, {
-            type: 'bar',
-            data: { labels: [], datasets: [{ label: 'Study Time (Minutes)', data: [], backgroundColor: '#22d3ee', borderRadius: 4 }] },
-            options: { responsive: true, maintainAspectRatio: false, scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false }, ticks: { maxRotation: 45, minRotation: 45, font: { size: 10 } } } }, plugins: { legend: { display: false } }, animation: { duration: 500 } }
-        });
-    }
-
-    window.updateChart = function(period) {
-        currentChartPeriod = period;
-        document.querySelectorAll('.chart-filters button').forEach(btn => btn.classList.remove('active-filter')); document.getElementById('btn-filter-' + period).classList.add('active-filter');
-        const now = new Date(); let labels = []; let dataPoints = [];
-        syllabusData.forEach(subObj => {
-            let sub = subObj.subject; let timeInSecs = 0; const records = studyStats[sub] || {};
-            for(let dateKey in records) {
-                let secs = records[dateKey]; let recDate = new Date(dateKey).getTime();
-                if (period === 'today' && dateKey === todayStr) timeInSecs += secs;
-                else if (period === 'yesterday' && dateKey === yesterdayStr) timeInSecs += secs;
-                else if (period === '7days' && (now.getTime() - recDate) <= (7 * 24 * 60 * 60 * 1000)) timeInSecs += secs;
-                else if (period === 'month' && dateKey.substring(0,7) === todayStr.substring(0,7)) timeInSecs += secs;
-                else if (period === 'all') timeInSecs += secs;
-            }
-            let shortName = sub.split('.')[1] ? sub.split('.')[1].trim() : sub; shortName = shortName.replace('Paper', '').trim();
-            labels.push(shortName); dataPoints.push((timeInSecs / 60).toFixed(1));
-        });
-        studyChartInstance.data.labels = labels; studyChartInstance.data.datasets[0].data = dataPoints; studyChartInstance.data.datasets[0].label = `Time (${period.toUpperCase()}) in Mins`;
-        let color = '#22d3ee'; if(period === 'today') color = '#22c55e'; if(period === 'yesterday') color = '#f59e0b'; if(period === '7days') color = '#3b82f6'; if(period === 'month') color = '#a855f7';
-        studyChartInstance.data.datasets[0].backgroundColor = color; studyChartInstance.update();
-    };
-
-    // =========================================================
-    // 1-Week Dynamic Chart Logic
-    // =========================================================
-    let weeklyStudyChartInstance = null;
-
-    function initWeeklyChart() {
-        const ctx = document.getElementById('weeklyStudyChart').getContext('2d');
-        weeklyStudyChartInstance = new Chart(ctx, {
-            type: 'line',
-            data: { 
-                labels: [], 
-                datasets: [{ 
-                    label: 'Total Study Hours', 
-                    data: [], 
-                    borderColor: '#22d3ee', 
-                    backgroundColor: 'rgba(34, 211, 238, 0.1)', 
-                    borderWidth: 3, 
-                    pointBackgroundColor: '#3dadf0', 
-                    pointBorderColor: '#fff', 
-                    pointRadius: 4, 
-                    pointHoverRadius: 6, 
-                    tension: 0.3, 
-                    fill: true 
-                }] 
-            },
-            options: {
-                responsive: true, maintainAspectRatio: false,
-                plugins: { 
-                    legend: { display: false }, 
-                    tooltip: { callbacks: { label: function(context) { return context.parsed.y + ' Hours'; } } } 
-                },
-                scales: {
-                    y: { 
-                        beginAtZero: true, 
-                        grid: { color: 'rgba(61, 173, 240, 0.15)' }, 
-                        ticks: { color: '#9ca3af', callback: function(value) { return value + 'h'; } } 
-                    },
-                    x: { 
-                        grid: { color: 'rgba(61, 173, 240, 0.05)' }, 
-                        ticks: { color: '#9ca3af' } 
-                    }
-                }
-            }
-        });
-    }
-
-    function updateWeeklyChart() {
-        if(!weeklyStudyChartInstance) return;
-        let labels = [];
-        let dataPoints = [];
-        
-        for(let i=6; i>=0; i--) {
-            let d = new Date();
-            d.setDate(d.getDate() - i);
-            let dateStr = d.toLocaleDateString('en-CA'); 
-            let displayStr = d.toLocaleDateString('en-US', { weekday: 'short' }); 
-            
-            let dailyTotalSecs = 0;
-            syllabusData.forEach(subObj => {
-                let sub = subObj.subject;
-                if(studyStats[sub] && studyStats[sub][dateStr]) {
-                    dailyTotalSecs += studyStats[sub][dateStr];
-                }
-            });
-            
-            labels.push(displayStr);
-            dataPoints.push((dailyTotalSecs / 3600).toFixed(2)); 
-        }
-        
-        weeklyStudyChartInstance.data.labels = labels;
-        weeklyStudyChartInstance.data.datasets[0].data = dataPoints;
-        weeklyStudyChartInstance.update();
-    }
-
-    // =========================================================
-    // DOMContentLoaded Initialization (Drag & Drop Base)
-    // =========================================================
-    window.addEventListener('DOMContentLoaded', () => { 
-        initChart(); 
-        initExamChart(); 
-        initWeeklyChart(); 
-        updateChart('today'); 
-        updateWeeklyChart(); 
-        renderXP(); 
-        loadHistoryData(); 
-
-        // Parent Dashboard Drag & Drop Initialization with SortableJS
-        const dashboard = document.getElementById('draggable-dashboard');
-        Sortable.create(dashboard, {
-            animation: 150,
-            handle: '.card-title', // শুধু টাইটেল ধরে টানলে ড্র্যাগ হবে
-            ghostClass: 'sortable-ghost',
-            onEnd: function () {
-                const order = Array.from(dashboard.children).map(card => card.id);
-                localStorage.setItem('mahi_dashboard_order', JSON.stringify(order));
-            }
-        });
-
-        // Restore Parent Dashboard Saved Order
-        const savedOrder = JSON.parse(localStorage.getItem('mahi_dashboard_order'));
-        if (savedOrder) {
-            savedOrder.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) dashboard.appendChild(el);
-            });
-        }
-    });
-
-    function renderReports() {
-        const tbody = document.getElementById('report-table-body');
-        tbody.innerHTML = '';
-        const nowTime = new Date().getTime();
-        let totalDay = 0, totalYesterday = 0, totalWeek = 0, totalMonth = 0, totalAll = 0;
-
-        syllabusData.forEach(subObj => {
-            let sub = subObj.subject;
-            let dayCount = 0, yesterdayCount = 0, weekCount = 0, monthCount = 0, allCount = 0;
-            const records = studyStats[sub] || {};
-            for(let dateKey in records) {
-                let secs = records[dateKey]; let recDate = new Date(dateKey).getTime();
-                allCount += secs;
-                if(dateKey === todayStr) dayCount += secs;
-                if(dateKey === yesterdayStr) yesterdayCount += secs; 
-                if((nowTime - recDate) <= (7 * 24 * 60 * 60 * 1000)) weekCount += secs;
-                if(dateKey.substring(0,7) === todayStr.substring(0,7)) monthCount += secs;
-            }
-            totalDay += dayCount; totalYesterday += yesterdayCount; totalWeek += weekCount; totalMonth += monthCount; totalAll += allCount;
-
-            tbody.innerHTML += `<tr><td style="text-align: left; color: var(--text-main); font-weight: 500;">${sub}</td><td style="color: ${dayCount > 0 ? 'var(--mint-green)' : '#6b7280'}">${formatTimeReadable(dayCount)}</td><td style="color: var(--text-main);">${formatTimeReadable(yesterdayCount)}</td><td style="color: ${weekCount > 0 ? 'var(--cyan-glow)' : '#6b7280'}">${formatTimeReadable(weekCount)}</td><td>${formatTimeReadable(monthCount)}</td><td>${formatTimeReadable(allCount)}</td></tr>`;
-        });
-        tbody.innerHTML += `<tr class="total-row"><td style="text-align: left;">TOTAL FOCUS TIME</td><td>${formatTimeReadable(totalDay)}</td><td style="color: var(--timer-orange) !important;">${formatTimeReadable(totalYesterday)}</td><td>${formatTimeReadable(totalWeek)}</td><td>${formatTimeReadable(totalMonth)}</td><td>${formatTimeReadable(totalAll)}</td></tr>`;
-    }
-    renderReports();
-
-    // =========================================================
-    // অরিজিনাল সিলেবাস ম্যাট্রিক্স (The EXACT 801 Target Matrix Builder)
-    // =========================================================
-    const scienceTasks = ['CLASS','ANNOTATION BOOK', 'MCQ', 'CQ', 'ক/খ', 'NOTE', 'REVISION','EXAM', 'BUET/MAT/ADMISSON QB']; const languageTasks =  ['CLASS','ANNOTATION BOOK/MAKE NOTE', 'MCQ,ক,খ,CQ/PRACTICE PYQ','REVISION','EXAM'];
-    let savedProgress = JSON.parse(localStorage.getItem('mahi_syllabus_progress')) || {}; const container = document.getElementById('syllabus-container'); let generatedHTML = '';
-    
-    syllabusData.forEach((sub, subIndex) => {
-        generatedHTML += `<div class="subject-card"><div class="subject-header"><span>${sub.subject}</span><span style="color: var(--cyan-glow)" id="prog-text-${subIndex}">0%</span></div><div class="chapters-scroll-container">`; 
-        sub.chapters.forEach((chap, chapIndex) => {
-            generatedHTML += `<div class="chapter-item"><div class="chapter-title">${chap}</div><div class="task-checkboxes">`;
-            const tasksToUse = sub.type === 'science' ? scienceTasks : languageTasks;
-            tasksToUse.forEach((task, taskIndex) => { 
-                const uniqueId = `t-${subIndex}-${chapIndex}-${taskIndex}`; 
-                const isChecked = savedProgress[uniqueId] ? 'checked' : ''; 
-                generatedHTML += `<label class="${isChecked ? 'checked' : ''}" for="${uniqueId}"><input type="checkbox" class="task-checkbox" data-sub-id="${subIndex}" id="${uniqueId}" ${isChecked}> ${task}</label>`; 
-            });
-            generatedHTML += `</div></div>`;
-        });
-        generatedHTML += `</div></div>`;
-    });
-    container.innerHTML = generatedHTML;
-    
-    const allCheckboxes = document.querySelectorAll('.task-checkbox'); const totalTargets = allCheckboxes.length;
-    function updateSyllabusProgress() {
-        let globalCheckedCount = 0; let subjectCounts = new Array(syllabusData.length).fill(0); let subjectTotals = new Array(syllabusData.length).fill(0);
-        allCheckboxes.forEach(box => { let subId = box.getAttribute('data-sub-id'); subjectTotals[subId]++; savedProgress[box.id] = box.checked; if (box.checked) { globalCheckedCount++; subjectCounts[subId]++; box.parentElement.classList.add('checked'); } else { box.parentElement.classList.remove('checked'); } });
-        localStorage.setItem('mahi_syllabus_progress', JSON.stringify(savedProgress));
-        let globalPercentage = totalTargets === 0 ? 0 : ((globalCheckedCount / totalTargets) * 100).toFixed(1);
-        document.getElementById('global-counter').innerText = `${globalCheckedCount} / ${totalTargets} Mastered`; document.getElementById('global-percentage').innerText = `${globalPercentage}%`; document.getElementById('global-progress-bar').style.width = `${globalPercentage}%`;
-        subjectTotals.forEach((total, id) => { let subPercentage = total === 0 ? 0 : ((subjectCounts[id] / total) * 100); document.getElementById(`prog-text-${id}`).innerText = `${subPercentage.toFixed(0)}%`; });
-    }
-    allCheckboxes.forEach(box => { box.addEventListener('change', function() { if(this.checked) updateXP(20, "Syllabus Update! 📚 " + getRandomQuote()); else updateXP(-20); updateSyllabusProgress(); }); }); 
-    updateSyllabusProgress();
-
-    // =========================================================
-    // কোটেশন স্লাইডার (Motivational Quotes Auto Change)
-    // =========================================================
-    let quoteIndex = 0; const quoteText = document.getElementById('quote-text'); const quoteBox = document.getElementById('quote-box');
-    function changeQuote() { quoteBox.style.opacity = 0; setTimeout(() => { quoteText.innerText = `"${motivationalQuotes[quoteIndex]}"`; quoteBox.style.opacity = 1; quoteIndex = (quoteIndex + 1) % motivationalQuotes.length; }, 500); }
-    changeQuote(); setInterval(changeQuote, 15000);
-
-    // =========================================================
-    // ব্যাকআপ এবং রিস্টোর টুলস (Data Backup & Restore Tools)
-    // =========================================================
-    window.backupData = function() {
-        const allData = { 
-            mahi_study_stats: localStorage.getItem('mahi_study_stats'), 
-            mahi_daily_tasks: localStorage.getItem('mahi_daily_tasks'), 
-            mahi_habits: localStorage.getItem('mahi_habits'), 
-            mahi_weekly_goals: localStorage.getItem('mahi_weekly_goals'),
-            mahi_monthly_goals: localStorage.getItem('mahi_monthly_goals'),
-            mahi_syllabus_progress: localStorage.getItem('mahi_syllabus_progress'), 
-            mahi_target_event: localStorage.getItem('mahi_target_event'), 
-            mahi_streak_count: localStorage.getItem('mahi_streak_count'), 
-            mahi_xp: localStorage.getItem('mahi_xp'), 
-            mahi_last_streak_date: localStorage.getItem('mahi_last_streak_date'), 
-            mahi_last_login_date: localStorage.getItem('mahi_last_login_date'), 
-            mahi_links: localStorage.getItem('mahi_links'),
-            mahi_task_history: localStorage.getItem('mahi_task_history'),
-            mahi_exam_scores: localStorage.getItem('mahi_exam_scores'),
-            mahi_dashboard_order: localStorage.getItem('mahi_dashboard_order'),
-            mahi_light_mode: localStorage.getItem('mahi_light_mode')
-        };
-        const blob = new Blob([JSON.stringify(allData)], { type: 'application/json' }); const url = URL.createObjectURL(blob);
-        const a = document.createElement('a'); a.href = url; a.download = `MAHI_MRM_OS_DATA_${todayStr}.json`; a.click();
-    }
-    
-    window.restoreData = function(event) {
-        const file = event.target.files[0]; if (!file) return; const reader = new FileReader();
-        reader.onload = function(e) { 
-            try { 
-                const data = JSON.parse(e.target.result); 
-                Object.keys(data).forEach(key => { if(data[key]) localStorage.setItem(key, data[key]); }); 
-                alert("✅ Data successfully restored! Reloading..."); location.reload(); 
-            } catch (error) { 
-                alert("❌ Wrong file format! Please upload the correct backup JSON file."); 
-            } 
-        }; 
-        reader.readAsText(file);
-    }
-
-    let mybutton = document.getElementById("scrollTopBtn"); window.onscroll = function() { if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) { mybutton.style.display = "block"; } else { mybutton.style.display = "none"; } };
-    function scrollToTop() { document.body.scrollTop = 0; document.documentElement.scrollTop = 0; }
-    
-</script>
+<script src="index.js"></script>
 </body>
 </html>
