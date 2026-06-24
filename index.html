@@ -50,7 +50,7 @@
         }
 
         body.light-mode .card { box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-        body.light-mode select, body.light-mode input[type="text"], body.light-mode input[type="datetime-local"], body.light-mode input[type="date"], body.light-mode input[type="number"], body.light-mode input[type="range"] { background: #f8fafc; color: var(--text-main); border-color: var(--border-normal); }
+        body.light-mode select, body.light-mode input[type="text"], body.light-mode input[type="datetime-local"], body.light-mode input[type="date"], body.light-mode input[type="number"], body.light-mode input[type="range"], body.light-mode input[type="time"] { background: #f8fafc; color: var(--text-main); border-color: var(--border-normal); }
         body.light-mode button:not(.pop-btn):not(.btn-stop-alarm) { background: #e2e8f0; color: var(--text-main); }
         
         body.light-mode .pop-btn, body.light-mode .three-dot-btn, body.light-mode .btn-del-link, body.light-mode .btn-edit-link, body.light-mode .close-popup { background: transparent !important; color: var(--cyan-glow) !important; }
@@ -87,15 +87,10 @@
         body.light-mode ::-webkit-scrollbar-track { background: #f0f4f8; }
         body.light-mode ::-webkit-scrollbar-thumb { background: var(--border-normal); }
         body.light-mode ::-webkit-scrollbar-thumb:hover { background: var(--cyan-glow); }
-        body.light-mode .task-list label.completed { background: rgba(22, 163, 74, 0.05); color: var(--mint-green); }
-        body.light-mode #habit-list label.completed { background: rgba(217, 119, 6, 0.05); color: var(--timer-orange); }
-        body.light-mode .sw-row { background: rgba(37, 99, 235, 0.05); border-color: rgba(37, 99, 235, 0.2); }
-        body.light-mode .sw-label { color: var(--text-main); }
-        body.light-mode #sound-speed { background: #f8fafc; color: var(--text-main); }
         body.light-mode .task-checkboxes label { background: #f8fafc; border-color: var(--border-normal); color: var(--text-soft); }
         body.light-mode .task-checkboxes label.checked { background: var(--mint-green) !important; color: #ffffff !important; border-color: var(--mint-green); }
 
-        /* লাইট মোডে নতুন ওভাররাইড (Calendar Input, Matrix Chapter Title & Exam Save Button Visibility) */
+        /* লাইট মোডে নতুন ওভাররাইড */
         body.light-mode #history-date-picker { background: #ffffff !important; color: var(--text-main) !important; border-color: var(--border-normal) !important; }
         body.light-mode .chapter-title { color: var(--text-main) !important; }
         body.light-mode .save-score-btn { background: #e2e8f0 !important; color: var(--text-main) !important; border-color: var(--border-normal) !important; }
@@ -115,7 +110,7 @@
         ::-webkit-scrollbar-thumb:hover { background: var(--cyan-glow); box-shadow: 0 0 10px var(--cyan-glow); }
 
         /* =========================================================
-           ৩. হ্যাকার স্টাইল প্রিমিয়াম লোডার (Electric Blue Hacker Loader)
+           ৩. হ্যাকার স্টাইল প্রিমিয়াম সাইবার-গ্রীন পিক্সেল লোডার (Hacking Loader)
            ========================================================= */
         #hacker-loader {
             position: fixed;
@@ -127,65 +122,83 @@
             justify-content: center;
             align-items: center;
             font-family: 'Share Tech Mono', monospace;
-            color: #00f0ff;
+            color: #00ff00;
             transition: opacity 0.8s ease, visibility 0.8s ease;
         }
         #hacker-loader .matrix-bg {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.92), rgba(0, 0, 0, 0.95)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><text x="10" y="20" fill="rgba(0,180,255,0.15)" font-family="monospace" font-size="12">1 0 1 1 0 0</text><text x="30" y="50" fill="rgba(0,180,255,0.15)" font-family="monospace" font-size="12">0 1 0 1 0 1</text></svg>');
+            background: linear-gradient(rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.97)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80"><text x="10" y="20" fill="rgba(0,255,0,0.06)" font-family="monospace" font-size="12">01 10 11 00</text><text x="30" y="50" fill="rgba(0,255,0,0.06)" font-family="monospace" font-size="12">10 01 11 01</text></svg>');
             z-index: -1;
-            animation: matrixMove 20s linear infinite;
+            animation: matrixMove 12s linear infinite;
         }
         @keyframes matrixMove { from { background-position: 0 0; } to { background-position: 0 1000px; } }
+        
         .loader-terminal {
             width: 90%;
-            max-width: 600px;
-            background: rgba(10, 10, 10, 0.9);
-            border: 1px solid #00f0ff;
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
-            border-radius: 6px;
-            padding: 20px;
+            max-width: 650px;
+            background: rgba(0, 0, 0, 0.95);
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 35px rgba(0, 255, 0, 0.3), inset 0 0 15px rgba(0, 255, 0, 0.1);
+            border-radius: 8px;
+            padding: 25px;
             text-align: left;
         }
         .loader-log {
             font-size: 0.85rem;
-            height: 120px;
-            overflow-y: hidden;
-            margin-bottom: 15px;
-            color: #38bdf8;
+            height: 160px;
+            overflow-y: auto;
+            margin-bottom: 20px;
+            color: #39d353;
+            border: 1px solid rgba(0, 255, 0, 0.2);
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 4px;
         }
         .loader-pct-container {
             font-size: 2.5rem;
             font-weight: bold;
-            text-shadow: 0 0 10px #00f0ff;
-            margin-bottom: 10px;
+            text-shadow: 0 0 15px #00ff00;
+            margin-bottom: 12px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
         .loader-bar-container {
             width: 100%;
-            background: #111;
-            height: 15px;
-            border: 1px solid #00f0ff;
-            border-radius: 3px;
+            background: #000;
+            height: 18px;
+            border: 1.5px solid #00ff00;
+            border-radius: 4px;
             overflow: hidden;
             position: relative;
         }
         .loader-bar-fill {
             height: 100%;
             width: 0%;
-            background: #00f0ff;
-            box-shadow: 0 0 15px #00f0ff;
-            transition: width 0.1s linear;
+            background: linear-gradient(90deg, #10b981, #00ff00, #39d353);
+            box-shadow: 0 0 15px #00ff00;
+            transition: width 0.05s linear;
+            position: relative;
         }
+        .loader-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(
+                90deg,
+                rgba(255,255,255,0) 0%,
+                rgba(255,255,255,0.4) 50%,
+                rgba(255,255,255,0) 100%
+            );
+            animation: lightShift 1.5s infinite;
+        }
+        @keyframes lightShift { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
         .access-granted {
-            color: #38bdf8 !important;
-            text-shadow: 0 0 15px #00f0ff;
-            animation: blink 0.5s infinite;
+            color: #00ff00 !important;
+            text-shadow: 0 0 20px #00ff00;
+            animation: blink 0.4s infinite;
         }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
         /* =========================================================
            ৪. নেভিগেশন বার (Top Navigation Menu)
@@ -216,7 +229,7 @@
         .xp-progress-bg { width: 100%; background: rgba(255, 255, 255, 0.1); height: 6px; border-radius: 10px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.05); }
         .xp-progress-fill { width: 0%; height: 100%; background: linear-gradient(90deg, var(--border-normal), var(--cyan-glow)); box-shadow: 0 0 8px var(--cyan-glow); transition: width 0.5s ease-out; }
 
-        /* Rainbow Linear Animated Gradient with neon colors (Red, Orange, Yellow, Green, Blue, Indigo, Violet) */
+        /* Rainbow Linear Animated Gradient */
         .animated-brand-title {
             font-size: 2.1rem;
             font-weight: 800;
@@ -279,7 +292,7 @@
         .hidden-input-section { display: none; flex-direction: column; gap: 8px; margin-bottom: 10px; padding: 12px; background: #030712; border: 1px solid var(--border-normal); border-radius: 6px; animation: slideDown 0.3s ease; box-shadow: inset 0 0 10px rgba(0,0,0,0.5); }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
 
-        select, input[type="text"], input[type="datetime-local"], input[type="date"], input[type="number"], input[type="range"] { width: 100%; background: #000000; border: 1px solid var(--border-normal); color: #ffffff; padding: 8px 10px; border-radius: 6px; margin-bottom: 8px; font-family: inherit; outline: none; transition: all 0.3s ease; font-size: 0.9rem; }
+        select, input[type="text"], input[type="datetime-local"], input[type="date"], input[type="number"], input[type="range"], input[type="time"] { width: 100%; background: #000000; border: 1px solid var(--border-normal); color: #ffffff; padding: 8px 10px; border-radius: 6px; margin-bottom: 8px; font-family: inherit; outline: none; transition: all 0.3s ease; font-size: 0.9rem; }
         select:focus, input:focus { border-color: var(--cyan-glow); box-shadow: 0 0 10px rgba(34, 211, 238, 0.4); }
         input[type="datetime-local"]::-webkit-calendar-picker-indicator, input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
 
@@ -313,7 +326,7 @@
         #btn-add-weekly-goal:active, #btn-add-monthly-goal:active { background: var(--deep-blue) !important; color: #fff !important; box-shadow: 0 0 25px var(--deep-blue) !important; border-color: var(--deep-blue) !important; }
         #btn-set-target:active { background: var(--alert-red) !important; color: #fff !important; box-shadow: 0 0 25px var(--alert-red) !important; border-color: var(--alert-red) !important; }
         #btn-add-link:active { background: var(--neon-purple) !important; color: #fff !important; box-shadow: 0 0 25px var(--neon-purple) !important; border-color: var(--neon-purple) !important; }
-        #btn-add-habit:active { background: var(--timer-orange) !important; color: #fff !important; box-shadow: 0 0 25px var(--timer-orange) !important; border-color: var(--timer-orange) !important; }
+        #btn-add-habit:active, #btn-add-slot:active { background: var(--timer-orange) !important; color: #fff !important; box-shadow: 0 0 25px var(--timer-orange) !important; border-color: var(--timer-orange) !important; }
 
         .premium-add-btn { background: rgba(255,255,255,0.05) !important; width: 100%; padding: 8px; border-radius: 6px; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; border-style: dashed !important;}
         
@@ -372,7 +385,7 @@
         }
 
         /* =========================================================
-           ৮. টাস্ক এবং লিংক লিস্ট (Lists Automatically Fill space)
+           ৮. টাস্ক এবং লিংক লিস্ট
            ========================================================= */
         .task-list { flex: 1 1 auto; overflow-y: auto; display: flex; flex-direction: column; padding-right: 5px; margin-top: 5px; gap: 6px; min-height: 0;}
         .task-list label { display: flex; align-items: center; justify-content: space-between; gap: 8px; background: #050505; padding: 8px 10px; border-radius: 6px; border: 1px solid rgba(34, 197, 94, 0.4); cursor: grab; font-size: 0.85rem; transition: all 0.2s; flex-shrink: 0;}
@@ -381,8 +394,8 @@
         .task-list label.completed { text-decoration: line-through; opacity: 0.5; color: var(--mint-green); border-color: var(--mint-green); background: rgba(34, 197, 94, 0.05); }
         .task-list input[type="checkbox"] { width: 16px; height: 16px; cursor: pointer; accent-color: inherit; }
         
-        #habit-list label { border: 1px solid rgba(245, 158, 11, 0.4); }
-        #habit-list label.completed { text-decoration: line-through; opacity: 0.7; color: var(--timer-orange); border-color: var(--timer-orange); background: rgba(245, 158, 11, 0.05); }
+        #habit-list label, #slot-manager-list label { border: 1px solid rgba(245, 158, 11, 0.4); }
+        #habit-list label.completed, #slot-manager-list label.completed { text-decoration: line-through; opacity: 0.7; color: var(--timer-orange); border-color: var(--timer-orange); background: rgba(245, 158, 11, 0.05); }
 
         #card-links { grid-column: auto; grid-row: auto; display: flex; flex-direction: column; }
         #links-container { flex: 1 1 auto; display: flex; flex-direction: column; gap: 8px; overflow-y: auto; padding-right: 5px; margin-top: 5px; min-height: 0; }
@@ -427,6 +440,68 @@
         .sound-controls button { border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; transition: 0.3s;}
         .sound-controls #btn-sound-playpause { width: 55px; height: 55px; font-size: 1.5rem; border-width: 2px;}
 
+        /* =========================================================
+           ১০. স্টাডি কন্ট্রিবিউশন ক্যালেন্ডার (Single-Column Heatmap Card)
+           ========================================================= */
+        .heatmap-rows-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            overflow-y: auto;
+            flex: 1;
+            padding-top: 5px;
+        }
+        .heatmap-cell { 
+            width: 6px; 
+            height: 6px; 
+            border-radius: 1px; 
+            background: #161b22; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+        }
+        body.light-mode .heatmap-cell { 
+            background: #ebedf0; 
+        }
+        .heatmap-cell.lvl-1 { background: #0e4429 !important; }
+        .heatmap-cell.lvl-2 { background: #006d32 !important; }
+        .heatmap-cell.lvl-3 { background: #26a641 !important; }
+        .heatmap-cell.lvl-4 { background: #39d353 !important; box-shadow: 0 0 5px rgba(57, 211, 83, 0.4); }
+
+        body.light-mode .heatmap-cell.lvl-1 { background: #9be9a8 !important; }
+        body.light-mode .heatmap-cell.lvl-2 { background: #40c463 !important; }
+        body.light-mode .heatmap-cell.lvl-3 { background: #30a14e !important; }
+        body.light-mode .heatmap-cell.lvl-4 { background: #216e39 !important; }
+
+        .heatmap-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            font-size: 0.75rem;
+            color: var(--text-soft);
+            padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        body.light-mode .heatmap-footer {
+            border-top-color: var(--border-normal);
+        }
+        .heatmap-footer-left {
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--text-soft);
+            transition: color 0.2s;
+        }
+        .heatmap-footer-left:hover {
+            color: var(--cyan-glow);
+        }
+        .heatmap-legend {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
         /* Responsive Breakpoints */
         @media (max-width: 1200px) { .dashboard-layout { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; } }
         @media (max-width: 900px) { .dashboard-layout { grid-template-columns: repeat(2, 1fr); } }
@@ -444,7 +519,7 @@
         }
 
         /* =========================================================
-           ১০. পপআপ এবং টোস্ট (Popups & Toasts)
+           ১১. পপআপ এবং টোস্ট (Popups & Toasts)
            ========================================================= */
         .popup-window { display: none; position: fixed; z-index: 2000; background: var(--bg-dark); border: 2px solid var(--cyan-glow); border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); width: 340px; padding: 20px; cursor: move; resize: both; overflow: auto; min-width: 300px; min-height: 220px; color: var(--text-main); }
         .popup-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-normal); padding-bottom: 10px; margin-bottom: 15px; font-weight: bold; color: var(--cyan-glow); font-size: 1.05rem; cursor: grab;}
@@ -459,7 +534,7 @@
         @keyframes slideInRight { from { transform: translateX(120%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
 
         /* =========================================================
-           ১১. সিলেবাস ও অ্যানালিটিক্স (Syllabus & Reports)
+           ১২. সিলেবাস ও অ্যানালিটিক্স (Syllabus & Reports)
            ========================================================= */
         .analytics-bar { background: #000; border: 1px solid var(--border-normal); padding: 20px; border-radius: 10px; margin-bottom: 25px; display: flex; justify-content: space-between; align-items: center; }
         .progress-container { width: 70%; background: #111; border-radius: 8px; height: 14px; overflow: hidden; border: 1px solid var(--border-normal); }
@@ -493,20 +568,20 @@
 </head>
 <body>
 
-<!-- হ্যাকিং স্টাইল প্রিমিয়াম সাইবার-ব্লু লোডার -->
+<!-- হ্যাকিং স্টাইল প্রিমিয়াম সাইবার-গ্রীন পিক্সেল লোডার -->
 <div id="hacker-loader">
     <div class="matrix-bg"></div>
     <div class="loader-terminal">
-        <div style="font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; border-bottom: 1px solid #00f0ff; padding-bottom: 5px;">💻 SYSTEM BOOT: MISSION HACKING BUET</div>
+        <div style="font-size: 1.3rem; font-family: 'Share Tech Mono', monospace; font-weight: bold; margin-bottom: 12px; border-bottom: 2px solid #00ff00; padding-bottom: 8px; letter-spacing: 1.5px; text-shadow: 0 0 10px rgba(0,255,0,0.5); color: #00ff00;">📡 SYSTEM HACKING-MISSION CRACKING  BUET(PRO EDITION v2.0)</div>
         <div class="loader-log" id="hacker-log">
-            [SYS_INIT] Initializing modules...<br>
-            [CORE_NET] Fetching remote study syllabus metrics...<br>
-            [SECURITY] Decrypting student database (MAHI)...<br>
+            [SYS_BOOT] STARTING MAHI MISSION CONTROL MAIN SYSTEM INITIALIZATION...
         </div>
-        <div class="loader-pct-container">
+        <div class="loader-pct-container" style="color: #00ff00;">
             <span id="loader-pct-text">0%</span>
-            <span id="access-msg" style="font-size: 1.1rem; color: #f59e0b;">INITIALIZING...</span>
+            <span id="access-msg" style="font-size: 1.1rem; color: #39d353; font-weight: bold; letter-spacing: 2px; font-family: 'Share Tech Mono', monospace;">SECURE LOADING...</span>
         </div>
+        <!-- পিক্সেল প্রোগ্রেস বার ভিউ -->
+        <div id="pixel-progress-blocks" style="font-family: 'Share Tech Mono', monospace; font-size: 1.25rem; letter-spacing: 2px; color: #00ff00; margin: 10px 0; min-height: 24px; text-shadow: 0 0 8px rgba(0,255,0,0.5);">░░░░░░░░░░░░░░░░░░░░</div>
         <div class="loader-bar-container">
             <div class="loader-bar-fill" id="loader-bar-fill-el"></div>
         </div>
@@ -520,7 +595,7 @@
 <div class="shortcut-navbar">
     <button class="three-dot-btn" id="menu-btn" onclick="toggleNavMenu()">☰</button>
     <div class="nav-dropdown-content" id="nav-dropdown">
-        <a href="#" onclick="openUserInfoModal(); toggleNavMenu();">✏️ Edit PROFILE</a>
+        <a href="#" onclick="openUserInfoModal(); toggleNavMenu();">✏️ Edit Profile</a>
         <a href="#" onclick="toggleLightMode(); toggleNavMenu();">☀️ Toggle Light Mode</a>
         <a href="#" onclick="openPopup('card-focus', 'pop-focus'); toggleNavMenu();">⏱️ Open Focus in PIP</a>
         <a href="#" onclick="openPopup('card-tasks', 'pop-tasks'); toggleNavMenu();">📌 Open Tasks in PIP</a>
@@ -528,10 +603,12 @@
         <a href="#" onclick="openPopup('card-monthly-goals', 'pop-monthly-goals'); toggleNavMenu();">📅 Open Monthly Goals in PIP</a>
         <a href="#" onclick="openPopup('card-countdown', 'pop-countdown'); toggleNavMenu();">📅 Open Target in PIP</a>
         <a href="#" onclick="openPopup('card-habits', 'pop-habits'); toggleNavMenu();">🔁 Open Habits in PIP</a>
+        <a href="#" onclick="openPopup('card-slot-manager', 'pop-slot-manager'); toggleNavMenu();">📅 Open Slot Manager in PIP</a>
         <a href="#" onclick="openPopup('card-pomo', 'pop-pomo'); toggleNavMenu();">🍅 Open Pomodoro in PIP</a>
         <a href="#" onclick="openPopup('card-stopwatch', 'pop-stopwatch'); toggleNavMenu();">⏱️ Open Stopwatch in PIP</a>
         <a href="#" onclick="openPopup('card-links', 'pop-links'); toggleNavMenu();">🔗 Open Links Hub in PIP</a>
         <a href="#" onclick="openPopup('card-sounds', 'pop-sounds'); toggleNavMenu();">🎧 Open Sounds in PIP</a>
+        <a href="#" onclick="openPopup('card-study-heatmap', 'pop-study-heatmap'); toggleNavMenu();">📊 Open Heatmap in PIP</a>
         <a href="#syllabus-section" onclick="toggleNavMenu()">📊 Syllabus Matrix</a>
         <a href="#analytics-section" onclick="toggleNavMenu()">📈 Study Analytics</a>
     </div>
@@ -812,6 +889,63 @@
                 <div class="task-list" id="habit-list"></div>
             </div>
         </div>
+
+        <!-- রুটিন ট্র্যাকার: Daily Slot Manager কার্ড (১-কলাম সাইজ) -->
+        <div class="card engine-orange" id="card-slot-manager" style="padding: 25px;">
+            <div class="card-title" title="Drag to move">
+                <span style="color: var(--timer-orange);">📅 Slot Manager</span>
+                <button class="pop-btn" onclick="openPopup('card-slot-manager', 'pop-slot-manager')">↗</button>
+            </div>
+            <div class="engine-content-target">
+                <button class="premium-add-btn" onclick="toggleInput('slot-input-section')">➕ Create New Slot</button>
+                <div id="slot-input-section" class="hidden-input-section">
+                    <input type="text" id="slot-name-input" placeholder="Slot Name (e.g., Self-Study Slot 1)" style="margin-bottom: 8px;">
+                    <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+                        <div style="flex: 1;">
+                            <label style="font-size: 0.75rem; color: var(--text-soft); display: block; margin-bottom: 3px;">Start Time</label>
+                            <input type="time" id="slot-start-input" style="margin-bottom: 0;">
+                        </div>
+                        <div style="flex: 1;">
+                            <label style="font-size: 0.75rem; color: var(--text-soft); display: block; margin-bottom: 3px;">End Time</label>
+                            <input type="time" id="slot-end-input" style="margin-bottom: 0;">
+                        </div>
+                    </div>
+                    <button id="btn-add-slot" style="width: 100%;">Save Slot</button>
+                </div>
+                <div class="task-list" id="slot-manager-list"></div>
+            </div>
+        </div>
+
+        <!-- ১-কলাম সাইজ বিশিষ্ট স্টাডি কন্ট্রিবিউশন হিটম্যাপ কার্ড -->
+        <div class="card engine-green" id="card-study-heatmap" style="padding: 25px;">
+            <div class="card-title" title="Drag to move">
+                <span style="color: var(--mint-green);">📊 Study Heatmap</span>
+                <div style="display: flex; gap: 8px; align-items: center; pointer-events: auto;">
+                    <select id="heatmap-year-select" style="margin-bottom:0; width:90px; padding:4px 8px; font-size:0.85rem;" onchange="renderHeatmap()">
+                        <!-- Javascript dynamically populates and defaults to current year -->
+                    </select>
+                    <button class="pop-btn" onclick="openPopup('card-study-heatmap', 'pop-study-heatmap')">↗</button>
+                </div>
+            </div>
+            <div class="engine-content-target" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%;">
+                <div class="heatmap-rows-container" id="heatmap-months-grid">
+                    <!-- ৩x৪ গ্রিডে ১২টি মাস ডাইনামিকালি জেনারেট হবে -->
+                </div>
+                <div class="heatmap-footer">
+                    <span class="heatmap-footer-left">Click cell to load daily logs</span>
+                    <div class="heatmap-legend">
+                        <span>Less</span>
+                        <div class="heatmap-cell"></div>
+                        <div class="heatmap-cell lvl-1"></div>
+                        <div class="heatmap-cell lvl-2"></div>
+                        <div class="heatmap-cell lvl-3"></div>
+                        <div class="heatmap-cell lvl-4"></div>
+                        <span>More</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- PIP Fallback Overlay Containers -->
@@ -825,11 +959,13 @@
     <div id="pop-links" class="popup-window"><div class="popup-header"><span>🔗 Links</span><button class="close-popup" onclick="restoreCard('card-links', 'pop-links')">✖</button></div><div class="popup-body"></div></div>
     <div id="pop-sounds" class="popup-window"><div class="popup-header"><span>🎧 Sounds</span><button class="close-popup" onclick="restoreCard('card-sounds', 'pop-sounds')">✖</button></div><div class="popup-body"></div></div>
     <div id="pop-habits" class="popup-window"><div class="popup-header"><span>🔁 Habits</span><button class="close-popup" onclick="restoreCard('card-habits', 'pop-habits')">✖</button></div><div class="popup-body"></div></div>
+    <div id="pop-slot-manager" class="popup-window"><div class="popup-header"><span>📅 Slot Manager</span><button class="close-popup" onclick="restoreCard('card-slot-manager', 'pop-slot-manager')">✖</button></div><div class="popup-body"></div></div>
+    <div id="pop-study-heatmap" class="popup-window"><div class="popup-header"><span>📊 Heatmap</span><button class="close-popup" onclick="restoreCard('card-study-heatmap', 'pop-study-heatmap')">✖</button></div><div class="popup-body"></div></div>
 
     <!-- Personal Info Edit Modal -->
     <div id="pop-user-info" class="popup-window" style="width: 360px; height: auto;">
         <div class="popup-header">
-            <span>✏️ Edit PROFILE</span>
+            <span>✏️ Edit Profile</span>
             <button class="close-popup" onclick="closeUserInfoModal()">✖</button>
         </div>
         <div class="popup-body" style="padding: 10px 0;">
@@ -952,13 +1088,14 @@
     <!-- Backup Section -->
     <div class="card engine-orange" style="margin-top: 25px; padding: 25px; border: 2px solid rgba(245, 158, 11, 0.4); height: auto;">
         <div class="card-title" style="border-bottom:none; border-color: #fff; color: #fff;">💾 Data Cloud Backup & Restore</div>
-        <p style="font-size: 0.9rem; color: var(--text-soft); margin-bottom: 15px;">আপনার ড্যাশবোর্ডের সব ডাটা (Syllabus, Tasks, Exams, Goals, Habits, Time) এখান থেকে ব্যাকআপ নিয়ে রাখতে পারেন।</p>
+        <p style="font-size: 0.9rem; color: var(--text-soft); margin-bottom: 15px;">আপনার ড্যাশবোর্ডের সব ডাটা (Syllabus, Tasks, Exams, Goals, Habits, Routine Slots, Time) এখান থেকে ব্যাকআপ নিয়ে রাখতে পারেন।</p>
         <div class="btn-group" style="max-width: 450px; grid-template-columns: 1fr 1fr; gap: 15px;">
             <button class="btn-backup" onclick="backupData()">⬇️ Download Backup</button>
             <button class="btn-restore" onclick="document.getElementById('file-input').click()">⬆️ Upload Backup</button>
             <input type="file" id="file-input" style="display:none" onchange="restoreData(event)" accept=".json">
         </div>
     </div>
+
 </div>
 
 <button id="scrollTopBtn" onclick="scrollToTop()" title="Go to top">⬆️</button>
@@ -977,11 +1114,11 @@
         isLightModeActive = document.body.classList.contains('light-mode');
         localStorage.setItem('mahi_light_mode', isLightModeActive);
         
-        // Re-render chart components dynamically to fit high-contrast theme rules
         rebuildChartsForTheme();
+        renderHeatmap();
     }
 
-    // Dynamic Personal Information Logic (localStorage powered)
+    // Dynamic Personal Information Logic
     function loadUserInfo() {
         const uName = localStorage.getItem('mahi_user_name') || "MAHI";
         const uTarget = localStorage.getItem('mahi_user_target') || "MISSION BUET";
@@ -1022,23 +1159,35 @@
 
         loadUserInfo();
         closeUserInfoModal();
-        showMotivation("📝 Info Updated!", "Personal configuration metadata saved to database.");
+        showMotivation("✏️ Info Updated!", "Personal configuration metadata saved to database.");
     }
 
     // =========================================================
-    // প্রিমিয়াম হ্যাকিং ব্লু লোডার ফাংশন (Futuristic Blue Loader Engine)
+    // সাইবার-গ্রীন পিক্সেল লোডার ফাংশন (Futuristic Fast Hacker Engine)
     // =========================================================
     window.addEventListener('load', () => {
-        const logLines = [
-            "[SYS_INIT] Initializing blue mainframe clusters...",
-            "[CORE_NET] Fetching global syllabus core...",
-            "[SECURITY] Decrypting user interface clusters...",
-            "[DAT_RECV] Synchronized 1085 verified matrix milestones.",
-            "[SYS_LOAD] Compiling local database metrics...",
-            "[ENGINE] Synchronizing focus clock signals...",
-            "[AUDIO] Mapping multichannel soundscapes...",
-            "[SYS_OK] Handshake successful. Booting workspace...",
-            "[ACCESS] VERIFYING ACCESS GRANTED..."
+        const systemMessages = [
+            "[SYS_BOOT] STARTING MAHI MISSION CONTROL MAIN SYSTEM INITIALIZATION...",
+            "[SYS_BOOT] PARSING USER MEMORY SECTORS...",
+            "[STORAGE] SECURE STORAGE ACCESS GRANTED [OK]",
+            "[DATA] RETRIEVING STUDY LOGS AND PERFORMANCE TRACKERS...",
+            "[MODULE] MOUNTING CORE FOCUS TIMERS...",
+            "[MODULE] MOUNTING POMODORO ENGINE [V3.5]...",
+            "[MATRIX_S] VERIFYING 1085 ENGINEERING CORE SYLLABUS GATEWAYS...",
+            "[LOCAL_DB] SYNCHRONIZING HISTORICAL CONTRIBUTION HEATMAP DATA...",
+            "[INTEGRITY] CALIBRATING DAILY ROUTINE SLOT MANAGER TEMPLATES...",
+            "[NETWORK] SECURE HANDSHAKE COMPLETED WITH USER DATABASE...",
+            "[MEMORY] ALLOCATING MEMORY HEAP BUFFER [1024MB]...",
+            "[COMPILER] COMPILING MATH ENGINE STACKS...",
+            "[SYS_EXEC] RESOLVING PHYSICAL FORMULAS GATEWAYS...",
+            "[SYS_EXEC] LINKING CHEMISTRY MOLECULAR VECTORS...",
+            "[SYS_EXEC] STREAMING REVOLUTIONARY INTELLECTUAL STUDY QUOTES...",
+            "[UI] RENDERING MAIN DASHBOARD ELEMENTS [STABLE]...",
+            "[SOUNDS] ENCRYPTING FOCUS ACOUSTIC SOUNDSCAPES FLOWS...",
+            "[XP_SYS] INJECTING GAMIFICATION ENGINE FOR LEVEL-UP PARSING...",
+            "[SUCCESS] USER IDENTIFICATION LOADED: MAHI...",
+            "[SUCCESS] TARGET SPECIFIED: BUET ADMISSION [HSC 2027]...",
+            "[ACCESS] GRANTED ACCESS SECURE BOOT STABLE [OK]"
         ];
         
         let progress = 0;
@@ -1046,43 +1195,51 @@
         const logEl = document.getElementById('hacker-log');
         const pctEl = document.getElementById('loader-pct-text');
         const fillEl = document.getElementById('loader-bar-fill-el');
+        const pixelBlocksEl = document.getElementById('pixel-progress-blocks');
         const msgEl = document.getElementById('access-msg');
         
         const loaderInterval = setInterval(() => {
-            progress += Math.floor(Math.random() * 8) + 2;
+            progress += Math.floor(Math.random() * 6) + 4; 
             if (progress >= 100) {
                 progress = 100;
                 clearInterval(loaderInterval);
                 fillEl.style.width = '100%';
                 pctEl.innerText = '100%';
+                pixelBlocksEl.innerText = "████████████████████";
                 msgEl.innerText = 'ACCESS GRANTED';
                 msgEl.className = 'access-granted';
-                logEl.innerHTML += `<br><span style="color: #38bdf8;">[SYS_OK] ACCESS GRANTED. Launching user interface...</span>`;
+                
+                while(lineIdx < systemMessages.length) {
+                    logEl.innerHTML += `<br>${systemMessages[lineIdx]}`;
+                    lineIdx++;
+                }
                 logEl.scrollTop = logEl.scrollHeight;
 
-                // Dismiss Loader Overlay
                 setTimeout(() => {
                     const overlay = document.getElementById('hacker-loader');
                     overlay.style.opacity = '0';
                     setTimeout(() => {
                         overlay.style.visibility = 'hidden';
                     }, 800);
-                }, 1000);
+                }, 600);
             } else {
                 fillEl.style.width = `${progress}%`;
                 pctEl.innerText = `${progress}%`;
                 
-                if (progress % 12 === 0 && lineIdx < logLines.length) {
-                    logEl.innerHTML += `<br>${logLines[lineIdx]}`;
+                let blocksCount = Math.floor(progress / 5);
+                pixelBlocksEl.innerText = "█".repeat(blocksCount) + "░".repeat(20 - blocksCount);
+                
+                if (progress % 4 === 0 && lineIdx < systemMessages.length) {
+                    logEl.innerHTML += `<br>${systemMessages[lineIdx]}`;
                     lineIdx++;
                     logEl.scrollTop = logEl.scrollHeight;
                 }
             }
-        }, 120);
+        }, 35);
     });
 
     // =========================================================
-    // জাভাস্ক্রিপ্ট ওয়েব ওয়ার্কার (Web Workers for Timers)
+    // জাভাস্ক্রিপ্ট ওয়েব ওয়ার্কার
     // =========================================================
     const workerCode = `
         let timerId = null;
@@ -1096,7 +1253,7 @@
     const focusWorker = new Worker(workerURL); 
 
     // =========================================================
-    // অ্যালার্ম সাউন্ড ফাংশন (Alarm Sound Controls & Notifications)
+    // অ্যালার্ম সাউন্ড ফাংশন
     // =========================================================
     const beepSound = document.getElementById('beep-sound');
     const stopAlarmBtn = document.getElementById('btn-stop-alarm');
@@ -1105,7 +1262,7 @@
     function showNotification(title, body) { if ("Notification" in window && Notification.permission === "granted") { new Notification(title, { body: body }); } }
 
     // =========================================================
-    // নেভিগেশন ও পপআপ মেনু লজিক (Navbar & Popup Logic)
+    // নেভিগেশন ও পপআপ মেনু লজিক
     // =========================================================
     function toggleNavMenu() { const menu = document.getElementById('nav-dropdown'); menu.style.display = (menu.style.display === 'block') ? 'none' : 'block'; }
     window.onclick = function(event) { if (!event.target.matches('.three-dot-btn')) { const dropdown = document.getElementById("nav-dropdown"); if (dropdown && dropdown.style.display === 'block') { dropdown.style.display = 'none'; } } }
@@ -1138,10 +1295,10 @@
     }
 
     // =========================================================
-    // গ্যামিফিকেশন: এক্সপি, লেভেল এবং প্রোগ্রেস বার (XP Logic)
+    // গ্যামিফিকেশন: এক্সপি, লেভেল এবং প্রোগ্রেস বার
     // =========================================================
     let userXP = parseInt(localStorage.getItem('mahi_xp')) || 0;
-    const motivationalQuotes = ["BUET তোমার অপেক্ষায়, মাহি! 🚀", "Consistency is your superpower! 🎯", "Great focus! এভাবেই এগিয়ে যাও। 🔥", "দারুণ! আরেক ধাপ স্বপ্ন পূরণের দিকে। ✨", "Hard work never betrays! 💪"];
+    const motivationalQuotes = ["BUET তোমার অপেক্ষায়, মাহি! 🚀", "Consistency is your superpower! 🎯", "Great focus! এভাবেই এগিয়ে যাও। 🔥", "You can do it! স্বপ্নের পথে যাত্রা। ✨", "Hard work never betrays! 💪"];
     function getRandomQuote() { return motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)]; }
 
     function getRankDetails(xp) {
@@ -1183,17 +1340,20 @@
     }
 
     // =========================================================
-    // তারিখ এবং স্ট্রিক লজিক (Date Strings & Streak Count)
+    // তারিখ, স্ট্রিক এবং রুটিন রিসেট লজিক
     // =========================================================
     const todayStr = new Date().toLocaleDateString('en-CA'); 
     let storedDate = localStorage.getItem('mahi_last_login_date');
     let dailyTasks = JSON.parse(localStorage.getItem('mahi_daily_tasks')) || [];
     let dailyHabits = JSON.parse(localStorage.getItem('mahi_habits')) || [];
+    let dailySlots = JSON.parse(localStorage.getItem('mahi_time_slots')) || [];
     let taskHistory = JSON.parse(localStorage.getItem('mahi_task_history')) || {};
 
     if (storedDate && storedDate !== todayStr) {
         localStorage.removeItem('mahi_daily_tasks'); dailyTasks = [];
         dailyHabits.forEach(h => h.done = false); localStorage.setItem('mahi_habits', JSON.stringify(dailyHabits));
+        // ডেইলি স্লট রিসেট: সময় ও নাম অক্ষত রেখে শুধু কমপ্লিট স্ট্যাটাস (done) ফলস করা হবে
+        dailySlots.forEach(s => s.done = false); localStorage.setItem('mahi_time_slots', JSON.stringify(dailySlots));
     }
     localStorage.setItem('mahi_last_login_date', todayStr);
 
@@ -1211,8 +1371,19 @@
 
     function formatTimeReadable(totalSeconds) { if (!totalSeconds || totalSeconds === 0) return "0m"; const h = Math.floor(totalSeconds / 3600); const m = Math.floor((totalSeconds % 3600) / 60); if (h > 0) return `${h}h ${m}m`; return `${m}m`; }
 
+    // AM/PM ১২ ঘণ্টার টাইম ফরম্যাটার
+    function format12Hour(timeStr) {
+        if(!timeStr) return "";
+        let [hours, minutes] = timeStr.split(':');
+        hours = parseInt(hours);
+        let ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12; 
+        return `${String(hours).padStart(2, '0')}:${minutes} ${ampm}`;
+    }
+
     // =========================================================
-    // ডেইলি টাস্ক মডিউল (Daily Tasks Module - With Drag/Drop)
+    // ডেইলি টাস্ক মডিউল
     // =========================================================
     const taskInput = document.getElementById('daily-task-input'); const taskList = document.getElementById('daily-task-list');
     let dragStartIndex = null;
@@ -1258,7 +1429,98 @@
     renderTasks();
 
     // =========================================================
-    // উইকলি / মান্থলি গোলস (Weekly & Monthly Goals)
+    // Daily Slot Manager (সময় নিয়ন্ত্রণ ও সেশন রুটিন ট্র্যাকার)
+    // =========================================================
+    const slotNameInput = document.getElementById('slot-name-input');
+    const slotStartInput = document.getElementById('slot-start-input');
+    const slotEndInput = document.getElementById('slot-end-input');
+    const slotList = document.getElementById('slot-manager-list');
+
+    function renderSlots() {
+        slotList.innerHTML = '';
+        dailySlots.forEach((slot, index) => {
+            const lbl = document.createElement('label');
+            if (slot.done) lbl.classList.add('completed');
+            lbl.style.borderColor = slot.done ? "var(--timer-orange)" : "rgba(245, 158, 11, 0.4)";
+            lbl.setAttribute('draggable', 'true');
+            lbl.setAttribute('data-index', index);
+            
+            const startFmt = format12Hour(slot.start);
+            const endFmt = format12Hour(slot.end);
+            const displayTime = (startFmt && endFmt) ? `${startFmt} - ${endFmt}` : (startFmt || endFmt || 'Not Specified');
+
+            lbl.innerHTML = `
+                <div style="display:flex; align-items:center; gap: 10px; width:100%; pointer-events: none;">
+                    <input type="checkbox" style="accent-color: var(--timer-orange); pointer-events: auto;" ${slot.done ? 'checked' : ''} onchange="toggleSlot(${index})"> 
+                    <div style="flex:1; display:flex; flex-direction:column; gap:2px;">
+                        <span style="font-weight: 600; font-size: 0.85rem; line-height:1.2;">${slot.name}</span>
+                        <span style="font-size: 0.75rem; color: var(--text-soft);">${displayTime}</span>
+                    </div>
+                    <button class="btn-del-link" style="pointer-events: auto; color: var(--alert-red) !important;" onclick="deleteSlot(${index})" title="Delete Routine Slot">✖</button>
+                </div>
+            `;
+            
+            lbl.addEventListener('dragstart', function() { dragStartIndex = +this.getAttribute('data-index'); this.classList.add('dragging'); });
+            lbl.addEventListener('dragenter', function(e) { e.preventDefault(); this.classList.add('drag-over'); });
+            lbl.addEventListener('dragover', function(e) { e.preventDefault(); });
+            lbl.addEventListener('dragleave', function() { this.classList.remove('drag-over'); });
+            lbl.addEventListener('drop', function() { 
+                const dragEndIndex = +this.getAttribute('data-index'); 
+                const itemOne = dailySlots[dragStartIndex]; 
+                dailySlots.splice(dragStartIndex, 1); 
+                dailySlots.splice(dragEndIndex, 0, itemOne); 
+                renderSlots(); 
+                this.classList.remove('drag-over'); 
+            });
+            lbl.addEventListener('dragend', function() { 
+                this.classList.remove('dragging'); 
+                document.querySelectorAll('#slot-manager-list label').forEach(item => item.classList.remove('drag-over')); 
+            });
+
+            slotList.appendChild(lbl);
+        });
+        localStorage.setItem('mahi_time_slots', JSON.stringify(dailySlots));
+    }
+
+    document.getElementById('btn-add-slot').addEventListener('click', () => {
+        const name = slotNameInput.value.trim();
+        const startTime = slotStartInput.value;
+        const endTime = slotEndInput.value;
+        
+        if (name !== '') {
+            dailySlots.push({ name: name, start: startTime, end: endTime, done: false });
+            slotNameInput.value = '';
+            slotStartInput.value = '';
+            slotEndInput.value = '';
+            renderSlots();
+            document.getElementById('slot-input-section').style.display = 'none';
+            updateXP(10, "Daily routine slot registered! 📅");
+        } else {
+            alert("স্লটের নাম খালি রাখা যাবে না!");
+        }
+    });
+
+    window.toggleSlot = function(index) {
+        dailySlots[index].done = !dailySlots[index].done;
+        if (dailySlots[index].done) {
+            updateXP(25, "Slot Completed successfully! +25 XP 🏅");
+        } else {
+            updateXP(-25);
+        }
+        renderSlots();
+    };
+
+    window.deleteSlot = function(index) {
+        if(confirm("আপনি কি নিশ্চিতভাবে এই রুটিন স্লটটি চিরতরে মুছে ফেলতে চান?")) {
+            dailySlots.splice(index, 1);
+            renderSlots();
+        }
+    };
+
+    renderSlots();
+
+    // =========================================================
+    // উইকলি / মান্থলি গোলস
     // =========================================================
     let weeklyGoals = JSON.parse(localStorage.getItem('mahi_weekly_goals')) || [];
     let monthlyGoals = JSON.parse(localStorage.getItem('mahi_monthly_goals')) || [];
@@ -1332,7 +1594,7 @@
     renderMonthlyGoals();
 
     // =========================================================
-    // ফোকাস সাউন্ডস (Advanced Audio Player with Volume, Progress, Speed)
+    // ফোকাস সাউন্ডস
     // =========================================================
     const soundSelector = document.getElementById('sound-selector');
     const ambientPlayer = document.getElementById('ambient-player');
@@ -1432,7 +1694,7 @@
 
 
     // =========================================================
-    // ডেইলি হ্যাবিট মডিউল (Daily Habits Module - With Drag/Drop)
+    // ডেইলি হ্যাবিট মডিউল
     // =========================================================
     const habitInput = document.getElementById('habit-input'); const habitList = document.getElementById('habit-list');
     function renderHabits() {
@@ -1465,7 +1727,7 @@
     renderHabits();
 
     // =========================================================
-    // স্টাডি লিংক হাব মডিউল (Study Links Hub Module - With Drag/Drop)
+    // স্টাডি লিংক হাব মডিউল
     // =========================================================
     const linkTitleInput = document.getElementById('link-title-input');
     const linkUrlInput = document.getElementById('link-url-input');
@@ -1537,7 +1799,7 @@
     renderLinks();
 
     // =========================================================
-    // টার্গেট কাউন্টডাউন (Target Countdown with shorthand format)
+    // টার্গেট কাউন্টডাউন
     // =========================================================
     const cdLabel = document.getElementById('countdown-label'); 
     const cdDaysHours = document.getElementById('cd-days-hours');
@@ -1575,7 +1837,6 @@
             const m = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
             const s = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
             
-            // Format to shorthand letters exactly as requested: d, h, m, s
             cdDaysHours.innerText = `${d}d : ${h}h`;
             cdMinsSecs.innerText = `${m}m : ${s}s`;
         }, 1000);
@@ -1630,7 +1891,7 @@
         { subject: "7. Biology 1st Paper", type: "science", chapters: ["1. কোষ ও এর গঠন", "2. কোষ বিভাজন", "3. কোষ রসায়ন", "4. অণুজীব", "5. শৈবাল ও ছত্রাক", "6. ব্রায়োফাইটা", "7. নগ্নবীজী ও আবৃতবীজী", "8. টিস্যু", "9. উদ্ভিদ শারীরতত্ত্ব", "10. উদ্ভিদ প্রজনন", "11. জীবপ্রযুক্তি", "12. জীব ও পরিবেশ"] },
         { subject: "8. Biology 2nd Paper", type: "science", chapters: ["1. প্রাণীর বিভিন্নতা", "2. প্রাণীর পরিচিতি", "3. পরিপাক ও শোষণ", "4. রক্ত ও সংবহন", "5. শ্বসন", "6. বর্জ্য ও নিষ্কাশন", "7. চলন", "8. সমন্বয় ও নিয়ন্ত্রণ", "9. মানব জীবনের ধারাবাহিকতা", "10. মানবদেহের প্রতিরক্ষা", "11. জিনতত্ত্ব ও বিবর্তন", "12. প্রাণীর আচরণ"] },
         { subject: "9. ICT", type: "language", chapters: ["1. বিশ্ব ও বাংলাদেশ প্রেক্ষিত", "2. কমিউনিকেশন সিস্টেমস", "3. সংখ্যা পদ্ধতি ও ডিজিটাল ডিভাইস", "4. ওয়েব ডিজাইন ও HTML", "5. প্রোগ্রামিং ভাষা", "6. ডেটাবেজ ম্যানেজমেন্ট"] },
-        { subject: "10. Bangla 1st Paper", type: "language", chapters: ["1. গল্প: বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন", "2. গল্প: অপরিচিতা", "3. গল্প: সাহিত্যে খেলা", "4. গল্প: বিলাসী", "5. গল্প: অর্ধাঙ্গী", "6. গল্প: যৌবনের গান", "7. গল্প: জীবন ও বৃক্ষ", "8. গল্প: গন্তব্য কাবুল", "9. গল্প: মাসি-পিসি", "10. গল্প: কপিলদাস মুর্মুর শেষ কাজ", "11. গল্প: রেইনকোট", "12. গল্প: নেকলেস", "13. কবিতা: ঋতু-বর্ণন", "14. কবিতা: বিভীষণের প্রতি মেঘনাদ", "15. কবিতা: সোনার তরী", "16. কবিতা: বিদ্রোহী", "17. কবিতা: সুচেতনা", "18. কবিতা: প্রতিদান", "19. কবিতা: তাহারেই পড়ে মনে", "20. কবিতা: পদ্মা", "21. কবিতা: ফেব্রুয়ারি ১৯৬৯", "22. কবিতা: আঠার বছর বয়স", "23. কবিতা: আমি কিংবদন্তির কথা বলছি", "24. কবিতা: প্রত্যাবর্তনের লজ্জা", "25. নাটক: নবাব সিরাজ-উদ্-দৌলা", "26. উপন্যাস: লালসালু (সৈয়দ ওয়ালীউল্লাহ)"] },
+        { subject: "10. Bangla 1st Paper", type: "language", chapters: ["1. গল্প: বাঙ্গালার নব্য লেখকদিগের প্রতি নিবেদন", "2. গল্প: অপরিচিতা", "3. গল্প: সাহিত্যে খেলা", "4. গল্প: বিলাসী", "5. গল্প: অর্ধাঙ্গী", "6. গল্প: যৌবনের গান", "7. গল্প: জীবন ও বৃক্ষ", "8. গল্প: গন্তব্য Kabul", "9. গল্প: মাসি-পিসি", "10. গল্প: কপিলদাস মুর্মুর শেষ কাজ", "11. গল্প: রেইনকোট", "12. গল্প: নেকলেস", "13. কবিতা: ঋতু-বর্ণন", "14. কবিতা: বিভীষণের প্রতি মেঘনাদ", "15. কবিতা: সোনার তরী", "16. কবিতা: বিদ্রোহী", "17. কবিতা: সুচেতনা", "18. কবিতা: প্রতিদান", "19. কবিতা: তাহারেই পড়ে মনে", "20. কবিতা: পদ্মা", "21. কবিতা: ফেব্রুয়ারি ১৯৬৯", "22. কবিতা: আঠার বছর বয়স", "23. কবিতা: আমি কিংবদন্তির কথা বলছি", "24. কবিতা: প্রত্যাবর্তনের লজ্জা", "25. নাটক: নবাব সিরাজ-উদ্-দৌলা", "26. উপন্যাস: লালসালু (সৈয়দ ওয়ালীউল্লাহ)"] },
         { subject: "11. Bangla 2nd Paper", type: "language", chapters: ["1. ব্যাকরণ: বাংলা উচ্চারণের নিয়ম", "2. ব্যাকরণ: বাংলা বানানের নিয়ম", "3. ব্যাকরণ: বাংলা ভাষার ব্যাকরণিক শব্দশ্রেণি", "4. ব্যাকরণ: বাংলা শব্দগঠন প্রক্রিয়া", "5. ব্যাকরণ: বাক্যতত্ত্ব", "6. ব্যাকরণ: বাংলা ভাষার অপপ্রয়োগ ও শুদ্ধপ্রয়োগ", "7. নির্মিতি: পারিভাষিক শব্দ ও অনুবাদ", "8. নির্মিতি: দিনলিপি, অভিজ্ঞতা বর্ণন, ভাষণ ও প্রতিবেদন", "9. নির্মিতি: বৈদ্যুতিন চিঠি, ক্ষুদেবার্তা, পত্রলিখন ও আবেদনপত্র", "10. নির্মিতি: সারাংশ, সারমর্ম, সারসংক্ষেপ ও ভাবসম্প্রসারণ", "11. নির্মিতি: সংলাপ ও ক্ষুদ্রগল্প", "12. নির্মিতি: প্রবন্ধ-নিবন্ধ রচনা"] },
         { subject: "12. English 1st Paper", type: "language", chapters: ["1. Unit 1: People/Institutions", "2. Unit 2: Art & Craft", "3. Unit 3: Myths & Literature", "4. Unit 4: History", "5. Unit 5: Human Rights", "6. Unit 6: Dreams", "7. Unit 7: Youthful Achievers", "8. Unit 8: Relationships", "9. Unit 9: Adolescence", "10. Unit 10: Lifestyle", "11. Unit 11: Peace & Conflict", "12. Unit 12: Environment & Nature", "13. Exam: MCQ & Short Answer Questions", "14. Exam: Flow Chart / Information Transfer", "15. Exam: Summarizing", "16. Exam: Cloze Tests (with/without clues)", "17. Exam: Rearranging", "18. Exam: Paragraph Writing", "19. Exam: Completing Story", "20. Exam: Informal Letters / Emails", "21. Exam: Maps / Graphs / Charts", "22. Exam: Appreciating Short Stories / Poems"] },
         { subject: "13. English 2nd Paper", type: "language", chapters: ["1. Grammar: Articles", "2. Grammar: Prepositions", "3. Grammar: Special phrases/words", "4. Grammar: Completing sentences", "5. Grammar: Right form of verbs & SVA", "6. Grammar: Changing sentences (Voice, degree, etc)", "7. Grammar: Narrative style", "8. Grammar: Pronoun reference", "9. Grammar: Modifiers", "10. Grammar: Sentence connectors", "11. Grammar: Synonym & Antonym", "12. Grammar: Punctuation & Capitalization", "13. Writing: Formal letter & Email", "14. Writing: Report writing", "15. Writing: Paragraph writing", "16. Writing: Free writing / Composition"] }
@@ -1664,6 +1925,7 @@
             studyStats[subject][dateToSave] += (extraMins * 60); 
             localStorage.setItem('mahi_study_stats', JSON.stringify(studyStats));
             renderReports(); 
+            renderHeatmap();
             if(studyChartInstance) updateChart(currentChartPeriod);
             if(weeklyStudyChartInstance) updateWeeklyChart(); 
             if(document.getElementById('history-date-picker').value === dateToSave) loadHistoryData();
@@ -1672,6 +1934,7 @@
             localStorage.setItem('mahi_study_stats', JSON.stringify(studyStats));
             if(studyStats[subject][dateToSave] % 5 === 0) { 
                 renderReports(); 
+                renderHeatmap();
                 if(studyChartInstance) updateChart(currentChartPeriod); 
                 if(weeklyStudyChartInstance) updateWeeklyChart(); 
                 if(document.getElementById('history-date-picker').value === dateToSave) loadHistoryData();
@@ -1696,11 +1959,10 @@
     }
 
     // =========================================================
-    // ফোকাস ইঞ্জিন (Focus Engine Tracker)
+    // ফোকাস ইঞ্জিন
     // =========================================================
     let focusLeft = 3600; let initialFocusMins = 60; let isBreakMode = false; function fmt(s) { return new Date(s * 1000).toISOString().substr(11, 8); } const focusDisplay = document.getElementById('focus-display'); const focusTitleText = document.getElementById('focus-title-text');
     
-    // Studying Status Emoji References
     const focusEmojiEl = document.getElementById('focus-emoji');
     const pomoEmojiEl = document.getElementById('pomo-emoji');
 
@@ -1731,7 +1993,7 @@
             focusDisplay.innerText = fmt(focusLeft); 
             document.getElementById('break-mins-input').value = ''; 
             focusWorker.postMessage({ action: 'start' }); 
-            focusEmojiEl.innerText = "🧘‍♂️🎮"; // Resting emoji during breaks
+            focusEmojiEl.innerText = "🧘‍♂️🎮";
         } 
     });
 
@@ -1740,7 +2002,7 @@
         isBreakMode = false; 
         focusTitleText.innerText = "⏱️ Focus Engine"; 
         focusWorker.postMessage({ action: 'start' }); 
-        focusEmojiEl.innerText = "✍️👨‍💻"; // Studying emoji
+        focusEmojiEl.innerText = "✍️👨‍💻";
     });
     
     focusWorker.onmessage = function(e) {
@@ -1767,6 +2029,7 @@
                     focusTitleText.innerText = "⏱️ Focus Engine"; 
                 } 
                 renderReports(); 
+                renderHeatmap();
                 if(studyChartInstance) updateChart(currentChartPeriod); 
                 if(weeklyStudyChartInstance) updateWeeklyChart(); 
             }
@@ -1776,8 +2039,9 @@
     document.getElementById('btn-focus-hold').addEventListener('click', () => { 
         focusWorker.postMessage({ action: 'stop' }); 
         stopAlarm(); 
-        focusEmojiEl.innerText = "☕😴"; // Rest state on hold
+        focusEmojiEl.innerText = "☕😴";
         renderReports(); 
+        renderHeatmap();
         if(studyChartInstance) updateChart(currentChartPeriod); 
         if(weeklyStudyChartInstance) updateWeeklyChart(); 
     });
@@ -1793,7 +2057,7 @@
     });
 
     // =========================================================
-    // পোমোডোরো ইঞ্জিন (Pomodoro Engine Logic)
+    // পোমোডোরো ইঞ্জিন
     // =========================================================
     let pomoSeconds = 105 * 60; let pomoInterval = null; let isPomoBreakMode = false; const pomoDisplay = document.getElementById('pomo-display'); const pomoStatus = document.getElementById('pomo-status'); const pomoFocusInput = document.getElementById('pomo-custom-focus'); const pomoBreakInput = document.getElementById('pomo-custom-break');
     function updatePomoDisplay() { let h = String(Math.floor(pomoSeconds / 3600)).padStart(2, '0'); let m = String(Math.floor((pomoSeconds % 3600) / 60)).padStart(2, '0'); let s = String(pomoSeconds % 60).padStart(2, '0'); if (parseInt(h) > 0) { pomoDisplay.innerText = `${h}:${m}:${s}`; } else { pomoDisplay.innerText = `${m}:${s}`; } }
@@ -1808,7 +2072,7 @@
         isPomoBreakMode = false; 
         pomoStatus.innerText = "STATUS: FOCUSING 🍅"; 
         pomoStatus.style.color = "var(--cyan-glow)"; 
-        pomoEmojiEl.innerText = "✍️👨‍💻"; // studying
+        pomoEmojiEl.innerText = "✍️👨‍💻";
         pomoInterval = setInterval(() => { 
             if (pomoSeconds > 0) { 
                 pomoSeconds--; 
@@ -1826,6 +2090,7 @@
                 pomoSeconds = getPomoBreakMins() * 60; 
                 updatePomoDisplay(); 
                 renderReports(); 
+                renderHeatmap();
                 if(studyChartInstance) updateChart(currentChartPeriod); 
                 if(weeklyStudyChartInstance) updateWeeklyChart(); 
             } 
@@ -1840,7 +2105,7 @@
         updatePomoDisplay(); 
         pomoStatus.innerText = "STATUS: BREAK TIME ☕"; 
         pomoStatus.style.color = "var(--mint-green)"; 
-        pomoEmojiEl.innerText = "🧘‍♂️🎮"; // breaking
+        pomoEmojiEl.innerText = "🧘‍♂️🎮";
         pomoInterval = setInterval(() => { 
             if (pomoSeconds > 0) { 
                 pomoSeconds--; 
@@ -1852,7 +2117,6 @@
                 pomoStatus.style.color = "var(--cyan-glow)"; 
                 pomoEmojiEl.innerText = "☕😴";
                 startAlarm(); 
-                showNotification("Break Finished! ⏰", "Back to work!"); 
                 pomoSeconds = getPomoFocusMins() * 60; 
                 updatePomoDisplay(); 
             } 
@@ -1866,6 +2130,7 @@
         pomoStatus.style.color = "var(--timer-orange)"; 
         pomoEmojiEl.innerText = "☕😴";
         renderReports(); 
+        renderHeatmap();
         if(studyChartInstance) updateChart(currentChartPeriod); 
         if(weeklyStudyChartInstance) updateWeeklyChart(); 
     });
@@ -1929,7 +2194,7 @@
 
 
     // =========================================================
-    // Exam Performance Tracker Chart Logic (Refined)
+    // Exam Performance Tracker Chart Logic
     // =========================================================
     let examScores = JSON.parse(localStorage.getItem('mahi_exam_scores')) || {};
     let examChartInstance = null;
@@ -2058,7 +2323,7 @@
     };
 
     // =========================================================
-    // 1-Week Dynamic Chart Logic (Refined)
+    // 1-Week Dynamic Chart Logic
     // =========================================================
     let weeklyStudyChartInstance = null;
 
@@ -2149,13 +2414,142 @@
     }
 
     // =========================================================
+    // ডাইনামিক ৩x৪ গ্রিড বিশিষ্ট ১-কলাম হিটম্যাপ রেন্ডারিং লজিক (2025 - 2050)
+    // =========================================================
+    function renderHeatmap() {
+        const yearSelect = document.getElementById('heatmap-year-select');
+        const selectedYear = parseInt(yearSelect.value) || new Date().getFullYear();
+        
+        const gridContainer = document.getElementById('heatmap-months-grid');
+        if(!gridContainer) return;
+        
+        gridContainer.innerHTML = '';
+        
+        // জানুয়ারি থেকে ডিসেম্বর (0-11)
+        for (let m = 0; m < 12; m++) {
+            gridContainer.appendChild(createMonthMiniGrid(selectedYear, m));
+        }
+    }
+
+    function createMonthMiniGrid(year, monthIndex) {
+        const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const wrapper = document.createElement('div');
+        wrapper.style.display = 'flex';
+        wrapper.style.flexDirection = 'column';
+        wrapper.style.gap = '3px';
+        wrapper.style.flex = '1';
+        wrapper.style.minWidth = '0';
+        wrapper.style.userSelect = 'none';
+        
+        const label = document.createElement('div');
+        label.innerText = monthNames[monthIndex];
+        label.style.fontSize = '0.75rem';
+        label.style.color = 'var(--text-soft)';
+        label.style.textAlign = 'center';
+        label.style.fontWeight = 'bold';
+        wrapper.appendChild(label);
+        
+        const gridContainer = document.createElement('div');
+        gridContainer.style.display = 'flex';
+        gridContainer.style.gap = '2px';
+        gridContainer.style.justifyContent = 'center';
+        
+        const firstDay = new Date(year, monthIndex, 1).getDay(); // 0: Sunday, 6: Saturday
+        const totalDays = new Date(year, monthIndex + 1, 0).getDate();
+        
+        let daysArr = [];
+        for (let i = 0; i < firstDay; i++) {
+            daysArr.push(null);
+        }
+        for (let d = 1; d <= totalDays; d++) {
+            daysArr.push(d);
+        }
+        while (daysArr.length % 7 !== 0) {
+            daysArr.push(null);
+        }
+        
+        const totalWeeks = daysArr.length / 7;
+        for (let w = 0; w < totalWeeks; w++) {
+            const col = document.createElement('div');
+            col.style.display = 'flex';
+            col.style.flexDirection = 'column';
+            col.style.gap = '2px';
+            
+            for (let d = 0; d < 7; d++) {
+                const dayVal = daysArr[w * 7 + d];
+                const cell = document.createElement('div');
+                cell.style.width = '6px';
+                cell.style.height = '6px';
+                cell.style.borderRadius = '1px';
+                
+                if (dayVal === null) {
+                    cell.style.background = 'transparent';
+                    cell.style.pointerEvents = 'none';
+                } else {
+                    const formattedDate = `${year}-${String(monthIndex + 1).padStart(2, '0')}-${String(dayVal).padStart(2, '0')}`;
+                    
+                    let dailyTotalSecs = 0;
+                    syllabusData.forEach(subObj => {
+                        const sub = subObj.subject;
+                        if (studyStats[sub] && studyStats[sub][formattedDate]) {
+                            dailyTotalSecs += studyStats[sub][formattedDate];
+                        }
+                    });
+                    
+                    const mins = dailyTotalSecs / 60;
+                    let level = 0;
+                    if (mins > 0 && mins <= 60) level = 1;
+                    else if (mins > 60 && mins <= 180) level = 2;
+                    else if (mins > 180 && mins <= 360) level = 3;
+                    else if (mins > 360) level = 4;
+                    
+                    cell.className = `heatmap-cell ${level > 0 ? 'lvl-' + level : ''}`;
+                    cell.style.cursor = 'pointer';
+                    cell.title = `${formattedDate}: ${formatTimeReadable(dailyTotalSecs)} studied`;
+                    
+                    cell.addEventListener('click', () => {
+                        document.getElementById('history-date-picker').value = formattedDate;
+                        loadHistoryData();
+                        document.getElementById('card-daily-stats').scrollIntoView({ behavior: 'smooth' });
+                        showMotivation("🗓️ Date Loaded!", `Showing logs for ${formattedDate}`);
+                    });
+                }
+                col.appendChild(cell);
+            }
+            gridContainer.appendChild(col);
+        }
+        
+        wrapper.appendChild(gridContainer);
+        return wrapper;
+    }
+
+    // =========================================================
     // DOMContentLoaded Initialization
     // =========================================================
     window.addEventListener('DOMContentLoaded', () => { 
         loadUserInfo();
+
+        // Heatmap Year Select সিলেকশন জেনারেশন (সবসময় বর্তমান বছরের উপর ভিত্তি করে অপশন এবং ডিফল্ট সিলেকশন হবে)
+        const currentYear = new Date().getFullYear();
+        const yearSelect = document.getElementById('heatmap-year-select');
+        if(yearSelect) {
+            yearSelect.innerHTML = '';
+            // বর্তমান বছরকে অন্তর্ভুক্ত করে ২০২৫ থেকে ২০৫০ সাল রেঞ্জ নিশ্চিত করা হয়েছে
+            let startYear = Math.min(2025, currentYear);
+            let endYear = Math.max(2050, currentYear);
+            for(let y = startYear; y <= endYear; y++) {
+                let opt = document.createElement('option');
+                opt.value = y;
+                opt.innerText = y;
+                if(y === currentYear) opt.selected = true; // বর্তমান বছরকে স্বয়ংক্রিয় সিলেক্ট করা হচ্ছে
+                yearSelect.appendChild(opt);
+            }
+        }
+
         rebuildChartsForTheme();
         renderXP(); 
         loadHistoryData(); 
+        renderHeatmap();
 
         const dashboard = document.getElementById('draggable-dashboard');
         Sortable.create(dashboard, {
@@ -2252,6 +2646,7 @@
             mahi_study_stats: localStorage.getItem('mahi_study_stats'), 
             mahi_daily_tasks: localStorage.getItem('mahi_daily_tasks'), 
             mahi_habits: localStorage.getItem('mahi_habits'), 
+            mahi_time_slots: localStorage.getItem('mahi_time_slots'), 
             mahi_weekly_goals: localStorage.getItem('mahi_weekly_goals'),
             mahi_monthly_goals: localStorage.getItem('mahi_monthly_goals'),
             mahi_syllabus_progress: localStorage.getItem('mahi_syllabus_progress'), 
